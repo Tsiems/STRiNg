@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1623A1351BC401FC007F284E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623A1341BC401FC007F284E /* AppDelegate.swift */; };
-		1623A1371BC401FC007F284E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623A1361BC401FC007F284E /* ViewController.swift */; };
 		1623A13A1BC401FC007F284E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1623A1381BC401FC007F284E /* Main.storyboard */; };
 		1623A13D1BC401FC007F284E /* CarFile.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1623A13B1BC401FC007F284E /* CarFile.xcdatamodeld */; };
 		1623A13F1BC401FC007F284E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1623A13E1BC401FC007F284E /* Assets.xcassets */; };
 		1623A1421BC401FC007F284E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1623A1401BC401FC007F284E /* LaunchScreen.storyboard */; };
 		1623A14D1BC401FD007F284E /* CarFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623A14C1BC401FD007F284E /* CarFileTests.swift */; };
 		1623A1581BC401FD007F284E /* CarFileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623A1571BC401FD007F284E /* CarFileUITests.swift */; };
+		16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		16CA72161BD0A9940019F4B1 /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72141BD0A9940019F4B1 /* CarTableViewCell.swift */; settings = {ASSET_TAGS = (); }; };
+		16CA72171BD0A9940019F4B1 /* CarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CA72151BD0A9940019F4B1 /* CarTableViewCell.xib */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* Begin PBXFileReference section */
 		1623A1311BC401FC007F284E /* CarFile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarFile.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1623A1341BC401FC007F284E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1623A1361BC401FC007F284E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		1623A1391BC401FC007F284E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1623A13C1BC401FC007F284E /* CarFile.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CarFile.xcdatamodel; sourceTree = "<group>"; };
 		1623A13E1BC401FC007F284E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -49,6 +50,9 @@
 		1623A1531BC401FD007F284E /* CarFileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarFileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1623A1571BC401FD007F284E /* CarFileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarFileUITests.swift; sourceTree = "<group>"; };
 		1623A1591BC401FD007F284E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewController.swift; sourceTree = "<group>"; };
+		16CA72141BD0A9940019F4B1 /* CarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewCell.swift; sourceTree = "<group>"; };
+		16CA72151BD0A9940019F4B1 /* CarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,8 +104,10 @@
 			isa = PBXGroup;
 			children = (
 				1623A1341BC401FC007F284E /* AppDelegate.swift */,
-				1623A1361BC401FC007F284E /* ViewController.swift */,
 				1623A1381BC401FC007F284E /* Main.storyboard */,
+				16CA72141BD0A9940019F4B1 /* CarTableViewCell.swift */,
+				16CA72151BD0A9940019F4B1 /* CarTableViewCell.xib */,
+				16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */,
 				1623A13E1BC401FC007F284E /* Assets.xcassets */,
 				1623A1401BC401FC007F284E /* LaunchScreen.storyboard */,
 				1623A1431BC401FC007F284E /* Info.plist */,
@@ -233,6 +239,7 @@
 			files = (
 				1623A1421BC401FC007F284E /* LaunchScreen.storyboard in Resources */,
 				1623A13F1BC401FC007F284E /* Assets.xcassets in Resources */,
+				16CA72171BD0A9940019F4B1 /* CarTableViewCell.xib in Resources */,
 				1623A13A1BC401FC007F284E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -258,9 +265,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */,
 				1623A13D1BC401FC007F284E /* CarFile.xcdatamodeld in Sources */,
-				1623A1371BC401FC007F284E /* ViewController.swift in Sources */,
 				1623A1351BC401FC007F284E /* AppDelegate.swift in Sources */,
+				16CA72161BD0A9940019F4B1 /* CarTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +495,7 @@
 				1623A15E1BC401FD007F284E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1623A15F1BC401FD007F284E /* Build configuration list for PBXNativeTarget "CarFileTests" */ = {
 			isa = XCConfigurationList;
@@ -495,6 +504,7 @@
 				1623A1611BC401FD007F284E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1623A1621BC401FD007F284E /* Build configuration list for PBXNativeTarget "CarFileUITests" */ = {
 			isa = XCConfigurationList;
@@ -503,6 +513,7 @@
 				1623A1641BC401FD007F284E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
