@@ -29,11 +29,17 @@ class CarTableViewController: UITableViewController {
     }
     
     func populateTestData() {
-        carNames.append("First")
-        carNames.append("Second")
-        carNames.append("Third")
-        carNames.append("Fourth")
-        carNames.append("Fifth")
+        if carMgr.cars.count < 1 {
+            carMgr.addCar(1,name: "Honda Accord",description: "Sweet ride. 1998. Will break down.")
+            carMgr.addCar(2,name: "Kia Soul",description: "White. Fun. Good gas milage. Hampsters.")
+            carMgr.addCar(3,name: "Jeep",description: "I don't know jeep stuff.")
+        }
+        
+//        carNames.append("First")
+//        carNames.append("Second")
+//        carNames.append("Third")
+//        carNames.append("Fourth")
+//        carNames.append("Fifth")
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,7 +56,7 @@ class CarTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return carNames.count
+        return carMgr.cars.count
     }
 
     
@@ -58,7 +64,7 @@ class CarTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! CarTableViewCell
 
         // Configure the cell...
-        cell.name.text = carNames[indexPath.row]
+        cell.name.text = carMgr.cars[indexPath.row].name
 
         return cell
     }
