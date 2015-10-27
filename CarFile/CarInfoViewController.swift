@@ -10,12 +10,35 @@ import UIKit
 
 class CarInfoViewController: UIViewController {
 
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var lastLabel: UILabel!
+    @IBOutlet weak var nextLabel: UILabel!
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var locPurchasedLabel: UILabel!
+    
+    var carIndex: Int?
+    var maintenanceIndex: Int?
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let maintenanceItem = carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!]
+        
+        lastLabel.text = maintenanceItem.last
+        nextLabel.text = maintenanceItem.next
+        typeLabel.text = maintenanceItem.type
+        priceLabel.text = maintenanceItem.price
+        locPurchasedLabel.text = maintenanceItem.locPurchased
+        
+        title = maintenanceItem.name
 
         // Do any additional setup after loading the view.
+        
+        
+        
+//        let backItem = UIBarButtonItem(title: "Custom Text HERE", style: .Bordered, target: nil, action: nil)
+//        navigationItem.backBarButtonItem = backItem
     }
 
     override func didReceiveMemoryWarning() {
