@@ -30,8 +30,13 @@ class CarTableViewController: UITableViewController {
 //        navigationItem.backBarButtonItem = backItem
         
         
+        
+        
+        
         //get title of car
         title = carMgr.cars[carIndex!].name
+        
+        //set colors of background, title bar, and text
         
         //tableView.registerClass(CarTableViewCell.self, forCellReuseIdentifier: "testCell")
         populateTestData()
@@ -45,11 +50,6 @@ class CarTableViewController: UITableViewController {
             carMgr.addMaintenanceItem(0,name:"Tires", last:"12-04-00")
         }
         
-//        carNames.append("First")
-//        carNames.append("Second")
-//        carNames.append("Third")
-//        carNames.append("Fourth")
-//        carNames.append("Fifth")
     }
 
     override func didReceiveMemoryWarning() {
@@ -75,6 +75,8 @@ class CarTableViewController: UITableViewController {
 
         // Configure the cell...
         cell.name.text = carMgr.cars[carIndex!].maintenanceItems[indexPath.row].name
+        
+        //set color of cell
 
         return cell
     }

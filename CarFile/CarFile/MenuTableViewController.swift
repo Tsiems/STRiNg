@@ -20,13 +20,31 @@ class MenuTableViewController: UITableViewController {
         // self.clearsSelectionOnViewWillAppear = false
         
         if titleText == nil {
-            titleText = "Car Menu"
+            titleText = "Cars"
         }
         
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         title = titleText
+        
+        //set color of background, title bar, and text
+        navigationController!.navigationBar.barTintColor = UIColor(red:0.09,green:0.55,blue:1.00,alpha: 1.00)
+        
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 28)!
+        ]
+        
+        navigationController!.navigationBar.titleTextAttributes = attributes
+        
+        
+        //configure background of tableView
+        //self.tblEvents.backgroundColor = UIColor(red:0.31,green:0.47,blue:0.64,1.00)
+        
+        //set all navigation buttons to the white color (including back buttons)
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        
         //tableView.registerClass(CarTableViewCell.self, forCellReuseIdentifier: "testCell")
         populateTestData()
         
@@ -38,12 +56,6 @@ class MenuTableViewController: UITableViewController {
             carMgr.addCar(2,name: "Kia Soul",description: "White. Fun. Good gas milage. Hampsters.")
             carMgr.addCar(3,name: "Jeep",description: "I don't know jeep stuff.")
         }
-        
-        //        carNames.append("First")
-        //        carNames.append("Second")
-        //        carNames.append("Third")
-        //        carNames.append("Fourth")
-        //        carNames.append("Fifth")
     }
     
     override func didReceiveMemoryWarning() {
@@ -69,6 +81,8 @@ class MenuTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.name.text = carMgr.cars[indexPath.row].name
+        
+        // set color of cell
         
         return cell
     }
@@ -129,12 +143,9 @@ class MenuTableViewController: UITableViewController {
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
         if segue.identifier == "carSegue" {
             // Get the new view controller using segue.destinationViewController.
             let carTable = segue.destinationViewController as! CarTableViewController
-            
-            
             
             let row = tableView.indexPathForCell(sender as! CarTableViewCell)!.row
             
@@ -144,8 +155,5 @@ class MenuTableViewController: UITableViewController {
             print(carTable.carIndex)
             
         }
-        
-        
     }
-    
 }

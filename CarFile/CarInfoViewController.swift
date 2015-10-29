@@ -33,7 +33,7 @@ class CarInfoViewController: UIViewController {
         
         title = maintenanceItem.name
 
-        // Do any additional setup after loading the view.
+        // set colors of background, title bar, and text
         
         
         
