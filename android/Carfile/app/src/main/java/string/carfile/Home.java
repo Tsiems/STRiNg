@@ -4,14 +4,29 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.melnykov.fab.FloatingActionButton;
+
+import java.util.ArrayList;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
 
 
 public class Home extends ActionBarActivity {
+
+    @Bind(R.id.carList) ListView carList;
+    @Bind(R.id.homeFab) FloatingActionButton homeFab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        ButterKnife.bind(this);
+        //homeFab.attachToListView(carList);
+        populateList();
     }
 
 
@@ -35,5 +50,22 @@ public class Home extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+    private void populateList() {
+        ArrayList<String> cars = new ArrayList<String>();
+        cars.add("Ford Pinto");
+        cars.add("Mercedes E350");
+        cars.add("Toyota Camry");
+        cars.add("Ferrari California");
+        cars.add("Ford Pinto");
+        cars.add("Mercedes E350");
+        cars.add("Toyota Camry");
+        cars.add("Ferrari California");
+        cars.add("Ford Pinto");
+        cars.add("Mercedes E350");
+        cars.add("Toyota Camry");
+        cars.add("Ferrari California");
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cars);
+        carList.setAdapter(arrayAdapter);
     }
 }
