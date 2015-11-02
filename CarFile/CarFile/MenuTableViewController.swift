@@ -50,11 +50,15 @@ class MenuTableViewController: UITableViewController {
         
     }
     
+    override func viewDidAppear(animate: Bool) {
+        tableView.reloadData()
+    }
+    
     func populateTestData() {
         if carMgr.cars.count < 1 {
-            carMgr.addCar(1,name: "Honda Accord",description: "Sweet ride. 1998. Will break down.")
-            carMgr.addCar(2,name: "Kia Soul",description: "White. Fun. Good gas milage. Hampsters.")
-            carMgr.addCar(3,name: "Jeep",description: "I don't know jeep stuff.")
+            carMgr.addCar(0,name: "Steven's Car",make: "Ford", model: "Focus", year: "2015", color: "Blue", price: "$5,000", licNum: "5CIA356")
+            carMgr.addCar(1,name: "Nick's Car",make: "Mini", model: "Countryman", year: "2013", color: "White", price: "$6,000", licNum: "4KGB578")
+            carMgr.addCar(2,name: "Travis's Car",make: "Chevrolet", model: "Corvette", year: "2015", color: "Red", price: "$90,000", licNum: "7ULM523")
         }
     }
     
@@ -77,10 +81,16 @@ class MenuTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! CarTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("carMenuCell", forIndexPath: indexPath) as! MenuTableViewCell
         
         // Configure the cell...
-        cell.name.text = carMgr.cars[indexPath.row].name
+        cell.nameLabel.text = carMgr.cars[indexPath.row].name
+        cell.makeLabel.text = carMgr.cars[indexPath.row].make
+        cell.modelLabel.text = carMgr.cars[indexPath.row].model
+        cell.yearLabel.text = carMgr.cars[indexPath.row].year
+        cell.colorLabel.text = carMgr.cars[indexPath.row].color
+        cell.priceLabel.text = carMgr.cars[indexPath.row].price
+        cell.licNumLabel.text = carMgr.cars[indexPath.row].licNum
         
         // set color of cell
         
@@ -139,6 +149,26 @@ class MenuTableViewController: UITableViewController {
 //    }
     
     
+    @IBAction func cancelToMenu(segue:UIStoryboardSegue) {
+        print("Hello! Cancel")
+        
+    }
+    
+    @IBAction func saveToMenu(segue:UIStoryboardSegue) {
+        //save new car info
+        
+        if segue.sourceViewController .isKindOfClass(NewCarViewController) {
+            let source = segue.sourceViewController as! NewCarViewController
+            if source.nameTextField.text!.characters.count > 0 {
+                carMgr.addCar(3, name: source.nameTextField.text!, make:source.makeTextField.text!, model:source.modelTextField.text!, year:source.yearTextField.text!, color:source.colorTextField.text!, price:source.priceTextField.text!, vinNum:source.vinNumTextField.text!, licNum:source.licNumTextField.text!, notes:source.notesTextField.text!)
+            }
+        }
+        
+    }
+    
+
+    
+    
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -147,7 +177,7 @@ class MenuTableViewController: UITableViewController {
             // Get the new view controller using segue.destinationViewController.
             let carTable = segue.destinationViewController as! CarTableViewController
             
-            let row = tableView.indexPathForCell(sender as! CarTableViewCell)!.row
+            let row = tableView.indexPathForCell(sender as! MenuTableViewCell)!.row
             
             // Pass the selected object to the new view controller.
             carTable.carIndex = row

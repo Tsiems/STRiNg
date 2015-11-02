@@ -14,14 +14,16 @@
 		1623A1421BC401FC007F284E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1623A1401BC401FC007F284E /* LaunchScreen.storyboard */; };
 		1623A14D1BC401FD007F284E /* CarFileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623A14C1BC401FD007F284E /* CarFileTests.swift */; };
 		1623A1581BC401FD007F284E /* CarFileUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1623A1571BC401FD007F284E /* CarFileUITests.swift */; };
+		1628571C1BE6B52500D73A05 /* NewCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628571B1BE6B52500D73A05 /* NewCarViewController.swift */; };
 		1647CAF61BD46A24006DEF6E /* CarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647CAF51BD46A24006DEF6E /* CarManager.swift */; };
 		1647CAFA1BD46E46006DEF6E /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */; };
 		16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */; };
 		16808C151BDEF0F30018A24E /* MaintenanceItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */; };
 		16808C161BDEF0F30018A24E /* MaintenanceItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16808C141BDEF0F30018A24E /* MaintenanceItemCell.xib */; };
 		16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */; };
-		16CA72161BD0A9940019F4B1 /* CarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72141BD0A9940019F4B1 /* CarTableViewCell.swift */; };
-		16CA72171BD0A9940019F4B1 /* CarTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CA72151BD0A9940019F4B1 /* CarTableViewCell.xib */; };
+		16CA72161BD0A9940019F4B1 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */; };
+		16CA72171BD0A9940019F4B1 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CA72151BD0A9940019F4B1 /* MenuTableViewCell.xib */; };
+		16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,14 +57,16 @@
 		1623A1531BC401FD007F284E /* CarFileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CarFileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1623A1571BC401FD007F284E /* CarFileUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarFileUITests.swift; sourceTree = "<group>"; };
 		1623A1591BC401FD007F284E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1628571B1BE6B52500D73A05 /* NewCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCarViewController.swift; sourceTree = "<group>"; };
 		1647CAF51BD46A24006DEF6E /* CarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarManager.swift; sourceTree = "<group>"; };
 		1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfoViewController.swift; path = ../CarInfoViewController.swift; sourceTree = "<group>"; };
 		16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaintenanceItemCell.swift; path = ../MaintenanceItemCell.swift; sourceTree = "<group>"; };
 		16808C141BDEF0F30018A24E /* MaintenanceItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MaintenanceItemCell.xib; path = ../MaintenanceItemCell.xib; sourceTree = "<group>"; };
 		16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewController.swift; sourceTree = "<group>"; };
-		16CA72141BD0A9940019F4B1 /* CarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewCell.swift; sourceTree = "<group>"; };
-		16CA72151BD0A9940019F4B1 /* CarTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CarTableViewCell.xib; sourceTree = "<group>"; };
+		16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		16CA72151BD0A9940019F4B1 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
+		16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDataViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,15 +118,17 @@
 			isa = PBXGroup;
 			children = (
 				1623A1341BC401FC007F284E /* AppDelegate.swift */,
+				16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */,
+				16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */,
+				16CA72151BD0A9940019F4B1 /* MenuTableViewCell.xib */,
+				16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */,
 				16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */,
 				16808C141BDEF0F30018A24E /* MaintenanceItemCell.xib */,
+				1628571B1BE6B52500D73A05 /* NewCarViewController.swift */,
 				1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */,
 				1623A1381BC401FC007F284E /* Main.storyboard */,
+				16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */,
 				1647CAF51BD46A24006DEF6E /* CarManager.swift */,
-				16CA72141BD0A9940019F4B1 /* CarTableViewCell.swift */,
-				16CA72151BD0A9940019F4B1 /* CarTableViewCell.xib */,
-				16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */,
-				16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */,
 				1623A13E1BC401FC007F284E /* Assets.xcassets */,
 				1623A1401BC401FC007F284E /* LaunchScreen.storyboard */,
 				1623A1431BC401FC007F284E /* Info.plist */,
@@ -255,7 +261,7 @@
 				1623A1421BC401FC007F284E /* LaunchScreen.storyboard in Resources */,
 				1623A13F1BC401FC007F284E /* Assets.xcassets in Resources */,
 				16808C161BDEF0F30018A24E /* MaintenanceItemCell.xib in Resources */,
-				16CA72171BD0A9940019F4B1 /* CarTableViewCell.xib in Resources */,
+				16CA72171BD0A9940019F4B1 /* MenuTableViewCell.xib in Resources */,
 				1623A13A1BC401FC007F284E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,13 +288,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */,
+				16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */,
 				16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */,
 				1647CAF61BD46A24006DEF6E /* CarManager.swift in Sources */,
+				1628571C1BE6B52500D73A05 /* NewCarViewController.swift in Sources */,
 				1623A13D1BC401FC007F284E /* CarFile.xcdatamodeld in Sources */,
 				1647CAFA1BD46E46006DEF6E /* CarInfoViewController.swift in Sources */,
 				1623A1351BC401FC007F284E /* AppDelegate.swift in Sources */,
 				16808C151BDEF0F30018A24E /* MaintenanceItemCell.swift in Sources */,
-				16CA72161BD0A9940019F4B1 /* CarTableViewCell.swift in Sources */,
+				16CA72161BD0A9940019F4B1 /* MenuTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

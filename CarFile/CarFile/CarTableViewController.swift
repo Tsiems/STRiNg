@@ -43,11 +43,15 @@ class CarTableViewController: UITableViewController {
         
     }
     
+    override func viewDidAppear(animated: Bool) {
+        tableView.reloadData()
+    }
+    
     func populateTestData() {
         if carMgr.cars[0].maintenanceItems.count < 1 {
-            carMgr.addMaintenanceItem(0,name:"Oil Change", last:"05-27-15", next:"08-27-15")
-            carMgr.addMaintenanceItem(0,name:"Batteries", last:"05-27-11")
-            carMgr.addMaintenanceItem(0,name:"Tires", last:"12-04-00")
+            carMgr.addMaintenanceItem(0,type:"Oil Change", last:"05-27-15", next:"08-27-15")
+            carMgr.addMaintenanceItem(0,type:"Batteries", last:"05-27-11")
+            carMgr.addMaintenanceItem(0,type:"Tires", last:"12-04-00")
         }
         
     }
@@ -74,7 +78,7 @@ class CarTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! MaintenanceItemCell
 
         // Configure the cell...
-        cell.name.text = carMgr.cars[carIndex!].maintenanceItems[indexPath.row].name
+        cell.name.text = carMgr.cars[carIndex!].maintenanceItems[indexPath.row].type
         
         //set color of cell
 
@@ -149,6 +153,21 @@ class CarTableViewController: UITableViewController {
         }
         
         
+    }
+    
+    
+    @IBAction func saveNewData(segue: UIStoryboardSegue) {
+        if segue.sourceViewController .isKindOfClass(NewDataViewController) {
+            let source = segue.sourceViewController as! NewDataViewController
+            if source.typeTextField.text!.characters.count > 0 {
+                
+                carMgr.addMaintenanceItem(carIndex!, type: source.typeTextField.text!, last: source.lastTextField.text!, next: source.nextTextField.text!, description: source.descriptionTextField.text!, price: source.priceTextField.text!, locPurchased: source.whereTextField.text!, notes: source.notesTextField.text!)
+            }
+        }
+    }
+    
+    @IBAction func cancelNewData(segue: UIStoryboardSegue) {
+        print( "cancel new data" )
     }
 
 
