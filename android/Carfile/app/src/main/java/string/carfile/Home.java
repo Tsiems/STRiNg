@@ -2,14 +2,14 @@ package string.carfile;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
 import com.melnykov.fab.FloatingActionButton;
-
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 
 public class Home extends ActionBarActivity {
 
-    @Bind(R.id.carList) ListView carList;
+    @Bind(R.id.carList) RecyclerView carList;
     @Bind(R.id.homeFab) FloatingActionButton homeFab;
 
     @Override
@@ -26,7 +26,11 @@ public class Home extends ActionBarActivity {
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         //homeFab.attachToListView(carList);
-        populateList();
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        carList.setLayoutManager(llm);
+        CarAdapter carAdapter = new CarAdapter(populateList());
+        carList.setAdapter(carAdapter);
     }
 
 
@@ -51,21 +55,22 @@ public class Home extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    private void populateList() {
-        ArrayList<String> cars = new ArrayList<String>();
-        cars.add("Ford Pinto");
-        cars.add("Mercedes E350");
-        cars.add("Toyota Camry");
-        cars.add("Ferrari California");
-        cars.add("Ford Pinto");
-        cars.add("Mercedes E350");
-        cars.add("Toyota Camry");
-        cars.add("Ferrari California");
-        cars.add("Ford Pinto");
-        cars.add("Mercedes E350");
-        cars.add("Toyota Camry");
-        cars.add("Ferrari California");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, cars);
-        carList.setAdapter(arrayAdapter);
+    private List<CarInfo> populateList() {
+        List<CarInfo> cars = new ArrayList<>();
+        cars.add(new CarInfo("Nick's Car", "Mini", "Countryman", 2012));
+        cars.add(new CarInfo("Steven's Car", "Ford", "Focus", 2015));
+        cars.add(new CarInfo("Bob's Car", "Ford", "Model-T", 1913));
+        cars.add(new CarInfo("Jill's Car", "BMW", "X5", 2014));
+        cars.add(new CarInfo("Nick's Car", "Mini", "Countryman", 2012));
+        cars.add(new CarInfo("Steven's Car", "Ford", "Focus", 2015));
+        cars.add(new CarInfo("Bob's Car", "Ford", "Model-T", 1913));
+        cars.add(new CarInfo("Jill's Car", "BMW", "X5", 2014));
+        cars.add(new CarInfo("Nick's Car", "Mini", "Countryman", 2012));
+        cars.add(new CarInfo("Steven's Car", "Ford", "Focus", 2015));
+        cars.add(new CarInfo("Bob's Car", "Ford", "Model-T", 1913));
+        cars.add(new CarInfo("Jill's Car", "BMW", "X5", 2014));
+
+       // ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cars);
+        return cars;
     }
 }
