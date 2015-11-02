@@ -1,11 +1,13 @@
 package string.carfile;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import com.melnykov.fab.FloatingActionButton;
 import java.util.ArrayList;
@@ -13,6 +15,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class Home extends ActionBarActivity {
@@ -31,6 +34,12 @@ public class Home extends ActionBarActivity {
         carList.setLayoutManager(llm);
         CarAdapter carAdapter = new CarAdapter(populateList());
         carList.setAdapter(carAdapter);
+    }
+
+    @OnClick(R.id.homeFab)
+    public void addCar(View view) {
+        Intent carAddPage = new Intent(getApplicationContext(), AddCar.class);
+        startActivity(carAddPage);
     }
 
 

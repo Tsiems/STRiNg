@@ -20,6 +20,14 @@
             android:name=".MainSettings"
             android:label="@string/title_activity_main_settings" >
         </activity>
+        <activity
+            android:name=".AddCar"
+            android:label="@string/title_activity_add_car"
+            android:parentActivityName=".Home" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="string.carfile.Home" />
+        </activity>
     </application>
 
 </manifest>
