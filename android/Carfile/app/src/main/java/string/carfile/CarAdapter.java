@@ -43,6 +43,10 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         carViewHolder.carYear.setText(String.valueOf(ci.getYear()));
     }
 
+    public void setCars(List<CarInfo> cars) {
+        this.cars = cars;
+    }
+
 
     public static class CarViewHolder extends RecyclerView.ViewHolder {
         public TextView carName;

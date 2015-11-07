@@ -108,6 +108,9 @@ public class AddCar extends AppCompatActivity {
             return;
         }
 
+        CarInfo newCar = new CarInfo(cName, cMake, cModel, cYear, cColor, cPrice, cVin, cLicense, cNotes);
+        newCar.save();
+        finish();
 
 
     }

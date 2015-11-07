@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,6 +24,9 @@ public class Home extends AppCompatActivity {
 
     @Bind(R.id.carList) RecyclerView carList;
     @Bind(R.id.homeFab) FloatingActionButton homeFab;
+    private List<CarInfo> cars = CarInfo.listAll(CarInfo.class);
+    private CarAdapter carAdapter;
+    private static final String TAG = "Home";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,15 +37,25 @@ public class Home extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         carList.setLayoutManager(llm);
-        CarAdapter carAdapter = new CarAdapter(populateList());
+        carAdapter = new CarAdapter(cars);
         carList.setAdapter(carAdapter);
+    }
+    @Override
+    protected void onResume(){
+        super.onResume();
+        Log.d(TAG, "onResume Called");
+        cars = CarInfo.listAll(CarInfo.class);
+        carAdapter.setCars(cars);
+        carAdapter.notifyDataSetChanged();
     }
 
     @OnClick(R.id.homeFab)
     public void addCar(View view) {
         Intent carAddPage = new Intent(getApplicationContext(), AddCar.class);
-        startActivity(carAddPage);
+        startActivityForResult(carAddPage, 0);
     }
+
+
 
 
     @Override
@@ -65,22 +79,5 @@ public class Home extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    private List<CarInfo> populateList() {
-        List<CarInfo> cars = new ArrayList<>();
-        cars.add(new CarInfo("Nick's Car", "Mini", "Countryman", 2012));
-        cars.add(new CarInfo("Steven's Car", "Ford", "Focus", 2015));
-        cars.add(new CarInfo("Bob's Car", "Ford", "Model-T", 1913));
-        cars.add(new CarInfo("Jill's Car", "BMW", "X5", 2014));
-        cars.add(new CarInfo("Nick's Car", "Mini", "Countryman", 2012));
-        cars.add(new CarInfo("Steven's Car", "Ford", "Focus", 2015));
-        cars.add(new CarInfo("Bob's Car", "Ford", "Model-T", 1913));
-        cars.add(new CarInfo("Jill's Car", "BMW", "X5", 2014));
-        cars.add(new CarInfo("Nick's Car", "Mini", "Countryman", 2012));
-        cars.add(new CarInfo("Steven's Car", "Ford", "Focus", 2015));
-        cars.add(new CarInfo("Bob's Car", "Ford", "Model-T", 1913));
-        cars.add(new CarInfo("Jill's Car", "BMW", "X5", 2014));
 
-       // ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, cars);
-        return cars;
-    }
 }
