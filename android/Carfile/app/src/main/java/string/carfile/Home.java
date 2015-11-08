@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -18,6 +20,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 
 
 public class Home extends AppCompatActivity {
@@ -39,7 +42,36 @@ public class Home extends AppCompatActivity {
         carList.setLayoutManager(llm);
         carAdapter = new CarAdapter(cars);
         carList.setAdapter(carAdapter);
+        registerForContextMenu(carList);
+        carAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent carPage = new Intent(getApplicationContext(), CarPage.class);
+                Bundle b = new Bundle();
+                b.putString("vin", cars.get(position).getVin());
+                carPage.putExtras(b);
+                startActivity(carPage);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Log.d(TAG, "ITEM WAS LONG PRESSED!");
+                openContextMenu(view);
+
+            }
+        });
+
     }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.cardeletemenu, menu);
+        menu.setHeaderTitle("Delete Car?");
+    }
+
+
     @Override
     protected void onResume(){
         super.onResume();

@@ -14,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -93,6 +95,7 @@ public class AddCar extends AppCompatActivity {
         cPrice = Integer.parseInt(price.getText().toString());
         if(cVin.length() < 11 || cVin.length() > 17)
         {
+
             Snackbar.make(view, "Enter a valid VIN number", Snackbar.LENGTH_SHORT).show();
             vin.requestFocus();
             return;
@@ -105,6 +108,12 @@ public class AddCar extends AppCompatActivity {
         {
             Snackbar.make(view, "Only 200 characters allowed in notes", Snackbar.LENGTH_SHORT).show();
             notes.requestFocus();
+            return;
+        }
+        List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", cVin);
+        if(!query.isEmpty()) {
+            Log.d(TAG, cVin + " is already used!");
+            Snackbar.make(view, "Vin Already Exists", Snackbar.LENGTH_SHORT).show();
             return;
         }
 
