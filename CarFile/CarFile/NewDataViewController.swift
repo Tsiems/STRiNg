@@ -24,6 +24,15 @@ class NewDataViewController: UIViewController {
         title = "New Data"
 
         // Do any additional setup after loading the view.
+        navigationController!.navigationBar.barTintColor = UIColor(red:0.09,green:0.55,blue:1.00,alpha: 1.00)
+        
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 28)!
+        ]
+        
+        navigationController!.navigationBar.titleTextAttributes = attributes
+        
     }
 
     override func didReceiveMemoryWarning() {

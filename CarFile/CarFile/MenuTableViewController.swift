@@ -38,6 +38,7 @@ class MenuTableViewController: UITableViewController {
         
         navigationController!.navigationBar.titleTextAttributes = attributes
         
+        //self.tableView.backgroundColor = UIColor(red:0.86, green:0.94, blue:0.97, alpha:1)
         
         //configure background of tableView
         //self.tblEvents.backgroundColor = UIColor(red:0.31,green:0.47,blue:0.64,1.00)
@@ -93,6 +94,7 @@ class MenuTableViewController: UITableViewController {
         cell.licNumLabel.text = carMgr.cars[indexPath.row].licNum
         
         // set color of cell
+
         
         return cell
     }

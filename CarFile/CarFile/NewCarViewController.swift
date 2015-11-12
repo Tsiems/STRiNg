@@ -30,6 +30,14 @@ class NewCarViewController: UIViewController {
 //        navigationItem.backBarButtonItem = backItem
         
         title = "New Car"
+        navigationController!.navigationBar.barTintColor = UIColor(red:0.09,green:0.55,blue:1.00,alpha: 1.00)
+        
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 28)!
+        ]
+        
+        navigationController!.navigationBar.titleTextAttributes = attributes
         
         
 

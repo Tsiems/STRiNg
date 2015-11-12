@@ -49,7 +49,7 @@ class CarTableViewController: UITableViewController {
     
     func populateTestData() {
         if carMgr.cars[0].maintenanceItems.count < 1 {
-            carMgr.addMaintenanceItem(0,type:"Oil Change", last:"05-27-15", next:"08-27-15")
+            carMgr.addMaintenanceItem(0,type:"Oil Change", last:"05-27-15", next:"08-27-15", description: "Full Synthetic", price: "$50", locPurchased: "Speedee Oil Change", notes: "It was pretty expensive but fast")
             carMgr.addMaintenanceItem(0,type:"Batteries", last:"05-27-11")
             carMgr.addMaintenanceItem(0,type:"Tires", last:"12-04-00")
         }
