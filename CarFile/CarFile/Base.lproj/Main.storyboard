@@ -686,14 +686,16 @@
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzY-ie-8DX">
-                                <rect key="frame" x="272" y="536" width="56" height="56"/>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzY-ie-8DX">
+                                <rect key="frame" x="265" y="521" width="71" height="71"/>
                                 <animations/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="QzY-ie-8DX" secondAttribute="height" multiplier="1:1" id="R1U-xo-Es5"/>
-                                    <constraint firstAttribute="width" constant="56" id="Vrs-OG-O47"/>
+                                    <constraint firstAttribute="width" constant="71" id="Vrs-OG-O47"/>
                                 </constraints>
-                                <state key="normal" title="DELETE" image="f-cross_256-128.png"/>
+                                <state key="normal" title="DELETE" image="trash-128.png">
+                                    <color key="titleColor" red="1" green="0.14734765538459849" blue="0.22426009613746545" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="Mn2-Bc-80u" eventType="touchUpInside" id="YFA-nv-0jg"/>
                                     <segue destination="Uzg-Iv-eB6" kind="unwind" unwindAction="cancelNewData:" id="Mcc-WT-wkF"/>
@@ -806,6 +808,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="f-cross_256-128.png" width="128" height="128"/>
+        <image name="trash-128.png" width="128" height="128"/>
     </resources>
 </document>
