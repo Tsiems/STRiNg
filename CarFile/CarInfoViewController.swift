@@ -19,6 +19,7 @@ class CarInfoViewController: UIViewController {
     @IBOutlet weak var notesField: UITextView!
 
 
+    @IBOutlet weak var deleteButton: UIButton!
     
     var carIndex: Int?
     var maintenanceIndex: Int?
@@ -33,6 +34,7 @@ class CarInfoViewController: UIViewController {
         
         let maintenanceItem = carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!]
         
+        deleteButton.hidden = true
         placeData()
         
         disableTextEditting()
@@ -67,6 +69,9 @@ class CarInfoViewController: UIViewController {
         
         let cancelBtn = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancelButtonPressed:")
         navigationItem.leftBarButtonItem = cancelBtn
+        
+        
+        deleteButton.hidden = false
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
@@ -76,6 +81,8 @@ class CarInfoViewController: UIViewController {
         placeData()
         
         disableTextEditting()
+        
+        deleteButton.hidden = true
     }
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
@@ -84,6 +91,8 @@ class CarInfoViewController: UIViewController {
         
         updateData()
         disableTextEditting()
+        
+        deleteButton.hidden = true
         
     }
     
@@ -129,6 +138,9 @@ class CarInfoViewController: UIViewController {
         notesField.userInteractionEnabled = false
         notesField.layer.borderWidth = 0.0
         notesField.layer.borderColor = UIColor(red:0, green:0, blue:0, alpha:1).CGColor
+        
+        
+        deleteButton.hidden = true
     }
     
     func enableTextEditting() {
@@ -150,8 +162,15 @@ class CarInfoViewController: UIViewController {
         notesField.userInteractionEnabled = true
         notesField.layer.borderWidth = 1.0
         notesField.layer.borderColor = UIColor(red:0, green:0, blue:0, alpha:1).CGColor
+        
     }
 
+    
+    @IBAction func deleteButtonPressed(sender: AnyObject) {
+        carMgr.cars[carIndex!].maintenanceItems.removeAtIndex(maintenanceIndex!)
+    }
+    
+    
     /*
     // MARK: - Navigation
 
