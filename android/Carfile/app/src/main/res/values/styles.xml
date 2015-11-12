@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="actionBarStyle">@style/carfileActionBar</item>
+        <item name="android:actionBarStyle">@style/carfileActionBar</item>
+
+    </style>
+    <style name="carfileActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@color/carfileNavbarColor</item>
+        <item name="background">@color/carfileNavbarColor</item>
+    </style>
+    <color name="carfileNavbarColor">#2196F3</color>
+    <color name="buttonUnpressed">#0D47A1</color>
+    <color name="buttonPressed">#90CAF9</color>
+    <color name="buttonAnim">#2196F3</color>
+
+</resources>
