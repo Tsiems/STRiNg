@@ -17,6 +17,9 @@
 		1628571C1BE6B52500D73A05 /* NewCarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1628571B1BE6B52500D73A05 /* NewCarViewController.swift */; };
 		164410931BF5315400448215 /* f-cross_256-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 164410921BF5315400448215 /* f-cross_256-128.png */; };
 		164410951BF5346A00448215 /* trash-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 164410941BF5346A00448215 /* trash-128.png */; };
+		164410971BF6552A00448215 /* DateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164410961BF6552A00448215 /* DateViewController.swift */; };
+		164410A71BF667AF00448215 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 164410A01BF6678000448215 /* SwiftHTTP.framework */; };
+		164410A91BF667FC00448215 /* HTTP_helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 164410A81BF667FC00448215 /* HTTP_helper.swift */; };
 		1647CAF61BD46A24006DEF6E /* CarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647CAF51BD46A24006DEF6E /* CarManager.swift */; };
 		1647CAFA1BD46E46006DEF6E /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */; };
 		16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */; };
@@ -42,6 +45,34 @@
 			remoteGlobalIDString = 1623A1301BC401FC007F284E;
 			remoteInfo = CarFile;
 		};
+		1644109F1BF6678000448215 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 164410981BF6678000448215 /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BFD901619C8D8B500DD99B6;
+			remoteInfo = SwiftHTTP;
+		};
+		164410A11BF6678000448215 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 164410981BF6678000448215 /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6BFD902119C8D8B500DD99B6;
+			remoteInfo = SwiftHTTPTests;
+		};
+		164410A31BF6678000448215 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 164410981BF6678000448215 /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D958025919E6EEEB003C8218;
+			remoteInfo = SwiftHTTPOSX;
+		};
+		164410A51BF6678000448215 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 164410981BF6678000448215 /* SwiftHTTP.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D958026319E6EEEB003C8218;
+			remoteInfo = SwiftHTTPOSXTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +92,9 @@
 		1628571B1BE6B52500D73A05 /* NewCarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewCarViewController.swift; sourceTree = "<group>"; };
 		164410921BF5315400448215 /* f-cross_256-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f-cross_256-128.png"; sourceTree = "<group>"; };
 		164410941BF5346A00448215 /* trash-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trash-128.png"; sourceTree = "<group>"; };
+		164410961BF6552A00448215 /* DateViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateViewController.swift; sourceTree = "<group>"; };
+		164410981BF6678000448215 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../Downloads/SwiftHTTP-master/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
+		164410A81BF667FC00448215 /* HTTP_helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTTP_helper.swift; sourceTree = "<group>"; };
 		1647CAF51BD46A24006DEF6E /* CarManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarManager.swift; sourceTree = "<group>"; };
 		1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfoViewController.swift; path = ../CarInfoViewController.swift; sourceTree = "<group>"; };
 		16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				164410A71BF667AF00448215 /* SwiftHTTP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +134,7 @@
 		1623A1281BC401FC007F284E = {
 			isa = PBXGroup;
 			children = (
+				164410981BF6678000448215 /* SwiftHTTP.xcodeproj */,
 				1623A1331BC401FC007F284E /* CarFile */,
 				1623A14B1BC401FD007F284E /* CarFileTests */,
 				1623A1561BC401FD007F284E /* CarFileUITests */,
@@ -131,11 +167,13 @@
 				1623A1381BC401FC007F284E /* Main.storyboard */,
 				164410921BF5315400448215 /* f-cross_256-128.png */,
 				16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */,
+				164410961BF6552A00448215 /* DateViewController.swift */,
 				1647CAF51BD46A24006DEF6E /* CarManager.swift */,
 				1623A13E1BC401FC007F284E /* Assets.xcassets */,
 				1623A1401BC401FC007F284E /* LaunchScreen.storyboard */,
 				1623A1431BC401FC007F284E /* Info.plist */,
 				1623A13B1BC401FC007F284E /* CarFile.xcdatamodeld */,
+				164410A81BF667FC00448215 /* HTTP_helper.swift */,
 			);
 			path = CarFile;
 			sourceTree = "<group>";
@@ -156,6 +194,17 @@
 				1623A1591BC401FD007F284E /* Info.plist */,
 			);
 			path = CarFileUITests;
+			sourceTree = "<group>";
+		};
+		164410991BF6678000448215 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				164410A01BF6678000448215 /* SwiftHTTP.framework */,
+				164410A21BF6678000448215 /* SwiftHTTPTests.xctest */,
+				164410A41BF6678000448215 /* SwiftHTTP.framework */,
+				164410A61BF6678000448215 /* SwiftHTTPOSXTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +296,12 @@
 			mainGroup = 1623A1281BC401FC007F284E;
 			productRefGroup = 1623A1321BC401FC007F284E /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 164410991BF6678000448215 /* Products */;
+					ProjectRef = 164410981BF6678000448215 /* SwiftHTTP.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				1623A1301BC401FC007F284E /* CarFile */,
@@ -255,6 +310,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		164410A01BF6678000448215 /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = 1644109F1BF6678000448215 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164410A21BF6678000448215 /* SwiftHTTPTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPTests.xctest;
+			remoteRef = 164410A11BF6678000448215 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164410A41BF6678000448215 /* SwiftHTTP.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftHTTP.framework;
+			remoteRef = 164410A31BF6678000448215 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		164410A61BF6678000448215 /* SwiftHTTPOSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = SwiftHTTPOSXTests.xctest;
+			remoteRef = 164410A51BF6678000448215 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1623A12F1BC401FC007F284E /* Resources */ = {
@@ -294,6 +380,7 @@
 				16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */,
 				16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */,
 				16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */,
+				164410A91BF667FC00448215 /* HTTP_helper.swift in Sources */,
 				1647CAF61BD46A24006DEF6E /* CarManager.swift in Sources */,
 				1628571C1BE6B52500D73A05 /* NewCarViewController.swift in Sources */,
 				1623A13D1BC401FC007F284E /* CarFile.xcdatamodeld in Sources */,
@@ -301,6 +388,7 @@
 				1623A1351BC401FC007F284E /* AppDelegate.swift in Sources */,
 				16808C151BDEF0F30018A24E /* MaintenanceItemCell.swift in Sources */,
 				16CA72161BD0A9940019F4B1 /* MenuTableViewCell.swift in Sources */,
+				164410971BF6552A00448215 /* DateViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

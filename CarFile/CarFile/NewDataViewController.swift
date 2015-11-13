@@ -11,8 +11,10 @@ import UIKit
 class NewDataViewController: UIViewController {
 
     @IBOutlet weak var typeTextField: UITextField!
-    @IBOutlet weak var lastTextField: UITextField!
-    @IBOutlet weak var nextTextField: UITextField!
+    
+    @IBOutlet weak var lastDateButton: UIButton!
+    @IBOutlet weak var nextDateButton: UIButton!
+    
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var priceTextField: UITextField!
     @IBOutlet weak var whereTextField: UITextField!
@@ -33,6 +35,36 @@ class NewDataViewController: UIViewController {
         
         navigationController!.navigationBar.titleTextAttributes = attributes
         
+        
+        
+        /////////////////////////////////////////////////
+        /////////////////////////////////////////////////
+        
+        //Set dates for last and next dates
+        
+        //set date format
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .ShortStyle
+        dateFormatter.timeStyle = .NoStyle
+        
+        //get today's date
+        let dateToday: NSDate = NSDate()
+        
+        //set last date to today
+        let lastDateString = dateFormatter.stringFromDate(dateToday)
+        lastDateButton.setTitle(lastDateString, forState: .Normal)
+        
+        
+        //set next date to 6 months in the future
+        let components: NSDateComponents = NSDateComponents()
+        components.setValue(6, forComponent: NSCalendarUnit.Month)
+        
+        let nextDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: dateToday, options: NSCalendarOptions(rawValue: 0))!
+        
+        let nextDateString = dateFormatter.stringFromDate(nextDate)
+        nextDateButton.setTitle(nextDateString, forState: .Normal)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,14 +73,67 @@ class NewDataViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "nextDateSegue" {
+            // Get the new view controller using segue.destinationViewController.
+            let navController = segue.destinationViewController as! UINavigationController
+            
+            let dateView = navController.viewControllers[0] as! DateViewController
+            //get the row of the selected cell in the table
+            
+            // Pass the selected object to the new view controller.
+
+            dateView.title = "Next"
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .ShortStyle
+            dateFormatter.timeStyle = .NoStyle
+            
+            
+            //dateView.datePicker.date = dateFormatter.dateFromString(nextDateButton.titleLabel!.text!)!
+        }
+        else if segue.identifier == "lastDateSegue" {
+            // Get the new view controller using segue.destinationViewController.
+            let navController = segue.destinationViewController as! UINavigationController
+            
+            let dateView = navController.viewControllers[0] as! DateViewController
+            
+            
+            //get the row of the selected cell in the table
+        
+            // Pass the selected object to the new view controller.
+            
+            dateView.title = "Last"
+            
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.dateStyle = .ShortStyle
+            dateFormatter.timeStyle = .NoStyle
+            
+            
+            //dateView.datePicker.date = dateFormatter.dateFromString(lastDateButton.titleLabel!.text!)!
+        }
+        
+        
     }
-    */
+    
+    
+    @IBAction func doneChangingDate(segue: UIStoryboardSegue) {
+        if segue.sourceViewController .isKindOfClass(DateViewController) {
+            let source = segue.sourceViewController as! DateViewController
+            if source.title == "Next" {
+                nextDateButton.setTitle(source.dateLabel.text!, forState: .Normal)
+                
+            }
+            else if source.title == "Last" {
+                lastDateButton.setTitle(source.dateLabel.text!, forState: .Normal)
+            }
+        }
+    }
+    
+    @IBAction func cancelChangingDate(segue: UIStoryboardSegue) {
+        print( "cancel changing date" )
+    }
 
 }

@@ -19,6 +19,8 @@ class MenuTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
+        getGoogle()
+        
         if titleText == nil {
             titleText = "Cars"
         }

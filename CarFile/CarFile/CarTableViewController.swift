@@ -180,7 +180,7 @@ class CarTableViewController: UITableViewController {
             let source = segue.sourceViewController as! NewDataViewController
             if source.typeTextField.text!.characters.count > 0 {
                 
-                carMgr.addMaintenanceItem(carIndex!, type: source.typeTextField.text!, last: source.lastTextField.text!, next: source.nextTextField.text!, description: source.descriptionTextField.text!, price: source.priceTextField.text!, locPurchased: source.whereTextField.text!, notes: source.notesTextField.text!)
+                carMgr.addMaintenanceItem(carIndex!, type: source.typeTextField.text!, last: source.lastDateButton.titleLabel!.text!, next: source.nextDateButton.titleLabel!.text!, description: source.descriptionTextField.text!, price: source.priceTextField.text!, locPurchased: source.whereTextField.text!, notes: source.notesTextField.text!)
             }
         }
     }
