@@ -70,19 +70,38 @@ class CarTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return carMgr.cars[carIndex!].maintenanceItems.count
+        return carMgr.cars[carIndex!].maintenanceItems.count + 1
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! MaintenanceItemCell
-
-        // Configure the cell...
-        cell.name.text = carMgr.cars[carIndex!].maintenanceItems[indexPath.row].type
         
-        //set color of cell
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("alertsCell", forIndexPath: indexPath) as! MaintenanceItemCell
+            
+            // Configure the cell...
+            cell.name.text = "Alerts"
+            cell.number.text = String(2)
+            
+            //set color of cell
+            
+            return cell
+        }
+        else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! MaintenanceItemCell
 
-        return cell
+            // Configure the cell...
+            cell.name.text = carMgr.cars[carIndex!].maintenanceItems[indexPath.row-1].type
+            
+            //set color of cell
+
+            return cell
+        }
+    }
+    
+    
+    func countAlerts() {
+        
     }
     
 
@@ -149,7 +168,7 @@ class CarTableViewController: UITableViewController {
             
             // Pass the selected object to the new view controller.
             maintenanceInfo.carIndex = carIndex
-            maintenanceInfo.maintenanceIndex = row
+            maintenanceInfo.maintenanceIndex = row - 1
         }
         
         

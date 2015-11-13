@@ -21,7 +21,6 @@
 		1647CAFA1BD46E46006DEF6E /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */; };
 		16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */; };
 		16808C151BDEF0F30018A24E /* MaintenanceItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */; };
-		16808C161BDEF0F30018A24E /* MaintenanceItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16808C141BDEF0F30018A24E /* MaintenanceItemCell.xib */; };
 		16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */; };
 		16CA72161BD0A9940019F4B1 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */; };
 		16CA72171BD0A9940019F4B1 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CA72151BD0A9940019F4B1 /* MenuTableViewCell.xib */; };
@@ -66,7 +65,6 @@
 		1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfoViewController.swift; path = ../CarInfoViewController.swift; sourceTree = "<group>"; };
 		16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaintenanceItemCell.swift; path = ../MaintenanceItemCell.swift; sourceTree = "<group>"; };
-		16808C141BDEF0F30018A24E /* MaintenanceItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = MaintenanceItemCell.xib; path = ../MaintenanceItemCell.xib; sourceTree = "<group>"; };
 		16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewController.swift; sourceTree = "<group>"; };
 		16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		16CA72151BD0A9940019F4B1 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
@@ -128,7 +126,6 @@
 				16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */,
 				16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */,
 				164410941BF5346A00448215 /* trash-128.png */,
-				16808C141BDEF0F30018A24E /* MaintenanceItemCell.xib */,
 				1628571B1BE6B52500D73A05 /* NewCarViewController.swift */,
 				1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */,
 				1623A1381BC401FC007F284E /* Main.storyboard */,
@@ -266,7 +263,6 @@
 			files = (
 				1623A1421BC401FC007F284E /* LaunchScreen.storyboard in Resources */,
 				1623A13F1BC401FC007F284E /* Assets.xcassets in Resources */,
-				16808C161BDEF0F30018A24E /* MaintenanceItemCell.xib in Resources */,
 				164410931BF5315400448215 /* f-cross_256-128.png in Resources */,
 				16CA72171BD0A9940019F4B1 /* MenuTableViewCell.xib in Resources */,
 				1623A13A1BC401FC007F284E /* Main.storyboard in Resources */,

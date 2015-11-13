@@ -11,6 +11,7 @@ import UIKit
 class MaintenanceItemCell: UITableViewCell {
 
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var number: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
