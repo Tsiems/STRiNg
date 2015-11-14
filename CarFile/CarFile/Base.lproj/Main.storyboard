@@ -532,7 +532,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand of Maintenance Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAY-EU-Mp2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand of Maintenance Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAY-EU-Mp2">
                                 <rect key="frame" x="83" y="257" width="497" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -548,13 +548,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cost of Maintenance Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRa-cB-HBY">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cost of Maintenance Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRa-cB-HBY">
                                 <rect key="frame" x="83" y="305" width="497" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where this was purchased" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xs-Kl-0Hw">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where this was purchased" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xs-Kl-0Hw">
                                 <rect key="frame" x="83" y="351" width="497" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -570,7 +570,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Extra notes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3J-6e-zN9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Extra notes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3J-6e-zN9">
                                 <rect key="frame" x="83" y="398" width="497" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -592,7 +592,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Y-ye-mHn">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Y-ye-mHn">
                                 <rect key="frame" x="83" y="210" width="497" height="30"/>
                                 <animations/>
                                 <state key="normal" title="New Date"/>
@@ -600,7 +600,7 @@
                                     <segue destination="GRy-1e-3Hs" kind="presentation" identifier="nextDateSegue" id="Byw-ul-zLk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKw-Fw-bbK">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKw-Fw-bbK">
                                 <rect key="frame" x="83" y="161" width="497" height="30"/>
                                 <animations/>
                                 <state key="normal" title="New Date"/>
@@ -623,6 +623,7 @@
                             <constraint firstItem="IRa-cB-HBY" firstAttribute="top" secondItem="RAY-EU-Mp2" secondAttribute="bottom" constant="18" id="AcD-jm-h1Y"/>
                             <constraint firstItem="5uP-jK-63f" firstAttribute="top" secondItem="77d-os-bQe" secondAttribute="bottom" constant="26" id="Ht3-wU-SSG"/>
                             <constraint firstItem="H3J-6e-zN9" firstAttribute="top" secondItem="5xs-Kl-0Hw" secondAttribute="bottom" constant="17" id="IKI-Mt-fxD"/>
+                            <constraint firstItem="HKw-Fw-bbK" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="63" id="Iex-4l-7Zq"/>
                             <constraint firstItem="5xs-Kl-0Hw" firstAttribute="top" secondItem="IRa-cB-HBY" secondAttribute="bottom" constant="16" id="Jb1-Yi-tYD"/>
                             <constraint firstItem="K5P-yA-ghE" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="-9" id="Jlu-dv-bIN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RAY-EU-Mp2" secondAttribute="trailing" id="MCz-QO-Fao"/>
@@ -630,17 +631,23 @@
                             <constraint firstItem="tlF-fc-9z1" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="-9" id="Ooc-JD-HI1"/>
                             <constraint firstItem="IRa-cB-HBY" firstAttribute="leading" secondItem="tlF-fc-9z1" secondAttribute="trailing" constant="8" id="PtU-Jo-lw0"/>
                             <constraint firstItem="tlF-fc-9z1" firstAttribute="top" secondItem="K5P-yA-ghE" secondAttribute="bottom" constant="26" id="Qmx-15-1Kw"/>
+                            <constraint firstItem="RAY-EU-Mp2" firstAttribute="top" secondItem="YB2-Vo-MXi" secondAttribute="bottom" constant="193" id="Sdq-ag-oMX"/>
                             <constraint firstItem="K5P-yA-ghE" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="-9" id="VWS-PH-UWf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IRa-cB-HBY" secondAttribute="trailing" id="XBv-f7-OOL"/>
                             <constraint firstItem="5xs-Kl-0Hw" firstAttribute="leading" secondItem="77d-os-bQe" secondAttribute="trailing" constant="8" id="XCz-Pr-1ff"/>
                             <constraint firstItem="K5P-yA-ghE" firstAttribute="top" secondItem="CwI-j3-d7V" secondAttribute="bottom" constant="26" id="aMf-jW-m4j"/>
                             <constraint firstItem="CwI-j3-d7V" firstAttribute="top" secondItem="G5W-iw-R3f" secondAttribute="bottom" constant="28" id="eGw-ef-HOp"/>
                             <constraint firstAttribute="leadingMargin" secondItem="77d-os-bQe" secondAttribute="leading" constant="17" id="fqW-UY-SWA"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="HKw-Fw-bbK" secondAttribute="trailing" id="oM0-Rf-qK2"/>
                             <constraint firstItem="gZF-Em-nly" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" id="owo-Hf-SqL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H3J-6e-zN9" secondAttribute="trailing" id="qTh-CJ-FHr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KUl-YF-P3q" secondAttribute="trailing" id="rNY-y5-D0F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5xs-Kl-0Hw" secondAttribute="trailing" id="uvA-h6-bDn"/>
+                            <constraint firstItem="Q0Y-ye-mHn" firstAttribute="top" secondItem="YB2-Vo-MXi" secondAttribute="bottom" constant="146" id="wJq-fO-vgS"/>
+                            <constraint firstItem="HKw-Fw-bbK" firstAttribute="top" secondItem="YB2-Vo-MXi" secondAttribute="bottom" constant="97" id="wxy-mJ-Y1o"/>
                             <constraint firstItem="77d-os-bQe" firstAttribute="top" secondItem="tlF-fc-9z1" secondAttribute="bottom" constant="26" id="xRY-WV-qOO"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Q0Y-ye-mHn" secondAttribute="trailing" id="yFl-cs-XBt"/>
+                            <constraint firstItem="Q0Y-ye-mHn" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="63" id="yVU-3E-QAS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uu7-V9-kK5">
@@ -782,18 +789,6 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="PnO-vi-0ah">
-                                <rect key="frame" x="112" y="72" width="468" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="zuM-oY-idh">
-                                <rect key="frame" x="112" y="135" width="468" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-5c-JwF">
                                 <rect key="frame" x="112" y="209" width="468" height="30"/>
                                 <animations/>
@@ -835,19 +830,32 @@
                                     <segue destination="Uzg-Iv-eB6" kind="unwind" unwindAction="cancelNewData:" id="Mcc-WT-wkF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cA-M6-bOh">
+                                <rect key="frame" x="112" y="68" width="76" height="30"/>
+                                <animations/>
+                                <state key="normal" title="MM/dd/yy"/>
+                                <connections>
+                                    <segue destination="GRy-1e-3Hs" kind="presentation" identifier="editLastDateSegue" id="8jf-4k-mfH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeh-Ua-GrM">
+                                <rect key="frame" x="112" y="131" width="76" height="30"/>
+                                <animations/>
+                                <state key="normal" title="MM/dd/yy"/>
+                                <connections>
+                                    <segue destination="GRy-1e-3Hs" kind="presentation" identifier="editNextDateSegue" id="HSF-rv-MVe"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="zuM-oY-idh" secondAttribute="trailing" id="1OF-6f-JEW"/>
                             <constraint firstItem="5Ac-Uf-xTd" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="10" id="4xb-pu-TbP"/>
                             <constraint firstItem="QzY-ie-8DX" firstAttribute="centerX" secondItem="Ldq-jH-UTS" secondAttribute="centerX" id="6Xa-iV-NkN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PnO-vi-0ah" secondAttribute="trailing" id="800-Tg-7GY"/>
                             <constraint firstItem="fzz-53-dzn" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="Diz-Ua-L5e"/>
                             <constraint firstItem="Id8-49-Dhn" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="19" id="Hsx-U3-nyh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n4P-8h-1SF" secondAttribute="trailing" id="JMP-4o-uPu"/>
                             <constraint firstItem="xp3-5c-JwF" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="Lmf-lQ-E48"/>
-                            <constraint firstItem="zuM-oY-idh" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="NPB-Ez-jtw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fzz-53-dzn" secondAttribute="trailing" id="P3h-Hz-2Iz"/>
                             <constraint firstItem="Ekr-9q-89v" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="19" id="S8v-th-61h"/>
                             <constraint firstItem="n4P-8h-1SF" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="VcZ-At-JTh"/>
@@ -855,7 +863,6 @@
                             <constraint firstAttribute="leadingMargin" secondItem="S22-wI-E5K" secondAttribute="leading" constant="1" id="avT-TA-jrt"/>
                             <constraint firstItem="C1A-ps-Nsb" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="bcZ-qV-IT0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C1A-ps-Nsb" secondAttribute="trailing" id="fXC-WV-97M"/>
-                            <constraint firstItem="PnO-vi-0ah" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="hgU-hj-t78"/>
                             <constraint firstAttribute="leadingMargin" secondItem="eDb-qh-Lfg" secondAttribute="leading" id="iUw-AN-NYq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xp3-5c-JwF" secondAttribute="trailing" id="obT-sB-6ov"/>
                             <constraint firstItem="3au-Dv-Ime" firstAttribute="top" secondItem="QzY-ie-8DX" secondAttribute="bottom" constant="8" id="rPW-AS-GBc"/>
@@ -872,9 +879,9 @@
                     <connections>
                         <outlet property="brandField" destination="xp3-5c-JwF" id="yvx-gf-Okw"/>
                         <outlet property="deleteButton" destination="QzY-ie-8DX" id="zFv-9J-crc"/>
-                        <outlet property="lastField" destination="PnO-vi-0ah" id="axZ-ce-fbd"/>
+                        <outlet property="lastDateButton" destination="3cA-M6-bOh" id="jWO-6o-Ub1"/>
                         <outlet property="locPurchasedField" destination="C1A-ps-Nsb" id="cYC-88-ajB"/>
-                        <outlet property="nextField" destination="zuM-oY-idh" id="gMD-gr-4H6"/>
+                        <outlet property="nextDateButton" destination="eeh-Ua-GrM" id="XsV-Rs-cmL"/>
                         <outlet property="notesField" destination="fzz-53-dzn" id="qds-qn-jt7"/>
                         <outlet property="priceField" destination="n4P-8h-1SF" id="qBT-Ie-NlJ"/>
                     </connections>
@@ -965,6 +972,6 @@
         <image name="trash-128.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fRp-jB-6ik"/>
+        <segue reference="HSF-rv-MVe"/>
     </inferredMetricsTieBreakers>
 </document>
