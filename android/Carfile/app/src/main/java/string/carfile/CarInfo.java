@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by Nick on 11/1/2015.
  */
-public class CarInfo extends SugarRecord<CarInfo> implements Parcelable {
+public class CarInfo extends SugarRecord<CarInfo> {
     private String carName;
     private String make;
     private String model;
@@ -109,45 +109,4 @@ public class CarInfo extends SugarRecord<CarInfo> implements Parcelable {
     public void setNotes(String notes) {
         this.notes = notes;
     }
-
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(this.carName);
-        dest.writeString(this.make);
-        dest.writeString(this.model);
-        dest.writeString(this.year);
-        dest.writeString(this.color);
-        dest.writeInt(this.price);
-        dest.writeString(this.vin);
-        dest.writeString(this.license);
-        dest.writeString(this.notes);
-    }
-
-    protected CarInfo(Parcel in) {
-        this.carName = in.readString();
-        this.make = in.readString();
-        this.model = in.readString();
-        this.year = in.readString();
-        this.color = in.readString();
-        this.price = in.readInt();
-        this.vin = in.readString();
-        this.license = in.readString();
-        this.notes = in.readString();
-    }
-
-    public static final Parcelable.Creator<CarInfo> CREATOR = new Parcelable.Creator<CarInfo>() {
-        public CarInfo createFromParcel(Parcel source) {
-            return new CarInfo(source);
-        }
-
-        public CarInfo[] newArray(int size) {
-            return new CarInfo[size];
-        }
-    };
 }

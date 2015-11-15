@@ -40,6 +40,16 @@ public class AddCar extends AppCompatActivity {
         setContentView(R.layout.activity_add_car);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
+        Bundle data = getIntent().getExtras();
+        if (data.getString("carMake") != null){
+            Log.d(TAG, "Starting manual data entry");
+            make.setText(data.getString("carMake"));
+            model.setText(data.getString("carModel"));
+            year.setText(data.getString("carYear"));
+            vin.setText(data.getString("carVin"));
+        }
+
+
     }
 
     @OnClick(R.id.carAddButton)
@@ -62,15 +72,15 @@ public class AddCar extends AppCompatActivity {
             name.requestFocus();
             return;
         }
-        if (cMake.length() == 0 || cMake.length() > 25)
+        if (cMake.length() == 0 || cMake.length() > 50)
         {
-            Snackbar.make(view, "Enter a valid make less than 25 characters", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(view, "Enter a valid make less than 50 characters", Snackbar.LENGTH_SHORT).show();
             make.requestFocus();
             return;
         }
-        if (cModel.length() == 0 || cModel.length() > 25)
+        if (cModel.length() == 0 || cModel.length() > 50)
         {
-            Snackbar.make(view, "Enter a valid car model less than 25 characters", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(view, "Enter a valid car model less than 50 characters", Snackbar.LENGTH_SHORT).show();
             model.requestFocus();
             return;
         }
