@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="string.carfile.CarSetUp"
+    android:paddingBottom="0dp"
+    android:paddingRight="0dp"
+    android:paddingLeft="0dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/welcomeToCarfile"
+        android:id="@+id/welcomeToCarfile"
+        android:layout_alignParentRight="false"
+        android:layout_centerHorizontal="true"
+        android:textSize="30sp" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/vinNumberEnter"
+        android:layout_below="@+id/welcomeToCarfile"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="99dp"
+        android:hint="@string/vinNumEntryHint"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:singleLine="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Please Enter Your Vin Number Above"
+        android:id="@+id/vinNumberInstruction"
+        android:layout_below="@+id/vinNumberEnter"
+        android:layout_centerHorizontal="true"
+        android:textSize="18sp" />
+
+    <Button
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:text="Continue"
+        android:id="@+id/setupContinue"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/carfileNavbarColor"
+        android:textColor="@android:color/white"
+        android:textSize="20sp" />
+
+</RelativeLayout>

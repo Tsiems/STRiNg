@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Carfile</string>
+    <string name="app_name">CarFile</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
@@ -7,4 +7,7 @@
     <string name="saveButton">Save</string>
     <string name="title_activity_car_page">CarPage</string>
     <string name="carPageTitle">Car Page</string>
+    <string name="welcomeToCarfile">Welcome to Carfile</string>
+    <string name="vinNumEntryHint">Vin Number</string>
+    <string name="carInformationButton">Car Information</string>
 </resources>

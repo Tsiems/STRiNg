@@ -52,6 +52,8 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="string.carfile.Home" />
         </activity>
+        <activity android:name=".CarSetUp" >
+        </activity>
     </application>
 
 </manifest>

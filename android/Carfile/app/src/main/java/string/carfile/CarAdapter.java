@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -43,9 +44,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     public void onBindViewHolder(CarViewHolder carViewHolder, int i) {
         CarInfo ci = cars.get(i);
         carViewHolder.carName.setText(ci.getCarName());
-        carViewHolder.carMake.setText(ci.getMake());
-        carViewHolder.carModel.setText(ci.getModel());
-        carViewHolder.carYear.setText(String.valueOf(ci.getYear()));
+        carViewHolder.carInformation.setText(ci.getYear() + " " + ci.getMake() + " " + ci.getModel());
         carViewHolder.itemView.setLongClickable(true);
     }
 
@@ -54,19 +53,15 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     }
 
 
-
     public class CarViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener, View.OnLongClickListener {
+        public ImageView carPicture;
         public TextView carName;
-        public TextView carMake;
-        public TextView carModel;
-        public TextView carYear;
+        public TextView carInformation;
 
         public CarViewHolder(View itemView) {
             super(itemView);
             carName = (TextView) itemView.findViewById(R.id.carName);
-            carMake = (TextView) itemView.findViewById(R.id.carMake);
-            carModel = (TextView) itemView.findViewById(R.id.carModel);
-            carYear = (TextView) itemView.findViewById(R.id.carYear);
+            carInformation = (TextView) itemView.findViewById(R.id.carInformation);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
 

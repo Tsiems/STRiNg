@@ -76,14 +76,19 @@ public class Home extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         Log.d(TAG, "onResume Called");
+        resetCarList();
+    }
+
+    private void resetCarList() {
         cars = CarInfo.listAll(CarInfo.class);
         carAdapter.setCars(cars);
         carAdapter.notifyDataSetChanged();
     }
 
+
     @OnClick(R.id.homeFab)
     public void addCar(View view) {
-        Intent carAddPage = new Intent(getApplicationContext(), AddCar.class);
+        Intent carAddPage = new Intent(getApplicationContext(), CarSetUp.class);
         startActivityForResult(carAddPage, 0);
     }
 
