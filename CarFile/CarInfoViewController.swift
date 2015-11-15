@@ -123,10 +123,12 @@ class CarInfoViewController: UIViewController {
         lastDateButton.userInteractionEnabled = false
         lastDateButton.layer.borderWidth = 0
         lastDateButton.contentHorizontalAlignment = .Left
+        lastDateButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         
         nextDateButton.userInteractionEnabled = false
         nextDateButton.layer.borderWidth = 0
         nextDateButton.contentHorizontalAlignment = .Left
+        nextDateButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
         
         brandField.userInteractionEnabled = false
         brandField.borderStyle = UITextBorderStyle.None
@@ -150,11 +152,13 @@ class CarInfoViewController: UIViewController {
         lastDateButton.layer.cornerRadius = 5
         lastDateButton.layer.borderWidth = 0.1
         lastDateButton.contentHorizontalAlignment = .Center
+        lastDateButton.setTitleColor( UIColor(red:0, green:0.48, blue:1, alpha:1) , forState: .Normal)
         
         nextDateButton.userInteractionEnabled = true
         nextDateButton.layer.cornerRadius = 5
         nextDateButton.layer.borderWidth = 0.1
         nextDateButton.contentHorizontalAlignment = .Center
+        nextDateButton.setTitleColor( UIColor(red:0, green:0.48, blue:1, alpha:1) , forState: .Normal)
         
         brandField.userInteractionEnabled = true
         brandField.borderStyle = UITextBorderStyle.RoundedRect

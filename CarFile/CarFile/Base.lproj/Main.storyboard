@@ -593,17 +593,23 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Y-ye-mHn">
-                                <rect key="frame" x="83" y="210" width="497" height="30"/>
+                                <rect key="frame" x="83" y="210" width="74" height="30"/>
                                 <animations/>
-                                <state key="normal" title="New Date"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="zlD-pM-a7c"/>
+                                </constraints>
+                                <state key="normal" title="MM/dd/yy"/>
                                 <connections>
                                     <segue destination="GRy-1e-3Hs" kind="presentation" identifier="nextDateSegue" id="Byw-ul-zLk"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKw-Fw-bbK">
-                                <rect key="frame" x="83" y="161" width="497" height="30"/>
+                                <rect key="frame" x="83" y="161" width="74" height="30"/>
                                 <animations/>
-                                <state key="normal" title="New Date"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="El2-in-dXF"/>
+                                </constraints>
+                                <state key="normal" title="MM/dd/yy"/>
                                 <connections>
                                     <segue destination="GRy-1e-3Hs" kind="presentation" identifier="lastDateSegue" id="fRp-jB-6ik"/>
                                 </connections>
@@ -638,7 +644,6 @@
                             <constraint firstItem="K5P-yA-ghE" firstAttribute="top" secondItem="CwI-j3-d7V" secondAttribute="bottom" constant="26" id="aMf-jW-m4j"/>
                             <constraint firstItem="CwI-j3-d7V" firstAttribute="top" secondItem="G5W-iw-R3f" secondAttribute="bottom" constant="28" id="eGw-ef-HOp"/>
                             <constraint firstAttribute="leadingMargin" secondItem="77d-os-bQe" secondAttribute="leading" constant="17" id="fqW-UY-SWA"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="HKw-Fw-bbK" secondAttribute="trailing" id="oM0-Rf-qK2"/>
                             <constraint firstItem="gZF-Em-nly" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" id="owo-Hf-SqL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="H3J-6e-zN9" secondAttribute="trailing" id="qTh-CJ-FHr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KUl-YF-P3q" secondAttribute="trailing" id="rNY-y5-D0F"/>
@@ -646,7 +651,6 @@
                             <constraint firstItem="Q0Y-ye-mHn" firstAttribute="top" secondItem="YB2-Vo-MXi" secondAttribute="bottom" constant="146" id="wJq-fO-vgS"/>
                             <constraint firstItem="HKw-Fw-bbK" firstAttribute="top" secondItem="YB2-Vo-MXi" secondAttribute="bottom" constant="97" id="wxy-mJ-Y1o"/>
                             <constraint firstItem="77d-os-bQe" firstAttribute="top" secondItem="tlF-fc-9z1" secondAttribute="bottom" constant="26" id="xRY-WV-qOO"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Q0Y-ye-mHn" secondAttribute="trailing" id="yFl-cs-XBt"/>
                             <constraint firstItem="Q0Y-ye-mHn" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="63" id="yVU-3E-QAS"/>
                         </constraints>
                     </view>
@@ -789,20 +793,14 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-5c-JwF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-5c-JwF">
                                 <rect key="frame" x="112" y="209" width="468" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="n4P-8h-1SF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="n4P-8h-1SF">
                                 <rect key="frame" x="112" y="289" width="468" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="C1A-ps-Nsb">
-                                <rect key="frame" x="112" y="356" width="468" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -833,7 +831,10 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cA-M6-bOh">
                                 <rect key="frame" x="112" y="68" width="76" height="30"/>
                                 <animations/>
-                                <state key="normal" title="MM/dd/yy"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                <state key="normal" title="MM/dd/yy">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="GRy-1e-3Hs" kind="presentation" identifier="editLastDateSegue" id="8jf-4k-mfH"/>
                                 </connections>
@@ -841,11 +842,20 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeh-Ua-GrM">
                                 <rect key="frame" x="112" y="131" width="76" height="30"/>
                                 <animations/>
-                                <state key="normal" title="MM/dd/yy"/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                <state key="normal" title="MM/dd/yy">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <segue destination="GRy-1e-3Hs" kind="presentation" identifier="editNextDateSegue" id="HSF-rv-MVe"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="C1A-ps-Nsb">
+                                <rect key="frame" x="112" y="356" width="468" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -972,6 +982,6 @@
         <image name="trash-128.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="HSF-rv-MVe"/>
+        <segue reference="fRp-jB-6ik"/>
     </inferredMetricsTieBreakers>
 </document>

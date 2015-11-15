@@ -66,6 +66,16 @@ class NewDataViewController: UIViewController {
         nextDateButton.setTitle(nextDateString, forState: .Normal)
         
         
+        //Format date buttons
+        lastDateButton.layer.cornerRadius = 5
+        lastDateButton.layer.borderWidth = 0.1
+        lastDateButton.contentHorizontalAlignment = .Center
+        
+        nextDateButton.layer.cornerRadius = 5
+        nextDateButton.layer.borderWidth = 0.1
+        nextDateButton.contentHorizontalAlignment = .Center
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
