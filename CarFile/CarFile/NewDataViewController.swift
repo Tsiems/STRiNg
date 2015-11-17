@@ -40,7 +40,12 @@ class NewDataViewController: UIViewController {
         /////////////////////////////////////////////////
         /////////////////////////////////////////////////
         
+        
+        
+        
         //Set dates for last and next dates
+        
+        
         
         //set date format
         let dateFormatter = NSDateFormatter()

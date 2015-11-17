@@ -16,19 +16,6 @@ class CarTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-        
-        
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-        
-        
-//        let backItem = UIBarButtonItem(title: "Custom Text HERE", style: .Bordered, target: nil, action: nil)
-//        navigationItem.backBarButtonItem = backItem
-        
         
         
         
@@ -38,8 +25,13 @@ class CarTableViewController: UITableViewController {
         
         //set colors of background, title bar, and text
         
-        //tableView.registerClass(CarTableViewCell.self, forCellReuseIdentifier: "testCell")
+        
         populateTestData()
+        
+        if alertMgr.count == 0 {
+            print("setting alerts")
+            setAlerts()
+        }
         
     }
     
@@ -49,9 +41,10 @@ class CarTableViewController: UITableViewController {
     
     func populateTestData() {
         if carMgr.cars[0].maintenanceItems.count < 1 {
-            carMgr.addMaintenanceItem(0,type:"Oil Change", last:"05-27-15", next:"08-27-15", description: "Full Synthetic", price: "$50", locPurchased: "Speedee Oil Change", notes: "It was pretty expensive but fast")
-            carMgr.addMaintenanceItem(0,type:"Batteries", last:"05-27-11")
-            carMgr.addMaintenanceItem(0,type:"Tires", last:"12-04-00")
+            carMgr.addMaintenanceItem(0,type:"Oil Change", last:"05/27/15", next:"08/27/15", description: "Full Synthetic", price: "$50", locPurchased: "Speedee Oil Change", notes: "It was pretty expensive but fast")
+            carMgr.addMaintenanceItem(0,type:"Battery", last:"05/27/11", next:"12/10/21")
+            carMgr.addMaintenanceItem(0,type:"Tires", last:"12/04/00", next:"12/04/19")
+            carMgr.addMaintenanceItem(0,type:"Transmission Fluid", last: "02/10/14", next:"11/21/15")
         }
         
     }
@@ -81,7 +74,7 @@ class CarTableViewController: UITableViewController {
             
             // Configure the cell...
             cell.name.text = "Alerts"
-            cell.number.text = String(2)
+            cell.number.text = String(countAlerts())
             
             //set color of cell
             
@@ -99,62 +92,31 @@ class CarTableViewController: UITableViewController {
         }
     }
     
-    
-    func countAlerts() {
+    func setAlerts() {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateStyle = .ShortStyle
+        dateFormatter.timeStyle = .NoStyle
         
+        let today = NSDate()
+        
+        for( var i = 0; i < carMgr.cars[carIndex!].maintenanceItems.count; i++ )
+        {
+            let thisDate = dateFormatter.dateFromString(carMgr.cars[carIndex!].maintenanceItems[i].next!)
+            
+            //check if the date has passed by!
+            if today.compare(thisDate!) == NSComparisonResult.OrderedDescending {
+                alertMgr.append( alert(carIndex: carIndex, maintenanceItemIndex: i, alertChecked: false) )
+                print(carMgr.cars[carIndex!].maintenanceItems[i].type)
+            }
+        }
+    }
+    
+    
+    func countAlerts() -> Int {
+        return alertMgr.count
     }
     
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-    
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        
-//        let indexPath = tableView.indexPathForSelectedRow!
-//        
-//        let currentCell = tableView.cellForRowAtIndexPath(indexPath) as! MaintenanceItemCell
-//        
-//        selectedMaintenanceItem = indexPath.row
-//        
-//        print(selectedMaintenanceItem)
-//        
-//        print(currentCell.name!.text)
-//    }
-
-    
-    // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -169,6 +131,11 @@ class CarTableViewController: UITableViewController {
             // Pass the selected object to the new view controller.
             maintenanceInfo.carIndex = carIndex
             maintenanceInfo.maintenanceIndex = row - 1
+        }
+        else if segue.identifier == "alertsSegue" {
+            let alertsInfo = segue.destinationViewController as! AlertsTableViewController
+            
+            alertsInfo.carIndex = carIndex
         }
         
         

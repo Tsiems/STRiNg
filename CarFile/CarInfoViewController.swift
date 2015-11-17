@@ -39,6 +39,9 @@ class CarInfoViewController: UIViewController {
         
         disableTextEditting()
         
+
+        
+        
         
         
         leftBarItem = navigationItem.leftBarButtonItem
@@ -53,7 +56,15 @@ class CarInfoViewController: UIViewController {
         
         //size the notesField as needed to fit all the text
         //notesField.numberOfLines = 0
-        notesField.sizeToFit()
+//        notesField.sizeToFit()
+        
+        let notesMaxHeight = 150
+        let notesWidth = locPurchasedField.frame.width
+        
+        notesField.frame.size.width = CGFloat(notesWidth)
+        notesField.frame.size.height = CGFloat(notesMaxHeight)
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
