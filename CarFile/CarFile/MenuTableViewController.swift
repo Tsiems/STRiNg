@@ -19,8 +19,6 @@ class MenuTableViewController: UITableViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-        getGoogle()
-        
         if titleText == nil {
             titleText = "Cars"
         }
@@ -60,7 +58,7 @@ class MenuTableViewController: UITableViewController {
     func populateTestData() {
         if carMgr.cars.count < 1 {
             carMgr.addCar(0,name: "Steven's Car",make: "Ford", model: "Focus", year: "2015", color: "Blue", price: "$5,000", licNum: "5CIA356")
-            carMgr.addCar(1,name: "Nick's Car",make: "Mini", model: "Countryman", year: "2013", color: "White", price: "$6,000", licNum: "4KGB578")
+            carMgr.addCar(1,name: "Nick's Car",make: "Mini", model: "Countryman", year: "2012", color: "White", price: "$6,000", licNum: "4KGB578")
             carMgr.addCar(2,name: "Travis's Car",make: "Chevrolet", model: "Corvette", year: "2015", color: "Red", price: "$90,000", licNum: "7ULM523")
         }
     }
