@@ -10,4 +10,15 @@
     <string name="welcomeToCarfile">Welcome to Carfile</string>
     <string name="vinNumEntryHint">Vin Number</string>
     <string name="carInformationButton">Car Information</string>
+    <string name="editCarDetails">Edit Car Details</string>
+    <string name="make">Make</string>
+    <string name="model">Model</string>
+    <string name="year">Year</string>
+    <string name="color">Color</string>
+    <string name="price">Price</string>
+    <string name="license">License</string>
+    <string name="vin">Vin Number</string>
+    <string name="notes">Notes</string>
+    <string name="noNotes">No notes</string>
+
 </resources>

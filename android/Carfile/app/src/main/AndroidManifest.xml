@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="string.carfile" >
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name="com.orm.SugarApp"
@@ -40,7 +41,7 @@
         </activity>
         <activity
             android:name=".AddCar"
-            android:label="@string/title_activity_add_car"
+            android:label="@string/editCarDetails"
             android:parentActivityName=".Home" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -54,7 +55,11 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="string.carfile.Home" />
         </activity>
-        <activity android:name=".CarSetUp" >
+        <activity
+            android:name=".CarSetUp"
+            android:label="@string/title_activity_add_car">
+        </activity>
+        <activity android:name=".CarInfomationActivity" >
         </activity>
     </application>
 

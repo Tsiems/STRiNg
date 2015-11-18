@@ -1,6 +1,7 @@
 package string.carfile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
@@ -22,6 +23,8 @@ import butterknife.OnClick;
 
 public class AddCar extends AppCompatActivity {
     private static final String TAG = "AddCar";
+    private CarInfo car;
+    private boolean isEditing;
 
     @Bind(R.id.carNameInput) EditText name;
     @Bind(R.id.carMakeInput) EditText make;
@@ -41,12 +44,27 @@ public class AddCar extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
         Bundle data = getIntent().getExtras();
+        isEditing = false;
         if (data.getString("carMake") != null){
             Log.d(TAG, "Starting manual data entry");
             make.setText(data.getString("carMake"));
             model.setText(data.getString("carModel"));
             year.setText(data.getString("carYear"));
             vin.setText(data.getString("carVin"));
+        }
+        if(data.getString("vinForEdit") != null){
+            isEditing = true;
+            List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", data.getString("vinForEdit"));
+            car = query.get(0);
+            name.setText(car.getCarName());
+            make.setText(car.getMake());
+            model.setText(car.getModel());
+            year.setText(car.getYear());
+            color.setText(car.getColor());
+            price.setText(car.getPrice() + "");
+            license.setText(car.getLicense());
+            vin.setText(car.getVin());
+            notes.setText(car.getNotes());
         }
 
 
@@ -120,19 +138,37 @@ public class AddCar extends AppCompatActivity {
             notes.requestFocus();
             return;
         }
-        List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", cVin);
-        if(!query.isEmpty()) {
-            Log.d(TAG, cVin + " is already used!");
-            Snackbar.make(view, "Vin Already Exists", Snackbar.LENGTH_SHORT).show();
-            return;
+
+        if(isEditing == false){
+            List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", cVin);
+            if(!query.isEmpty()) {
+                Log.d(TAG, cVin + " is already used!");
+                Snackbar.make(view, "Vin Already Exists", Snackbar.LENGTH_SHORT).show();
+                return;
+            }
+            car = new CarInfo(cName, cMake, cModel, cYear, cColor, cPrice, cVin, cLicense, cNotes);
+            car.save();
+            finish();
+        }
+        else {
+            car.setAll(cName, cMake, cModel, cYear, cColor, cPrice, cVin, cLicense, cNotes);
+            Intent intent = new Intent();
+            intent.putExtra("VIN_NUMBER_RESULT", car.getVin());
+            setResult(1, intent); //result of 1 signals save was a success
+            car.save();
+            finish();
         }
 
-        CarInfo newCar = new CarInfo(cName, cMake, cModel, cYear, cColor, cPrice, cVin, cLicense, cNotes);
-        newCar.save();
-        finish();
+
+
+
+
+
 
 
     }
+
+
 
 
 

@@ -5,12 +5,13 @@ import android.os.Parcelable;
 
 import com.orm.SugarRecord;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by Nick on 11/1/2015.
  */
-public class CarInfo extends SugarRecord<CarInfo> {
+public class CarInfo extends SugarRecord<CarInfo> implements Parcelable {
     private String carName;
     private String make;
     private String model;
@@ -25,6 +26,7 @@ public class CarInfo extends SugarRecord<CarInfo> {
     public CarInfo() {
     }
 
+
     public CarInfo(String carName, String make, String model, String year, String color, int price, String vin, String license, String notes) {
         this.carName = carName;
         this.make = make;
@@ -35,7 +37,17 @@ public class CarInfo extends SugarRecord<CarInfo> {
         this.vin = vin;
         this.license = license;
         this.notes = notes;
-
+    }
+    public void setAll(String carName, String make, String model, String year, String color, int price, String vin, String license, String notes){
+        this.carName = carName;
+        this.make = make;
+        this.model = model;
+        this.year = year;
+        this.color = color;
+        this.price = price;
+        this.vin = vin;
+        this.license = license;
+        this.notes = notes;
     }
 
     public String getCarName() {
@@ -109,4 +121,47 @@ public class CarInfo extends SugarRecord<CarInfo> {
     public void setNotes(String notes) {
         this.notes = notes;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(this.carName);
+        dest.writeString(this.make);
+        dest.writeString(this.model);
+        dest.writeString(this.year);
+        dest.writeString(this.color);
+        dest.writeInt(this.price);
+        dest.writeString(this.vin);
+        dest.writeString(this.license);
+        dest.writeString(this.notes);
+        dest.writeList(this.maintenanceItems);
+    }
+
+    protected CarInfo(Parcel in) {
+        this.carName = in.readString();
+        this.make = in.readString();
+        this.model = in.readString();
+        this.year = in.readString();
+        this.color = in.readString();
+        this.price = in.readInt();
+        this.vin = in.readString();
+        this.license = in.readString();
+        this.notes = in.readString();
+        this.maintenanceItems = new ArrayList<MaintenanceItem>();
+        in.readList(this.maintenanceItems, List.class.getClassLoader());
+    }
+
+    public static final Parcelable.Creator<CarInfo> CREATOR = new Parcelable.Creator<CarInfo>() {
+        public CarInfo createFromParcel(Parcel source) {
+            return new CarInfo(source);
+        }
+
+        public CarInfo[] newArray(int size) {
+            return new CarInfo[size];
+        }
+    };
 }
