@@ -2,6 +2,7 @@ package string.carfile;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 /**
@@ -17,12 +20,14 @@ import java.util.List;
  */
 public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     private List<CarInfo> cars;
+    private Context context;
     public static final String TAG = "CarAdapter";
     public OnItemClickListener itemClickListener;
 
 
-    public CarAdapter(List<CarInfo> cars) {
+    public CarAdapter(List<CarInfo> cars, Context context) {
         this.cars = cars;
+        this.context = context;
     }
 
     @Override
@@ -43,9 +48,12 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     @Override
     public void onBindViewHolder(CarViewHolder carViewHolder, int i) {
         CarInfo ci = cars.get(i);
+        String imageUrl;
         carViewHolder.carName.setText(ci.getCarName());
         carViewHolder.carInformation.setText(ci.getYear() + " " + ci.getMake() + " " + ci.getModel());
         carViewHolder.itemView.setLongClickable(true);
+
+        //Glide.with(context).load("").into(carViewHolder.carPicture); cant use edmunds API, will need to take picture
     }
 
     public void setCars(List<CarInfo> cars) {
@@ -62,6 +70,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
             super(itemView);
             carName = (TextView) itemView.findViewById(R.id.carName);
             carInformation = (TextView) itemView.findViewById(R.id.carInformation);
+            carPicture = (ImageView) itemView.findViewById(R.id.carPicture);
             itemView.setOnClickListener(this);
             itemView.setOnLongClickListener(this);
 

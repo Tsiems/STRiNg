@@ -40,7 +40,7 @@ public class CarPage extends AppCompatActivity {
         List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", carVin);
         myCar = query.get(0);
         setTitle(myCar.getCarName());
-        itemList = new ArrayList<>(Arrays.asList("Oil", "Engine", "Repairs", "Checkup"));
+        itemList = new ArrayList<>(Arrays.asList("Oil", "Engine", "Repairs", "Checkup", "Tires", "Lights"));
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemList);
         itemListView.setAdapter(arrayAdapter);
     }

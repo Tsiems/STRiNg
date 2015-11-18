@@ -13,6 +13,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
 import com.melnykov.fab.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +32,7 @@ public class Home extends AppCompatActivity {
     private List<CarInfo> cars = CarInfo.listAll(CarInfo.class);
     private CarAdapter carAdapter;
     private static final String TAG = "Home";
+    private int selectedPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +44,7 @@ public class Home extends AppCompatActivity {
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         carList.setLayoutManager(llm);
-        carAdapter = new CarAdapter(cars);
+        carAdapter = new CarAdapter(cars, Home.this);
         carList.setAdapter(carAdapter);
         registerForContextMenu(carList);
         carAdapter.setOnItemClickListener(new OnItemClickListener() {
@@ -58,7 +61,7 @@ public class Home extends AppCompatActivity {
             public void onItemLongClick(View view, int position) {
                 Log.d(TAG, "ITEM WAS LONG PRESSED!");
                 openContextMenu(view);
-
+                selectedPosition = position;
             }
         });
 
@@ -70,6 +73,19 @@ public class Home extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.cardeletemenu, menu);
         menu.setHeaderTitle("Delete Car?");
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item){
+        Log.d(TAG, "Selected position = " + selectedPosition + " and title = " + item.getTitle().toString());
+
+        if(item.getTitle().equals("Delete Car")){
+            cars.get(selectedPosition).delete();
+            resetCarList();
+        }
+        else{
+            return false;
+        }
+        return true;
     }
 
 

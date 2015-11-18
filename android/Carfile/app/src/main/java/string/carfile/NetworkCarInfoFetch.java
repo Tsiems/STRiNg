@@ -59,7 +59,7 @@ public class NetworkCarInfoFetch extends AsyncTask<String, Double, CarInfo>{
 
     private void run(String vin) throws IOException, JSONException {
         Request request = new Request.Builder()
-                .url("https://api.edmunds.com/api/v1/vehicle/vin/" + vin + "/configuration?api_key=5zyd8sa5k3yxgpcg7t49agav")
+                .url("https://api.edmunds.com/api/vehicle/v2/vins/" + vin + "?fmt=json&api_key=5zyd8sa5k3yxgpcg7t49agav")
                 .build();
 
         Response response = client.newCall(request).execute();
@@ -80,7 +80,7 @@ public class NetworkCarInfoFetch extends AsyncTask<String, Double, CarInfo>{
     private void parseJSON(String vin, String jsonData) throws JSONException{
         Log.d(TAG, jsonData);
         JSONObject car = new JSONObject(jsonData);
-        String year = Integer.toString(car.getInt("year"));
+        String year = Integer.toString(car.getJSONArray("years").getJSONObject(0).getInt("year"));
         Log.d(TAG, year);
         String make = car.getJSONObject("make").getString("name");
         String model = car.getJSONObject("model").getString("name");
