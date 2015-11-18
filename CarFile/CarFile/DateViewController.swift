@@ -12,11 +12,20 @@ class DateViewController: UIViewController {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var datePicker: UIDatePicker!
+    
+    var initialDate : NSDate?
+    var newOrEdit : String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         
         datePicker.addTarget(self, action: Selector("datePickerChanged:"), forControlEvents: UIControlEvents.ValueChanged)
+        
+        if let _ = initialDate {
+            datePicker.setDate(initialDate!, animated: true)
+        }
+
         
         datePickerChanged(datePicker)
     }
@@ -35,6 +44,8 @@ class DateViewController: UIViewController {
         let strDate = dateFormatter.stringFromDate(datePicker.date)
         dateLabel.text = strDate
     }
+    
+    
 
 
 

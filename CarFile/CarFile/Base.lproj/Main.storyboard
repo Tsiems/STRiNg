@@ -6,25 +6,25 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Alerts-->
         <scene sceneID="tnL-N6-oRV">
             <objects>
-                <tableViewController id="dw3-7p-JbX" sceneMemberID="viewController">
+                <tableViewController title="Alerts" id="dw3-7p-JbX" customClass="AlertsTableViewController" customModule="CarFile" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="28" sectionFooterHeight="28" id="R3V-M6-ef6">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="carMenuCell" rowHeight="107" id="4T8-bD-nWT" customClass="MenuTableViewCell" customModule="CarFile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="600" height="107"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="alertCell" rowHeight="107" id="4T8-bD-nWT" customClass="AlertTableViewCell" customModule="CarFile" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="107"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4T8-bD-nWT" id="mMN-HB-bAk">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="106"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iIB-E0-2ui">
-                                            <rect key="frame" x="8" y="8" width="271" height="21"/>
+                                            <rect key="frame" x="8" y="8" width="271" height="27"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -41,6 +41,11 @@
                                     <animations/>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="nameLabel" destination="iIB-E0-2ui" id="Zb6-s0-LJs"/>
+                                    <outlet property="nextLabel" destination="Lb5-Mg-g4k" id="dCe-g7-tK3"/>
+                                    <segue destination="Mn2-Bc-80u" kind="show" identifier="itemOnAlertsSegue" id="ewc-UI-EfC"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -478,6 +483,7 @@
                                 <connections>
                                     <outlet property="name" destination="CJw-1c-J3j" id="ill-Uk-6Ox"/>
                                     <outlet property="number" destination="Kb1-hm-zCU" id="s5a-qs-T1t"/>
+                                    <segue destination="dw3-7p-JbX" kind="show" identifier="alertsSegue" id="OTK-1E-f3d"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="testCell" rowHeight="65" id="qZT-aS-Vq1" customClass="MaintenanceItemCell" customModule="CarFile" customModuleProvider="target">
@@ -576,7 +582,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand of Maintenance Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAY-EU-Mp2">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Brand of Maintenance Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="RAY-EU-Mp2">
                                 <rect key="frame" x="83" y="257" width="497" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -592,13 +598,13 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cost of Maintenance Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRa-cB-HBY">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Cost of Maintenance Item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IRa-cB-HBY">
                                 <rect key="frame" x="83" y="305" width="497" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where this was purchased" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xs-Kl-0Hw">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Where this was purchased" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5xs-Kl-0Hw">
                                 <rect key="frame" x="83" y="351" width="497" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -614,7 +620,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Extra notes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3J-6e-zN9">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Extra notes" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3J-6e-zN9">
                                 <rect key="frame" x="83" y="398" width="497" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -636,18 +642,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Y-ye-mHn">
-                                <rect key="frame" x="83" y="210" width="497" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q0Y-ye-mHn">
+                                <rect key="frame" x="83" y="210" width="74" height="30"/>
                                 <animations/>
-                                <state key="normal" title="New Date"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="zlD-pM-a7c"/>
+                                </constraints>
+                                <state key="normal" title="MM/dd/yy"/>
                                 <connections>
                                     <segue destination="GRy-1e-3Hs" kind="presentation" identifier="nextDateSegue" id="Byw-ul-zLk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKw-Fw-bbK">
-                                <rect key="frame" x="83" y="161" width="497" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HKw-Fw-bbK">
+                                <rect key="frame" x="83" y="161" width="74" height="30"/>
                                 <animations/>
-                                <state key="normal" title="New Date"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="74" id="El2-in-dXF"/>
+                                </constraints>
+                                <state key="normal" title="MM/dd/yy"/>
                                 <connections>
                                     <segue destination="GRy-1e-3Hs" kind="presentation" identifier="lastDateSegue" id="fRp-jB-6ik"/>
                                 </connections>
@@ -667,6 +679,7 @@
                             <constraint firstItem="IRa-cB-HBY" firstAttribute="top" secondItem="RAY-EU-Mp2" secondAttribute="bottom" constant="18" id="AcD-jm-h1Y"/>
                             <constraint firstItem="5uP-jK-63f" firstAttribute="top" secondItem="77d-os-bQe" secondAttribute="bottom" constant="26" id="Ht3-wU-SSG"/>
                             <constraint firstItem="H3J-6e-zN9" firstAttribute="top" secondItem="5xs-Kl-0Hw" secondAttribute="bottom" constant="17" id="IKI-Mt-fxD"/>
+                            <constraint firstItem="HKw-Fw-bbK" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="63" id="Iex-4l-7Zq"/>
                             <constraint firstItem="5xs-Kl-0Hw" firstAttribute="top" secondItem="IRa-cB-HBY" secondAttribute="bottom" constant="16" id="Jb1-Yi-tYD"/>
                             <constraint firstItem="K5P-yA-ghE" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="-9" id="Jlu-dv-bIN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RAY-EU-Mp2" secondAttribute="trailing" id="MCz-QO-Fao"/>
@@ -674,6 +687,7 @@
                             <constraint firstItem="tlF-fc-9z1" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="-9" id="Ooc-JD-HI1"/>
                             <constraint firstItem="IRa-cB-HBY" firstAttribute="leading" secondItem="tlF-fc-9z1" secondAttribute="trailing" constant="8" id="PtU-Jo-lw0"/>
                             <constraint firstItem="tlF-fc-9z1" firstAttribute="top" secondItem="K5P-yA-ghE" secondAttribute="bottom" constant="26" id="Qmx-15-1Kw"/>
+                            <constraint firstItem="RAY-EU-Mp2" firstAttribute="top" secondItem="YB2-Vo-MXi" secondAttribute="bottom" constant="193" id="Sdq-ag-oMX"/>
                             <constraint firstItem="K5P-yA-ghE" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="-9" id="VWS-PH-UWf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="IRa-cB-HBY" secondAttribute="trailing" id="XBv-f7-OOL"/>
                             <constraint firstItem="5xs-Kl-0Hw" firstAttribute="leading" secondItem="77d-os-bQe" secondAttribute="trailing" constant="8" id="XCz-Pr-1ff"/>
@@ -684,7 +698,10 @@
                             <constraint firstAttribute="trailingMargin" secondItem="H3J-6e-zN9" secondAttribute="trailing" id="qTh-CJ-FHr"/>
                             <constraint firstAttribute="trailingMargin" secondItem="KUl-YF-P3q" secondAttribute="trailing" id="rNY-y5-D0F"/>
                             <constraint firstAttribute="trailingMargin" secondItem="5xs-Kl-0Hw" secondAttribute="trailing" id="uvA-h6-bDn"/>
+                            <constraint firstItem="Q0Y-ye-mHn" firstAttribute="top" secondItem="YB2-Vo-MXi" secondAttribute="bottom" constant="146" id="wJq-fO-vgS"/>
+                            <constraint firstItem="HKw-Fw-bbK" firstAttribute="top" secondItem="YB2-Vo-MXi" secondAttribute="bottom" constant="97" id="wxy-mJ-Y1o"/>
                             <constraint firstItem="77d-os-bQe" firstAttribute="top" secondItem="tlF-fc-9z1" secondAttribute="bottom" constant="26" id="xRY-WV-qOO"/>
+                            <constraint firstItem="Q0Y-ye-mHn" firstAttribute="leading" secondItem="sf2-Mq-6cJ" secondAttribute="leadingMargin" constant="63" id="yVU-3E-QAS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Uu7-V9-kK5">
@@ -826,40 +843,25 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="PnO-vi-0ah">
-                                <rect key="frame" x="112" y="72" width="468" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="zuM-oY-idh">
-                                <rect key="frame" x="112" y="135" width="468" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-5c-JwF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="xp3-5c-JwF">
                                 <rect key="frame" x="112" y="209" width="468" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="n4P-8h-1SF">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="n4P-8h-1SF">
                                 <rect key="frame" x="112" y="289" width="468" height="30"/>
                                 <animations/>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="bottom" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="C1A-ps-Nsb">
-                                <rect key="frame" x="112" y="356" width="468" height="30"/>
-                                <animations/>
-                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fzz-53-dzn">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" layoutMarginsFollowReadableWidth="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="fzz-53-dzn">
                                 <rect key="frame" x="112" y="415" width="468" height="98"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="fzz-53-dzn" secondAttribute="height" multiplier="234:49" id="Gr1-kQ-enq"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -879,19 +881,44 @@
                                     <segue destination="Uzg-Iv-eB6" kind="unwind" unwindAction="cancelNewData:" id="Mcc-WT-wkF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3cA-M6-bOh">
+                                <rect key="frame" x="112" y="68" width="76" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                <state key="normal" title="MM/dd/yy">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="GRy-1e-3Hs" kind="presentation" identifier="editLastDateSegue" id="8jf-4k-mfH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eeh-Ua-GrM">
+                                <rect key="frame" x="112" y="131" width="76" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="15"/>
+                                <state key="normal" title="MM/dd/yy">
+                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="GRy-1e-3Hs" kind="presentation" identifier="editNextDateSegue" id="HSF-rv-MVe"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="C1A-ps-Nsb">
+                                <rect key="frame" x="112" y="356" width="468" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="zuM-oY-idh" secondAttribute="trailing" id="1OF-6f-JEW"/>
                             <constraint firstItem="5Ac-Uf-xTd" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="10" id="4xb-pu-TbP"/>
                             <constraint firstItem="QzY-ie-8DX" firstAttribute="centerX" secondItem="Ldq-jH-UTS" secondAttribute="centerX" id="6Xa-iV-NkN"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="PnO-vi-0ah" secondAttribute="trailing" id="800-Tg-7GY"/>
                             <constraint firstItem="fzz-53-dzn" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="Diz-Ua-L5e"/>
                             <constraint firstItem="Id8-49-Dhn" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="19" id="Hsx-U3-nyh"/>
                             <constraint firstAttribute="trailingMargin" secondItem="n4P-8h-1SF" secondAttribute="trailing" id="JMP-4o-uPu"/>
                             <constraint firstItem="xp3-5c-JwF" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="Lmf-lQ-E48"/>
-                            <constraint firstItem="zuM-oY-idh" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="NPB-Ez-jtw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="fzz-53-dzn" secondAttribute="trailing" id="P3h-Hz-2Iz"/>
                             <constraint firstItem="Ekr-9q-89v" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="19" id="S8v-th-61h"/>
                             <constraint firstItem="n4P-8h-1SF" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="VcZ-At-JTh"/>
@@ -899,7 +926,6 @@
                             <constraint firstAttribute="leadingMargin" secondItem="S22-wI-E5K" secondAttribute="leading" constant="1" id="avT-TA-jrt"/>
                             <constraint firstItem="C1A-ps-Nsb" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="bcZ-qV-IT0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C1A-ps-Nsb" secondAttribute="trailing" id="fXC-WV-97M"/>
-                            <constraint firstItem="PnO-vi-0ah" firstAttribute="leading" secondItem="Ldq-jH-UTS" secondAttribute="leadingMargin" constant="92" id="hgU-hj-t78"/>
                             <constraint firstAttribute="leadingMargin" secondItem="eDb-qh-Lfg" secondAttribute="leading" id="iUw-AN-NYq"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xp3-5c-JwF" secondAttribute="trailing" id="obT-sB-6ov"/>
                             <constraint firstItem="3au-Dv-Ime" firstAttribute="top" secondItem="QzY-ie-8DX" secondAttribute="bottom" constant="8" id="rPW-AS-GBc"/>
@@ -916,9 +942,9 @@
                     <connections>
                         <outlet property="brandField" destination="xp3-5c-JwF" id="yvx-gf-Okw"/>
                         <outlet property="deleteButton" destination="QzY-ie-8DX" id="zFv-9J-crc"/>
-                        <outlet property="lastField" destination="PnO-vi-0ah" id="axZ-ce-fbd"/>
+                        <outlet property="lastDateButton" destination="3cA-M6-bOh" id="jWO-6o-Ub1"/>
                         <outlet property="locPurchasedField" destination="C1A-ps-Nsb" id="cYC-88-ajB"/>
-                        <outlet property="nextField" destination="zuM-oY-idh" id="gMD-gr-4H6"/>
+                        <outlet property="nextDateButton" destination="eeh-Ua-GrM" id="XsV-Rs-cmL"/>
                         <outlet property="notesField" destination="fzz-53-dzn" id="qds-qn-jt7"/>
                         <outlet property="priceField" destination="n4P-8h-1SF" id="qBT-Ie-NlJ"/>
                     </connections>
@@ -1009,6 +1035,7 @@
         <image name="trash-128.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="fRp-jB-6ik"/>
+        <segue reference="ewc-UI-EfC"/>
+        <segue reference="HSF-rv-MVe"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -40,12 +40,18 @@ class NewDataViewController: UIViewController {
         /////////////////////////////////////////////////
         /////////////////////////////////////////////////
         
+        
+        
+        
         //Set dates for last and next dates
+        
+        
         
         //set date format
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
+        
         
         //get today's date
         let dateToday: NSDate = NSDate()
@@ -65,6 +71,16 @@ class NewDataViewController: UIViewController {
         nextDateButton.setTitle(nextDateString, forState: .Normal)
         
         
+        //Format date buttons
+        lastDateButton.layer.cornerRadius = 5
+        lastDateButton.layer.borderWidth = 0.1
+        lastDateButton.contentHorizontalAlignment = .Center
+        
+        nextDateButton.layer.cornerRadius = 5
+        nextDateButton.layer.borderWidth = 0.1
+        nextDateButton.contentHorizontalAlignment = .Center
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -80,18 +96,17 @@ class NewDataViewController: UIViewController {
             let navController = segue.destinationViewController as! UINavigationController
             
             let dateView = navController.viewControllers[0] as! DateViewController
-            //get the row of the selected cell in the table
             
-            // Pass the selected object to the new view controller.
 
             dateView.title = "Next"
+            dateView.newOrEdit = "New"
             
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateStyle = .ShortStyle
             dateFormatter.timeStyle = .NoStyle
             
             
-            //dateView.datePicker.date = dateFormatter.dateFromString(nextDateButton.titleLabel!.text!)!
+            dateView.initialDate = dateFormatter.dateFromString(nextDateButton.titleLabel!.text!)!
         }
         else if segue.identifier == "lastDateSegue" {
             // Get the new view controller using segue.destinationViewController.
@@ -100,11 +115,8 @@ class NewDataViewController: UIViewController {
             let dateView = navController.viewControllers[0] as! DateViewController
             
             
-            //get the row of the selected cell in the table
-        
-            // Pass the selected object to the new view controller.
-            
             dateView.title = "Last"
+            dateView.newOrEdit = "New"
             
             
             let dateFormatter = NSDateFormatter()
@@ -112,7 +124,7 @@ class NewDataViewController: UIViewController {
             dateFormatter.timeStyle = .NoStyle
             
             
-            //dateView.datePicker.date = dateFormatter.dateFromString(lastDateButton.titleLabel!.text!)!
+            dateView.initialDate = dateFormatter.dateFromString(lastDateButton.titleLabel!.text!)!
         }
         
         
@@ -122,12 +134,14 @@ class NewDataViewController: UIViewController {
     @IBAction func doneChangingDate(segue: UIStoryboardSegue) {
         if segue.sourceViewController .isKindOfClass(DateViewController) {
             let source = segue.sourceViewController as! DateViewController
-            if source.title == "Next" {
-                nextDateButton.setTitle(source.dateLabel.text!, forState: .Normal)
-                
-            }
-            else if source.title == "Last" {
-                lastDateButton.setTitle(source.dateLabel.text!, forState: .Normal)
+            if source.newOrEdit == "New" {
+                if source.title == "Next" {
+                    nextDateButton.setTitle(source.dateLabel.text!, forState: .Normal)
+                    
+                }
+                else if source.title == "Last" {
+                    lastDateButton.setTitle(source.dateLabel.text!, forState: .Normal)
+                }
             }
         }
     }

@@ -21,9 +21,10 @@
 		1647CAFA1BD46E46006DEF6E /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */; };
 		16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */; };
 		16808C151BDEF0F30018A24E /* MaintenanceItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */; };
+		16B629D91BF951B500AB44A4 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */; };
+		16B629DB1BF9534600AB44A4 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */; };
 		16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */; };
 		16CA72161BD0A9940019F4B1 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */; };
-		16CA72171BD0A9940019F4B1 /* MenuTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 16CA72151BD0A9940019F4B1 /* MenuTableViewCell.xib */; };
 		16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */; };
 		431A9E631BFB9D850097E79F /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */; };
 		431A9E641BFB9D850097E79F /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -118,9 +119,10 @@
 		1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfoViewController.swift; path = ../CarInfoViewController.swift; sourceTree = "<group>"; };
 		16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaintenanceItemCell.swift; path = ../MaintenanceItemCell.swift; sourceTree = "<group>"; };
+		16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertsTableViewController.swift; path = ../AlertsTableViewController.swift; sourceTree = "<group>"; };
+		16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewController.swift; sourceTree = "<group>"; };
 		16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
-		16CA72151BD0A9940019F4B1 /* MenuTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewCell.xib; sourceTree = "<group>"; };
 		16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDataViewController.swift; sourceTree = "<group>"; };
 		431A9E6A1BFBA1020097E79F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		43EEF0141BF672CF0000C593 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../../../../../../../Downloads/SwiftHTTP-master-1/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
@@ -180,9 +182,11 @@
 				1623A1341BC401FC007F284E /* AppDelegate.swift */,
 				16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */,
 				16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */,
-				16CA72151BD0A9940019F4B1 /* MenuTableViewCell.xib */,
 				16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */,
 				16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */,
+				16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */,
+				16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */,
+				164410941BF5346A00448215 /* trash-128.png */,
 				1628571B1BE6B52500D73A05 /* NewCarViewController.swift */,
 				1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */,
 				1623A1381BC401FC007F284E /* Main.storyboard */,
@@ -195,6 +199,7 @@
 				1623A13B1BC401FC007F284E /* CarFile.xcdatamodeld */,
 				164410A81BF667FC00448215 /* HTTP_helper.swift */,
 				431A9E6A1BFBA1020097E79F /* Images.xcassets */,
+				164410921BF5315400448215 /* f-cross_256-128.png */,
 			);
 			path = CarFile;
 			sourceTree = "<group>";
@@ -375,6 +380,7 @@
 				431A9E6B1BFBA1020097E79F /* Images.xcassets in Resources */,
 				1623A13F1BC401FC007F284E /* Assets.xcassets in Resources */,
 				16CA72171BD0A9940019F4B1 /* MenuTableViewCell.xib in Resources */,
+				164410931BF5315400448215 /* f-cross_256-128.png in Resources */,
 				1623A13A1BC401FC007F284E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,11 +410,13 @@
 				16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */,
 				16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */,
 				164410A91BF667FC00448215 /* HTTP_helper.swift in Sources */,
+				16B629D91BF951B500AB44A4 /* AlertsTableViewController.swift in Sources */,
 				1647CAF61BD46A24006DEF6E /* CarManager.swift in Sources */,
 				1628571C1BE6B52500D73A05 /* NewCarViewController.swift in Sources */,
 				1623A13D1BC401FC007F284E /* CarFile.xcdatamodeld in Sources */,
 				1647CAFA1BD46E46006DEF6E /* CarInfoViewController.swift in Sources */,
 				1623A1351BC401FC007F284E /* AppDelegate.swift in Sources */,
+				16B629DB1BF9534600AB44A4 /* AlertTableViewCell.swift in Sources */,
 				16808C151BDEF0F30018A24E /* MaintenanceItemCell.swift in Sources */,
 				16CA72161BD0A9940019F4B1 /* MenuTableViewCell.swift in Sources */,
 				164410971BF6552A00448215 /* DateViewController.swift in Sources */,

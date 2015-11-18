@@ -11,7 +11,17 @@ import Foundation
 
 var carMgr : CarManager = CarManager()
 
-struct maintenanceItem {
+var alertMgr = [alert]()
+
+
+struct alert {
+    var carIndex : Int?
+    var maintenanceItemIndex : Int?
+    var alertChecked : Bool?
+}
+
+
+struct maintenanceItem : Equatable {
     var type : String?
     
     var last : String?
@@ -31,6 +41,22 @@ struct maintenanceItem {
         self.locPurchased = locPurchased
         self.notes = notes
     }
+}
+
+//overload equality operator
+func ==(lhs: maintenanceItem, rhs: maintenanceItem) -> Bool {
+    //make sure every property is the same
+    if lhs.type==rhs.type && lhs.last==rhs.last && lhs.next==rhs.next && lhs.description==rhs.description &&
+        lhs.price==rhs.price && lhs.locPurchased==rhs.locPurchased && lhs.notes==rhs.notes {
+        return true
+    }
+    return false
+}
+
+//overload not equal operator
+func !=(lhs:maintenanceItem, rhs: maintenanceItem) -> Bool {
+    //call equality function and negate it
+    return !(lhs==rhs)
 }
 
 struct car {
