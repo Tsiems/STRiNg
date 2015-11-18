@@ -21,6 +21,7 @@
 		1647CAFA1BD46E46006DEF6E /* CarInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */; };
 		16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */; };
 		16808C151BDEF0F30018A24E /* MaintenanceItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */; };
+		169E4F661BFC44680098899B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E4F651BFC44680098899B /* SwiftyJSON.swift */; };
 		16B629D91BF951B500AB44A4 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */; };
 		16B629DB1BF9534600AB44A4 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */; };
 		16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */; };
@@ -45,6 +46,55 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1623A1301BC401FC007F284E;
 			remoteInfo = CarFile;
+		};
+		169E4F711BFC44920098899B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E4FEFDB19575BE100351305;
+			remoteInfo = "SwiftyJSON iOS";
+		};
+		169E4F731BFC44920098899B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2E4FEFE619575BE100351305;
+			remoteInfo = "SwiftyJSON iOS Tests";
+		};
+		169E4F751BFC44920098899B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C7DFC5B1A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX";
+		};
+		169E4F771BFC44920098899B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9C7DFC651A9102BD005AA3F7;
+			remoteInfo = "SwiftyJSON OSX Tests";
+		};
+		169E4F791BFC44920098899B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E4D7CCE81B9465A700EE7221;
+			remoteInfo = "SwiftyJSON watchOS";
+		};
+		169E4F7B1BFC44920098899B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7236B4F61BAC14150020529B;
+			remoteInfo = "SwiftyJSON tvOS";
+		};
+		169E4F7D1BFC44920098899B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = A8580F741BCF5C5B00DA927B;
+			remoteInfo = "SwiftyJSON tvOS Tests";
 		};
 		431A9E651BFB9D850097E79F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -118,6 +168,8 @@
 		1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CarInfoViewController.swift; path = ../CarInfoViewController.swift; sourceTree = "<group>"; };
 		16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaintenanceItemCell.swift; path = ../MaintenanceItemCell.swift; sourceTree = "<group>"; };
+		169E4F651BFC44680098899B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../Downloads/SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
+		169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "../../Downloads/SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
 		16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertsTableViewController.swift; path = ../AlertsTableViewController.swift; sourceTree = "<group>"; };
 		16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewController.swift; sourceTree = "<group>"; };
@@ -156,6 +208,7 @@
 		1623A1281BC401FC007F284E = {
 			isa = PBXGroup;
 			children = (
+				169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */,
 				43EEF0141BF672CF0000C593 /* SwiftHTTP.xcodeproj */,
 				1623A1331BC401FC007F284E /* CarFile */,
 				1623A14B1BC401FD007F284E /* CarFileTests */,
@@ -177,6 +230,7 @@
 		1623A1331BC401FC007F284E /* CarFile */ = {
 			isa = PBXGroup;
 			children = (
+				169E4F651BFC44680098899B /* SwiftyJSON.swift */,
 				1623A1341BC401FC007F284E /* AppDelegate.swift */,
 				16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */,
 				16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */,
@@ -215,6 +269,20 @@
 				1623A1591BC401FD007F284E /* Info.plist */,
 			);
 			path = CarFileUITests;
+			sourceTree = "<group>";
+		};
+		169E4F681BFC44920098899B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				169E4F721BFC44920098899B /* SwiftyJSON.framework */,
+				169E4F741BFC44920098899B /* SwiftyJSON iOS Tests.xctest */,
+				169E4F761BFC44920098899B /* SwiftyJSON.framework */,
+				169E4F781BFC44920098899B /* SwiftyJSON OSX Tests.xctest */,
+				169E4F7A1BFC44920098899B /* SwiftyJSON.framework */,
+				169E4F7C1BFC44920098899B /* SwiftyJSON.framework */,
+				169E4F7E1BFC44920098899B /* SwiftyJSON tvOS Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		43EEF0151BF672CF0000C593 /* Products */ = {
@@ -325,6 +393,10 @@
 					ProductGroup = 43EEF0151BF672CF0000C593 /* Products */;
 					ProjectRef = 43EEF0141BF672CF0000C593 /* SwiftHTTP.xcodeproj */;
 				},
+				{
+					ProductGroup = 169E4F681BFC44920098899B /* Products */;
+					ProjectRef = 169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -336,6 +408,55 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		169E4F721BFC44920098899B /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 169E4F711BFC44920098899B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		169E4F741BFC44920098899B /* SwiftyJSON iOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON iOS Tests.xctest";
+			remoteRef = 169E4F731BFC44920098899B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		169E4F761BFC44920098899B /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 169E4F751BFC44920098899B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		169E4F781BFC44920098899B /* SwiftyJSON OSX Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON OSX Tests.xctest";
+			remoteRef = 169E4F771BFC44920098899B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		169E4F7A1BFC44920098899B /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 169E4F791BFC44920098899B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		169E4F7C1BFC44920098899B /* SwiftyJSON.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftyJSON.framework;
+			remoteRef = 169E4F7B1BFC44920098899B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		169E4F7E1BFC44920098899B /* SwiftyJSON tvOS Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftyJSON tvOS Tests.xctest";
+			remoteRef = 169E4F7D1BFC44920098899B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
@@ -401,6 +522,7 @@
 				16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */,
 				16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */,
 				16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */,
+				169E4F661BFC44680098899B /* SwiftyJSON.swift in Sources */,
 				164410A91BF667FC00448215 /* HTTP_helper.swift in Sources */,
 				16B629D91BF951B500AB44A4 /* AlertsTableViewController.swift in Sources */,
 				1647CAF61BD46A24006DEF6E /* CarManager.swift in Sources */,
