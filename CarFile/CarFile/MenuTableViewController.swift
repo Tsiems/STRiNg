@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class MenuTableViewController: UITableViewController {
     var carNames = [String]()
@@ -47,8 +48,46 @@ class MenuTableViewController: UITableViewController {
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
 
         
+        
+        
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        //1
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        //2
+        var fetchRequest = NSFetchRequest(entityName: "Car")
+        
+        //3
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            cars = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
+        //2
+        fetchRequest = NSFetchRequest(entityName: "MaintenanceItem")
+        
+        //3
+        do {
+            let results =
+            try managedContext.executeFetchRequest(fetchRequest)
+            maintenanceItems = results as! [NSManagedObject]
+        } catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
         populateTestData()
         
+        tableView.reloadData()
     }
     
     override func viewDidAppear(animate: Bool) {
@@ -57,10 +96,41 @@ class MenuTableViewController: UITableViewController {
     
     func populateTestData() {
         if carMgr.cars.count < 1 {
-            carMgr.addCar(0,name: "Steven's Car",make: "Ford", model: "Focus", year: "2015", color: "Blue", price: "$5,000", licNum: "5CIA356")
-            carMgr.addCar(1,name: "Nick's Car",make: "Mini", model: "Countryman", year: "2012", color: "White", price: "$6,000", licNum: "4KGB578")
-            carMgr.addCar(2,name: "Travis's Car",make: "Chevrolet", model: "Corvette", year: "2015", color: "Red", price: "$90,000", licNum: "7ULM523")
+            for car in cars
+            {
+                let id = car.valueForKey("id") as! Int
+                let name = car.valueForKey("name") as! String
+                let make = car.valueForKey("make") as! String
+                let model = car.valueForKey("model") as! String
+                let year = car.valueForKey("year") as! String
+                let color = car.valueForKey("color") as! String
+                let price = car.valueForKey("price") as! String
+                let licNum = car.valueForKey("licNum") as! String
+                let vinNum = car.valueForKey("vinNum") as! String
+                let notes = car.valueForKey("notes") as! String
+                
+                carMgr.addCar(id, name: name, make:make, model:model, year:year, color:color, price:price, vinNum:vinNum, licNum:licNum, notes:notes)
+            }
+            
+            for item in maintenanceItems
+            {
+                let carID = item.valueForKey("carID") as! Int
+                let type = item.valueForKey("type") as! String
+                let last = item.valueForKey("lastDate") as! String
+                let next = item.valueForKey("nextDate") as! String
+                let brand = item.valueForKey("brand") as! String
+                let locPurchased = item.valueForKey("locPurchased") as! String
+                let price = item.valueForKey("price") as! String
+                let notes = item.valueForKey("notes") as! String
+                
+                carMgr.addMaintenanceItem(carID, type: type, last: last, next: next, description: brand, price: price, locPurchased: locPurchased, notes: notes)
+            }
         }
+//        if carMgr.cars.count < 1 {
+//            carMgr.addCar(0,name: "Steven's Car",make: "Ford", model: "Focus", year: "2015", color: "Blue", price: "$5,000", licNum: "5CIA356")
+//            carMgr.addCar(1,name: "Nick's Car",make: "Mini", model: "Countryman", year: "2012", color: "White", price: "$6,000", licNum: "4KGB578")
+//            carMgr.addCar(2,name: "Travis's Car",make: "Chevrolet", model: "Corvette", year: "2015", color: "Red", price: "$90,000", licNum: "7ULM523")
+//        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -101,7 +171,7 @@ class MenuTableViewController: UITableViewController {
         
     
     @IBAction func cancelToMenu(segue:UIStoryboardSegue) {
-        print("Hello! Cancel")
+        print("Cancel to menu")
         
     }
     
@@ -111,10 +181,53 @@ class MenuTableViewController: UITableViewController {
         if segue.sourceViewController .isKindOfClass(NewCarViewController) {
             let source = segue.sourceViewController as! NewCarViewController
             if source.nameTextField.text!.characters.count > 0 {
-                carMgr.addCar(3, name: source.nameTextField.text!, make:source.makeTextField.text!, model:source.modelTextField.text!, year:source.yearTextField.text!, color:source.colorTextField.text!, price:source.priceTextField.text!, vinNum:source.vinNumTextField.text!, licNum:source.licNumTextField.text!, notes:source.notesTextField.text!)
+                saveCar(source.nameTextField.text!, make:source.makeTextField.text!, model:source.modelTextField.text!, year:source.yearTextField.text!, color:source.colorTextField.text!, price:source.priceTextField.text!, vinNum:source.vinNumTextField.text!, licNum:source.licNumTextField.text!, notes:source.notesTextField.text!)
             }
         }
         
+    }
+    
+    
+    func saveCar(name: String, make:String, model:String, year:String, color:String, price:String, vinNum:String, licNum:String, notes:String) {
+
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+
+        let entity =  NSEntityDescription.entityForName("Car",
+            inManagedObjectContext:managedContext)
+        
+        let vehicle = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext: managedContext)
+        
+        var carID = 0
+        
+        for car in carMgr.cars
+        {
+            if car.id! > carID
+            {
+                carID = car.id!
+            }
+        }
+        
+        carID++
+        
+
+        let values: [String: AnyObject] = ["id":carID, "name":name,"make":make,"model":model, "year":year, "color":color,"price":price, "vinNum":vinNum, "licNum":licNum, "notes":notes]
+        vehicle.setValuesForKeysWithDictionary(values)
+        
+
+        do {
+            try managedContext.save()
+            
+            cars.append(vehicle)
+            
+            carMgr.addCar(carID, name: name, make:make, model:model, year:year, color:color, price:price, vinNum:vinNum, licNum:licNum, notes:notes)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
     }
     
 

@@ -28,7 +28,6 @@
 		16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */; };
 		431A9E631BFB9D850097E79F /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */; };
 		431A9E641BFB9D850097E79F /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		431A9E6B1BFBA1020097E79F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 431A9E6A1BFBA1020097E79F /* Images.xcassets */; };
 		43EEF0231BF672F10000C593 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,7 +123,6 @@
 		16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewController.swift; sourceTree = "<group>"; };
 		16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewDataViewController.swift; sourceTree = "<group>"; };
-		431A9E6A1BFBA1020097E79F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		43EEF0141BF672CF0000C593 /* SwiftHTTP.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftHTTP.xcodeproj; path = "../../../../../../../../Downloads/SwiftHTTP-master-1/SwiftHTTP.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -186,7 +184,6 @@
 				16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */,
 				16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */,
 				16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */,
-				164410941BF5346A00448215 /* trash-128.png */,
 				1628571B1BE6B52500D73A05 /* NewCarViewController.swift */,
 				1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */,
 				1623A1381BC401FC007F284E /* Main.storyboard */,
@@ -198,8 +195,6 @@
 				1623A1431BC401FC007F284E /* Info.plist */,
 				1623A13B1BC401FC007F284E /* CarFile.xcdatamodeld */,
 				164410A81BF667FC00448215 /* HTTP_helper.swift */,
-				431A9E6A1BFBA1020097E79F /* Images.xcassets */,
-				164410921BF5315400448215 /* f-cross_256-128.png */,
 			);
 			path = CarFile;
 			sourceTree = "<group>";
@@ -377,10 +372,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1623A1421BC401FC007F284E /* LaunchScreen.storyboard in Resources */,
-				431A9E6B1BFBA1020097E79F /* Images.xcassets in Resources */,
 				1623A13F1BC401FC007F284E /* Assets.xcassets in Resources */,
-				16CA72171BD0A9940019F4B1 /* MenuTableViewCell.xib in Resources */,
-				164410931BF5315400448215 /* f-cross_256-128.png in Resources */,
 				1623A13A1BC401FC007F284E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

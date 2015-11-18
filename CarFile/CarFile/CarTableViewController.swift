@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import CoreData
 
 class CarTableViewController: UITableViewController {
     
     
     var carIndex: Int?
+    var thisCarID: Int?
 
     
     override func viewDidLoad() {
@@ -23,29 +25,33 @@ class CarTableViewController: UITableViewController {
         //get title of car
         title = carMgr.cars[carIndex!].name
         
+        thisCarID = carMgr.cars[carIndex!].id
+        
         //set colors of background, title bar, and text
         
         
         populateTestData()
         
-        if alertMgr.count == 0 {
-            print("setting alerts")
-            setAlerts()
-        }
+//        if alertMgr.count == 0 {
+//            print("setting alerts")
+//            setAlerts()
+//        }
         
     }
+    
+    
     
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
     }
     
     func populateTestData() {
-        if carMgr.cars[0].maintenanceItems.count < 1 {
-            carMgr.addMaintenanceItem(0,type:"Oil Change", last:"5/27/15", next:"8/27/15", description: "Full Synthetic", price: "$50", locPurchased: "Speedee Oil Change", notes: "It was pretty expensive but fast")
-            carMgr.addMaintenanceItem(0,type:"Battery", last:"5/27/11", next:"12/10/21")
-            carMgr.addMaintenanceItem(0,type:"Tires", last:"12/04/00", next:"12/04/19")
-            carMgr.addMaintenanceItem(0,type:"Transmission Fluid", last: "2/10/14", next:"11/21/15")
-        }
+//        if carMgr.cars[0].maintenanceItems.count < 1 {
+//            carMgr.addMaintenanceItem(0,type:"Oil Change", last:"05/27/15", next:"08/27/15", description: "Full Synthetic", price: "$50", locPurchased: "Speedee Oil Change", notes: "It was pretty expensive but fast")
+//            carMgr.addMaintenanceItem(0,type:"Battery", last:"05/27/11", next:"12/10/21")
+//            carMgr.addMaintenanceItem(0,type:"Tires", last:"12/04/00", next:"12/04/19")
+//            carMgr.addMaintenanceItem(0,type:"Transmission Fluid", last: "02/10/14", next:"11/21/15")
+//        }
         
     }
 
@@ -92,12 +98,34 @@ class CarTableViewController: UITableViewController {
         }
     }
     
-    func setAlerts() {
+//    func setAlerts() {
+//        let dateFormatter = NSDateFormatter()
+//        dateFormatter.dateStyle = .ShortStyle
+//        dateFormatter.timeStyle = .NoStyle
+//        
+//        let today = NSDate()
+//        
+//        for( var i = 0; i < carMgr.cars[carIndex!].maintenanceItems.count; i++ )
+//        {
+//            let thisDate = dateFormatter.dateFromString(carMgr.cars[carIndex!].maintenanceItems[i].next!)
+//            
+//            //check if the date has passed by!
+//            if today.compare(thisDate!) == NSComparisonResult.OrderedDescending {
+//                //alertMgr.append( alert(carIndex: carIndex, maintenanceItemIndex: i, alertChecked: false) )
+//                print(carMgr.cars[carIndex!].maintenanceItems[i].type)
+//            }
+//        }
+//    }
+    
+    
+    func countAlerts() -> Int {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
         
         let today = NSDate()
+        
+        var num = 0
         
         for( var i = 0; i < carMgr.cars[carIndex!].maintenanceItems.count; i++ )
         {
@@ -105,15 +133,13 @@ class CarTableViewController: UITableViewController {
             
             //check if the date has passed by!
             if today.compare(thisDate!) == NSComparisonResult.OrderedDescending {
-                alertMgr.append( alert(carIndex: carIndex, maintenanceItemIndex: i, alertChecked: false) )
-                print(carMgr.cars[carIndex!].maintenanceItems[i].type)
+                //alertMgr.append( alert(carIndex: carIndex, maintenanceItemIndex: i, alertChecked: false) )
+                num += 1
+                //print(carMgr.cars[carIndex!].maintenanceItems[i].type)
             }
         }
-    }
-    
-    
-    func countAlerts() -> Int {
-        return alertMgr.count
+        
+        return num
     }
     
 
@@ -143,11 +169,14 @@ class CarTableViewController: UITableViewController {
     
     
     @IBAction func saveNewData(segue: UIStoryboardSegue) {
-        if segue.sourceViewController .isKindOfClass(NewDataViewController) {
+        if segue.sourceViewController .isKindOfClass(NewDataViewController)
+        {
             let source = segue.sourceViewController as! NewDataViewController
-            if source.typeTextField.text!.characters.count > 0 {
+            if source.typeTextField.text!.characters.count > 0
+            {
+                saveMaintenanceItem(source.typeTextField.text!, last: source.lastDateButton.titleLabel!.text!, next: source.nextDateButton.titleLabel!.text!, description: source.descriptionTextField.text!, price: source.priceTextField.text!, locPurchased: source.whereTextField.text!, notes: source.notesTextField.text!)
                 
-                carMgr.addMaintenanceItem(carIndex!, type: source.typeTextField.text!, last: source.lastDateButton.titleLabel!.text!, next: source.nextDateButton.titleLabel!.text!, description: source.descriptionTextField.text!, price: source.priceTextField.text!, locPurchased: source.whereTextField.text!, notes: source.notesTextField.text!)
+                self.tableView.reloadData()
             }
         }
     }
@@ -156,5 +185,46 @@ class CarTableViewController: UITableViewController {
         print( "cancel new data" )
     }
 
+    
+    
+    
+    // function to interact with CoreData as well as the app data
+    func saveMaintenanceItem(type: String, last:String, next:String, description:String, price:String, locPurchased: String, notes: String) {
+
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+
+        let entity =  NSEntityDescription.entityForName("MaintenanceItem",
+            inManagedObjectContext:managedContext)
+        
+        let maintenanceItem = NSManagedObject(entity: entity!,
+            insertIntoManagedObjectContext: managedContext)
+        
+        let carID = carMgr.cars[carIndex!].id!
+
+        let values: [String: AnyObject] = ["carID":carID, "type":type,"lastDate":last,"nextDate":next, "brand":description, "price":price, "locPurchased":locPurchased,"notes":notes]
+        maintenanceItem.setValuesForKeysWithDictionary(values)
+        
+
+        do {
+            try managedContext.save()
+            
+            maintenanceItems.append(maintenanceItem)
+            
+            print("carID: " + String(carID) + "   type: " + type)
+
+            carMgr.addMaintenanceItem(carID, type: type, last: last, next: next, description: description, price: price, locPurchased: locPurchased, notes: notes)
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+        }
+    }
+    
+    
+
+    
+    
+    
 
 }

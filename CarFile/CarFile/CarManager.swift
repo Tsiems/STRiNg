@@ -7,18 +7,16 @@
 //
 
 import Foundation
+import CoreData
 
 
 var carMgr : CarManager = CarManager()
 
-var alertMgr = [alert]()
+var cars = [NSManagedObject]()
+var maintenanceItems = [NSManagedObject]()
 
 
-struct alert {
-    var carIndex : Int?
-    var maintenanceItemIndex : Int?
-    var alertChecked : Bool?
-}
+
 
 
 struct maintenanceItem : Equatable {
@@ -97,9 +95,18 @@ class CarManager {
         cars.append(car(id:id,name:name,make:make,model:model,year:year,color:color,price:price,vinNum:vinNum,licNum:licNum,notes:notes))
     }
     
-    func addMaintenanceItem(index: Int, type:String, last:String = "", next:String = "", description:String="", price:String="",locPurchased:String="",notes:String="")
+    func addMaintenanceItem(carID: Int, type:String, last:String = "", next:String = "", description:String="", price:String="",locPurchased:String="",notes:String="")
     {
-        if index < cars.count {
+        if carID < cars.count
+        {
+            var index = 0
+            for var i=0; i < cars.count; i++ {
+                if cars[i].id == carID
+                {
+                    index = i
+                    break
+                }
+            }
             cars[index].maintenanceItems.append( maintenanceItem(type:type, last:last, next:next, description: description, price:price,locPurchased:locPurchased,notes:notes) )
         }
     }

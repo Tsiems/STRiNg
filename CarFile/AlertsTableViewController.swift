@@ -20,8 +20,6 @@ class AlertsTableViewController: UITableViewController {
 
     
     override func viewDidLoad() {
-        super.viewDidLoad()
-        
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
         
@@ -30,10 +28,15 @@ class AlertsTableViewController: UITableViewController {
         components.setValue(7, forComponent: NSCalendarUnit.Day)
         
         warningDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: today, options: NSCalendarOptions(rawValue: 0))!
-        
-        
-        
+
         makeInitialItemsList()
+        
+        super.viewDidLoad()
+        
+        
+        
+        
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -53,6 +56,7 @@ class AlertsTableViewController: UITableViewController {
     }
     
     func sortItems() {
+        print("Sorting alerts")
         items = items.sort({ $0.next!.compare($1.next!) == NSComparisonResult.OrderedAscending })
     }
     
