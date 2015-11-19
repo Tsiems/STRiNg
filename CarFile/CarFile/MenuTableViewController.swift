@@ -263,12 +263,28 @@ class MenuTableViewController: UITableViewController {
     
     
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
+        
+        //delete a car
+        if editingStyle == .Delete
+        {
             let appDelegate =
             UIApplication.sharedApplication().delegate as! AppDelegate
             
             let managedContext = appDelegate.managedObjectContext
             
+            let thisCarID = cars[indexPath.row].valueForKey("id") as? Int
+            
+            
+            
+            for i in 0...maintenanceItems.count-1
+            {
+                if maintenanceItems[i].valueForKey("carID") as? Int == thisCarID
+                {
+                    managedContext.deleteObject(maintenanceItems[i] as NSManagedObject)
+                }
+            }
+            
+            //delete the car
             managedContext.deleteObject(cars[indexPath.row] as NSManagedObject)
             cars.removeAtIndex(indexPath.row)
             
