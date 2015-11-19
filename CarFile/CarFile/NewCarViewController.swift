@@ -26,6 +26,42 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var licNumTextField: UITextField!
     @IBOutlet weak var notesTextField: UITextField!
     
+    var styleID: String?
+    
+    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.populateVinTextField.delegate = self
+        self.nameTextField.delegate = self
+        self.makeTextField.delegate = self
+        self.modelTextField.delegate = self
+        self.yearTextField.delegate = self
+        self.colorTextField.delegate = self
+        self.priceTextField.delegate = self
+        self.vinNumTextField.delegate = self
+        self.licNumTextField.delegate = self
+        self.notesTextField.delegate = self
+        
+        self.styleID = ""
+        
+        //        let backItem = UIBarButtonItem(title: "cancel", style: .Plain, target: nil, action: nil)
+        //        navigationItem.backBarButtonItem = backItem
+        
+        title = "New Car"
+        navigationController!.navigationBar.barTintColor = UIColor(red:0.09,green:0.55,blue:1.00,alpha: 1.00)
+        
+        let attributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 28)!
+        ]
+        
+        navigationController!.navigationBar.titleTextAttributes = attributes
+        
+        
+        
+        // Do any additional setup after loading the view.
+    }
     
     @IBAction func populateVin(sender: AnyObject) {
         
@@ -53,8 +89,9 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
                         let colorName = json["colors"][1]["options"][0]["name"].stringValue
                         let priceName = json["price"]["baseMSRP"].stringValue
                         let vinName = json["vin"].stringValue
-                        let obj = ["makeName": makeName, "modelName": modelName, "yearName": yearName, "colorName": colorName, "priceName": priceName, "vinName": vinName]
-                        foo(obj)
+                        let styleID = json["years"][0]["styles"][0]["id"].stringValue
+                        let obj = ["makeName": makeName, "modelName": modelName, "yearName": yearName, "colorName": colorName, "priceName": priceName, "vinName": vinName, "styleID": styleID]
+                        setObject(obj)
                     }
                     else
                     {
@@ -70,74 +107,27 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     } // END of Populate Button Function
     
     
-    func foo(obj:[String:String])
+    func setObject(obj:[String:String])
     {
-        self.makeTextField.text = obj["makeName"];
-        self.modelTextField.text = obj["modelName"];
-        self.yearTextField.text = obj["yearName"];
-        self.colorTextField.text = obj["colorName"];
-        self.priceTextField.text = obj["priceName"];
-        self.vinNumTextField.text = obj["vinName"];
+        self.makeTextField.text = obj["makeName"]
+        self.modelTextField.text = obj["modelName"]
+        self.yearTextField.text = obj["yearName"]
+        self.colorTextField.text = obj["colorName"]
+        self.priceTextField.text = obj["priceName"]
+        self.vinNumTextField.text = obj["vinName"]
+        self.styleID = obj["styleID"]
     }
     
     func textFieldShouldReturn(userTextField: UITextField!) -> Bool {
         userTextField.resignFirstResponder()
-        return true;
+        return true
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.populateVinTextField.delegate = self
-        self.nameTextField.delegate = self
-        self.makeTextField.delegate = self
-        self.modelTextField.delegate = self
-        self.yearTextField.delegate = self
-        self.colorTextField.delegate = self
-        self.priceTextField.delegate = self
-        self.vinNumTextField.delegate = self
-        self.licNumTextField.delegate = self
-        self.notesTextField.delegate = self
-        
-        //        let backItem = UIBarButtonItem(title: "cancel", style: .Plain, target: nil, action: nil)
-        //        navigationItem.backBarButtonItem = backItem
-        
-        title = "New Car"
-        navigationController!.navigationBar.barTintColor = UIColor(red:0.09,green:0.55,blue:1.00,alpha: 1.00)
-        
-        let attributes = [
-            NSForegroundColorAttributeName: UIColor.whiteColor(),
-            NSFontAttributeName: UIFont(name: "HelveticaNeue-Bold", size: 28)!
-        ]
-        
-        navigationController!.navigationBar.titleTextAttributes = attributes
-        
-        
-        
-        // Do any additional setup after loading the view.
-    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    //    @IBAction func cancelToMenu(segue:UIStoryboardSegue) {
-    //        print("Hello! Cancel")
-    //
-    //    }
-    //
-    //    @IBAction func saveToMenu(segue:UIStoryboardSegue) {
-    //        //save new car info
-    //
-    //        if segue.sourceViewController .isKindOfClass(NewCarViewController) {
-    //            print( "Oh no!" )
-    //        }
-    //
-    //
-    //        //self.performSegueWithIdentifier("goBackToMenu", sender: self)
-    //        print("Hello!")
-    //    }
-    //
     
     
     // MARK: - Navigation

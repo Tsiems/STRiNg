@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CarInfoViewController: UIViewController {
 
@@ -121,13 +122,24 @@ class CarInfoViewController: UIViewController {
     }
     
     func updateData() {
-        carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!].last = lastDateButton.titleLabel?.text
-        carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!].next = nextDateButton.titleLabel?.text
-        carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!].description = brandField.text
-        carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!].price = priceField.text
-        carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!].locPurchased = locPurchasedField.text
-        carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!].notes = notesField.text
+        
+
+        maintenanceItems[maintenanceIndex!].setValue(lastDateButton.titleLabel?.text, forKey: "lastDate")
+        maintenanceItems[maintenanceIndex!].setValue(nextDateButton.titleLabel?.text, forKey: "nextDate")
+        maintenanceItems[maintenanceIndex!].setValue(brandField.text, forKey: "brand" )
+        maintenanceItems[maintenanceIndex!].setValue(priceField.text, forKey: "price" )
+        maintenanceItems[maintenanceIndex!].setValue(locPurchasedField.text, forKey: "locPurchased")
+        maintenanceItems[maintenanceIndex!].setValue(notesField.text, forKey: "notes")
+        
+        
+        //save in persistent data
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        appDelegate.saveContext()
     }
+    
+
     
     
     func disableTextEditting() {
@@ -188,7 +200,17 @@ class CarInfoViewController: UIViewController {
 
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
-        carMgr.cars[carIndex!].maintenanceItems.removeAtIndex(maintenanceIndex!)
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        managedContext.deleteObject(maintenanceItems[maintenanceIndex!] as NSManagedObject)
+        maintenanceItems.removeAtIndex(maintenanceIndex!)
+        
+        appDelegate.saveContext()
+        
+        
     }
     
     

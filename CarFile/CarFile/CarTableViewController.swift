@@ -182,12 +182,12 @@ class CarTableViewController: UITableViewController {
             var index = 0
             
             for i in 0...maintenanceItems.count-1 {
-                if maintenanceItems[i].valueForKey("type") as? String == items[row].type {
+                if maintenanceItems[i].valueForKey("type") as? String == items[row-1].type {
                     index = i
                 }
             }
             
-            maintenanceInfo.maintenanceIndex = index - 1
+            maintenanceInfo.maintenanceIndex = index
         }
         else if segue.identifier == "alertsSegue" {
             let alertsInfo = segue.destinationViewController as! AlertsTableViewController

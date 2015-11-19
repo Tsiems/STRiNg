@@ -13,9 +13,13 @@ class MenuTableViewController: UITableViewController {
     
     var titleText: String?
 
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        navigationItem.leftBarButtonItem = editButtonItem()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -162,7 +166,12 @@ class MenuTableViewController: UITableViewController {
         cell.priceLabel.text = cars[indexPath.row].valueForKey("price") as? String
         cell.licNumLabel.text = cars[indexPath.row].valueForKey("licNum") as? String
         
+        
         // set color of cell
+        let styleID = cars[indexPath.row].valueForKey("styleID") as? String
+        
+        print(styleID)
+        
 
         
         return cell
@@ -180,14 +189,14 @@ class MenuTableViewController: UITableViewController {
         if segue.sourceViewController .isKindOfClass(NewCarViewController) {
             let source = segue.sourceViewController as! NewCarViewController
             if source.nameTextField.text!.characters.count > 0 {
-                saveCar(source.nameTextField.text!, make:source.makeTextField.text!, model:source.modelTextField.text!, year:source.yearTextField.text!, color:source.colorTextField.text!, price:source.priceTextField.text!, vinNum:source.vinNumTextField.text!, licNum:source.licNumTextField.text!, notes:source.notesTextField.text!)
+                saveCar(source.nameTextField.text!, make:source.makeTextField.text!, model:source.modelTextField.text!, year:source.yearTextField.text!, color:source.colorTextField.text!, price:source.priceTextField.text!, vinNum:source.vinNumTextField.text!, licNum:source.licNumTextField.text!, notes:source.notesTextField.text!, styleID: source.styleID!)
             }
         }
         
     }
     
     
-    func saveCar(name: String, make:String, model:String, year:String, color:String, price:String, vinNum:String, licNum:String, notes:String) {
+    func saveCar(name: String, make:String, model:String, year:String, color:String, price:String, vinNum:String, licNum:String, notes:String,styleID:String="") {
 
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
@@ -216,7 +225,7 @@ class MenuTableViewController: UITableViewController {
         carID++
         
 
-        let values: [String: AnyObject] = ["id":carID, "name":name,"make":make,"model":model, "year":year, "color":color,"price":price, "vinNum":vinNum, "licNum":licNum, "notes":notes]
+        let values: [String: AnyObject] = ["id":carID, "name":name,"make":make,"model":model, "year":year, "color":color,"price":price, "vinNum":vinNum, "licNum":licNum, "notes":notes, "styleID":styleID]
         vehicle.setValuesForKeysWithDictionary(values)
         
 
@@ -249,6 +258,23 @@ class MenuTableViewController: UITableViewController {
             
             print(carTable.carIndex)
             
+        }
+    }
+    
+    
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == .Delete {
+            let appDelegate =
+            UIApplication.sharedApplication().delegate as! AppDelegate
+            
+            let managedContext = appDelegate.managedObjectContext
+            
+            managedContext.deleteObject(cars[indexPath.row] as NSManagedObject)
+            cars.removeAtIndex(indexPath.row)
+            
+            appDelegate.saveContext()
+            
+            tableView.reloadData()
         }
     }
 }
