@@ -76,6 +76,13 @@ public class CarSetUp extends AppCompatActivity implements AsyncResponse {
         }
     }
 
+    @OnClick(R.id.manualEntryButton)
+    public void startManualEntry(){
+        Intent intent = new Intent(getApplicationContext(), AddCar.class);
+        startActivity(intent);
+        finish();
+    }
+
     private void lookUpCar() {
         if (isNetWorkAvailable()) {
             Log.d(TAG, "Calling Network");

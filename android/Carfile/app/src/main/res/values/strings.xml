@@ -20,5 +20,6 @@
     <string name="vin">Vin Number</string>
     <string name="notes">Notes</string>
     <string name="noNotes">No notes</string>
+    <string name="manualEntry">Manual Entry</string>
 
 </resources>

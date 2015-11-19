@@ -46,27 +46,31 @@ public class AddCar extends AppCompatActivity {
         ButterKnife.bind(this);
         Bundle data = getIntent().getExtras();
         isEditing = false;
-        if (data.getString("carMake") != null){
-            Log.d(TAG, "Starting manual data entry");
-            make.setText(data.getString("carMake"));
-            model.setText(data.getString("carModel"));
-            year.setText(data.getString("carYear"));
-            vin.setText(data.getString("carVin"));
+        if(data != null){
+            if (data.getString("carMake") != null){
+                Log.d(TAG, "Starting manual data entry");
+                make.setText(data.getString("carMake"));
+                model.setText(data.getString("carModel"));
+                year.setText(data.getString("carYear"));
+                vin.setText(data.getString("carVin"));
+            }
+            if(data.getString("vinForEdit") != null){
+                isEditing = true;
+                List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", data.getString("vinForEdit"));
+                car = query.get(0);
+                name.setText(car.getCarName());
+                make.setText(car.getMake());
+                model.setText(car.getModel());
+                year.setText(car.getYear());
+                color.setText(car.getColor());
+                price.setText(car.getPrice() + "");
+                license.setText(car.getLicense());
+                vin.setText(car.getVin());
+                notes.setText(car.getNotes());
+            }
         }
-        if(data.getString("vinForEdit") != null){
-            isEditing = true;
-            List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", data.getString("vinForEdit"));
-            car = query.get(0);
-            name.setText(car.getCarName());
-            make.setText(car.getMake());
-            model.setText(car.getModel());
-            year.setText(car.getYear());
-            color.setText(car.getColor());
-            price.setText(car.getPrice() + "");
-            license.setText(car.getLicense());
-            vin.setText(car.getVin());
-            notes.setText(car.getNotes());
-        }
+
+
 
 
     }
