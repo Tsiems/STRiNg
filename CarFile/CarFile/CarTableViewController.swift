@@ -144,8 +144,9 @@ class CarTableViewController: UITableViewController {
     
     func countAlerts() -> Int {
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
+//        dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
+        dateFormatter.dateFormat = "MM/dd/yy"
         
         let today = NSDate()
         

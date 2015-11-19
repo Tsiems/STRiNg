@@ -23,8 +23,9 @@ class AlertsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         
-        dateFormatter.dateStyle = .ShortStyle
+        //dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
+        dateFormatter.dateFormat = "MM/dd/yy"
         
         thisCarID = cars[carIndex!].valueForKey("id") as? Int
         
@@ -68,7 +69,7 @@ class AlertsTableViewController: UITableViewController {
     
     func sortItems() {
         print("Sorting alerts")
-        items = items.sort({ $0.next!.compare($1.next!) == NSComparisonResult.OrderedAscending })
+        items = items.sort({ dateFormatter.dateFromString($0.next!)!.compare(dateFormatter.dateFromString($1.next!)!) == NSComparisonResult.OrderedAscending })
     }
     
 

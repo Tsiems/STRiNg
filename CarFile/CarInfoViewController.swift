@@ -227,8 +227,9 @@ class CarInfoViewController: UIViewController {
             dateView.newOrEdit = "Edit"
             
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .ShortStyle
+           //dateFormatter.dateStyle = .ShortStyle
             dateFormatter.timeStyle = .NoStyle
+            dateFormatter.dateFormat = "MM/dd/yy"
             
             if let nextLabel = nextDateButton.titleLabel {
                 if let nextLabelText = nextLabel.text {
@@ -248,8 +249,9 @@ class CarInfoViewController: UIViewController {
             
             
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .ShortStyle
+            //dateFormatter.dateStyle = .ShortStyle
             dateFormatter.timeStyle = .NoStyle
+            dateFormatter.dateFormat = "MM/dd/yy"
             
             
             dateView.initialDate = dateFormatter.dateFromString(lastDateButton.titleLabel!.text!)!

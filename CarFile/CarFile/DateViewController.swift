@@ -38,8 +38,9 @@ class DateViewController: UIViewController {
     func datePickerChanged(datePicker:UIDatePicker) {
         let dateFormatter = NSDateFormatter()
         
-        dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
+        //dateFormatter.dateStyle = NSDateFormatterStyle.ShortStyle
         dateFormatter.timeStyle = NSDateFormatterStyle.NoStyle
+        dateFormatter.dateFormat = "MM/dd/yy"
         
         let strDate = dateFormatter.stringFromDate(datePicker.date)
         dateLabel.text = strDate

@@ -49,8 +49,9 @@ class NewDataViewController: UIViewController {
         
         //set date format
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateStyle = .ShortStyle
+        //dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
+        dateFormatter.dateFormat = "MM/dd/yy"
         
         
         //get today's date
@@ -102,8 +103,9 @@ class NewDataViewController: UIViewController {
             dateView.newOrEdit = "New"
             
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .ShortStyle
+            //dateFormatter.dateStyle = .ShortStyle
             dateFormatter.timeStyle = .NoStyle
+            dateFormatter.dateFormat = "MM/dd/yy"
             
             
             dateView.initialDate = dateFormatter.dateFromString(nextDateButton.titleLabel!.text!)!
@@ -120,8 +122,9 @@ class NewDataViewController: UIViewController {
             
             
             let dateFormatter = NSDateFormatter()
-            dateFormatter.dateStyle = .ShortStyle
+            //dateFormatter.dateStyle = .ShortStyle
             dateFormatter.timeStyle = .NoStyle
+            dateFormatter.dateFormat = "MM/dd/yy"
             
             
             dateView.initialDate = dateFormatter.dateFromString(lastDateButton.titleLabel!.text!)!
