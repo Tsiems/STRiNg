@@ -10,7 +10,6 @@ import UIKit
 import CoreData
 
 class MenuTableViewController: UITableViewController {
-    var carNames = [String]()
     
     var titleText: String?
 
@@ -95,37 +94,37 @@ class MenuTableViewController: UITableViewController {
     }
     
     func populateTestData() {
-        if carMgr.cars.count < 1 {
-            for car in cars
-            {
-                let id = car.valueForKey("id") as! Int
-                let name = car.valueForKey("name") as! String
-                let make = car.valueForKey("make") as! String
-                let model = car.valueForKey("model") as! String
-                let year = car.valueForKey("year") as! String
-                let color = car.valueForKey("color") as! String
-                let price = car.valueForKey("price") as! String
-                let licNum = car.valueForKey("licNum") as! String
-                let vinNum = car.valueForKey("vinNum") as! String
-                let notes = car.valueForKey("notes") as! String
-                
-                carMgr.addCar(id, name: name, make:make, model:model, year:year, color:color, price:price, vinNum:vinNum, licNum:licNum, notes:notes)
-            }
+//        if carMgr.cars.count < 1 {
+//            for car in cars
+//            {
+//                let id = car.valueForKey("id") as! Int
+//                let name = car.valueForKey("name") as! String
+//                let make = car.valueForKey("make") as! String
+//                let model = car.valueForKey("model") as! String
+//                let year = car.valueForKey("year") as! String
+//                let color = car.valueForKey("color") as! String
+//                let price = car.valueForKey("price") as! String
+//                let licNum = car.valueForKey("licNum") as! String
+//                let vinNum = car.valueForKey("vinNum") as! String
+//                let notes = car.valueForKey("notes") as! String
+//                
+//                carMgr.addCar(id, name: name, make:make, model:model, year:year, color:color, price:price, vinNum:vinNum, licNum:licNum, notes:notes)
+//            }
             
-            for item in maintenanceItems
-            {
-                let carID = item.valueForKey("carID") as! Int
-                let type = item.valueForKey("type") as! String
-                let last = item.valueForKey("lastDate") as! String
-                let next = item.valueForKey("nextDate") as! String
-                let brand = item.valueForKey("brand") as! String
-                let locPurchased = item.valueForKey("locPurchased") as! String
-                let price = item.valueForKey("price") as! String
-                let notes = item.valueForKey("notes") as! String
-                
-                carMgr.addMaintenanceItem(carID, type: type, last: last, next: next, description: brand, price: price, locPurchased: locPurchased, notes: notes)
-            }
-        }
+//            for item in maintenanceItems
+//            {
+//                let carID = item.valueForKey("carID") as! Int
+//                let type = item.valueForKey("type") as! String
+//                let last = item.valueForKey("lastDate") as! String
+//                let next = item.valueForKey("nextDate") as! String
+//                let brand = item.valueForKey("brand") as! String
+//                let locPurchased = item.valueForKey("locPurchased") as! String
+//                let price = item.valueForKey("price") as! String
+//                let notes = item.valueForKey("notes") as! String
+//                
+//                carMgr.addMaintenanceItem(carID, type: type, last: last, next: next, description: brand, price: price, locPurchased: locPurchased, notes: notes)
+//            }
+//        }
 //        if carMgr.cars.count < 1 {
 //            carMgr.addCar(0,name: "Steven's Car",make: "Ford", model: "Focus", year: "2015", color: "Blue", price: "$5,000", licNum: "5CIA356")
 //            carMgr.addCar(1,name: "Nick's Car",make: "Mini", model: "Countryman", year: "2012", color: "White", price: "$6,000", licNum: "4KGB578")
@@ -147,7 +146,7 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return carMgr.cars.count
+        return cars.count
     }
     
     
@@ -155,13 +154,13 @@ class MenuTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("carMenuCell", forIndexPath: indexPath) as! MenuTableViewCell
         
         // Configure the cell...
-        cell.nameLabel.text = carMgr.cars[indexPath.row].name
-        cell.makeLabel.text = carMgr.cars[indexPath.row].make
-        cell.modelLabel.text = carMgr.cars[indexPath.row].model
-        cell.yearLabel.text = carMgr.cars[indexPath.row].year
-        cell.colorLabel.text = carMgr.cars[indexPath.row].color
-        cell.priceLabel.text = carMgr.cars[indexPath.row].price
-        cell.licNumLabel.text = carMgr.cars[indexPath.row].licNum
+        cell.nameLabel.text = cars[indexPath.row].valueForKey("name") as? String
+        cell.makeLabel.text = cars[indexPath.row].valueForKey("make") as? String
+        cell.modelLabel.text = cars[indexPath.row].valueForKey("model") as? String
+        cell.yearLabel.text = cars[indexPath.row].valueForKey("year") as? String
+        cell.colorLabel.text = cars[indexPath.row].valueForKey("color") as? String
+        cell.priceLabel.text = cars[indexPath.row].valueForKey("price") as? String
+        cell.licNumLabel.text = cars[indexPath.row].valueForKey("licNum") as? String
         
         // set color of cell
 
@@ -204,11 +203,13 @@ class MenuTableViewController: UITableViewController {
         
         var carID = 0
         
-        for car in carMgr.cars
+        for car in cars
         {
-            if car.id! > carID
+            let thisCarID = car.valueForKey("id") as? Int
+            
+            if car.valueForKey("id") as? Int > carID
             {
-                carID = car.id!
+                carID = thisCarID!
             }
         }
         
@@ -224,7 +225,7 @@ class MenuTableViewController: UITableViewController {
             
             cars.append(vehicle)
             
-            carMgr.addCar(carID, name: name, make:make, model:model, year:year, color:color, price:price, vinNum:vinNum, licNum:licNum, notes:notes)
+            //carMgr.addCar(carID, name: name, make:make, model:model, year:year, color:color, price:price, vinNum:vinNum, licNum:licNum, notes:notes)
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }

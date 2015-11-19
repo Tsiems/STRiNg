@@ -14,6 +14,8 @@ class CarTableViewController: UITableViewController {
     
     var carIndex: Int?
     var thisCarID: Int?
+    
+    var items = [maintenanceItem]()
 
     
     override func viewDidLoad() {
@@ -22,10 +24,12 @@ class CarTableViewController: UITableViewController {
         
         
         
-        //get title of car
-        title = carMgr.cars[carIndex!].name
         
-        thisCarID = carMgr.cars[carIndex!].id
+        
+        //get title of car
+        title = cars[carIndex!].valueForKey("name") as? String
+        
+        thisCarID = cars[carIndex!].valueForKey("id") as? Int
         
         //set colors of background, title bar, and text
         
@@ -37,9 +41,27 @@ class CarTableViewController: UITableViewController {
 //            setAlerts()
 //        }
         
+
+        
     }
     
+    func addMaintenanceItems()
+    {
+        items = []
+        for item in maintenanceItems
+        {
+            let itemCarID = item.valueForKey("carID") as? Int
+            if itemCarID == thisCarID
+            {
+                items.append( maintenanceItem(type:item.valueForKey("type") as! String, last:item.valueForKey("lastDate") as! String, next:item.valueForKey("nextDate") as! String, description: item.valueForKey("brand") as! String, price:item.valueForKey("price") as! String,locPurchased:item.valueForKey("locPurchased") as! String,notes:item.valueForKey("notes") as! String) )
+            }
+        }
+    }
     
+    override func viewWillAppear(animated: Bool) {
+        addMaintenanceItems()
+        tableView.reloadData()
+    }
     
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
@@ -69,7 +91,9 @@ class CarTableViewController: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return carMgr.cars[carIndex!].maintenanceItems.count + 1
+
+        
+        return items.count + 1
     }
 
     
@@ -90,7 +114,7 @@ class CarTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! MaintenanceItemCell
 
             // Configure the cell...
-            cell.name.text = carMgr.cars[carIndex!].maintenanceItems[indexPath.row-1].type
+            cell.name.text = items[indexPath.row-1].type
             
             //set color of cell
 
@@ -127,15 +151,13 @@ class CarTableViewController: UITableViewController {
         
         var num = 0
         
-        for( var i = 0; i < carMgr.cars[carIndex!].maintenanceItems.count; i++ )
+        for( var i = 0; i < items.count; i++ )
         {
-            let thisDate = dateFormatter.dateFromString(carMgr.cars[carIndex!].maintenanceItems[i].next!)
+            let thisDate = dateFormatter.dateFromString(items[i].next!)
             
             //check if the date has passed by!
             if today.compare(thisDate!) == NSComparisonResult.OrderedDescending {
-                //alertMgr.append( alert(carIndex: carIndex, maintenanceItemIndex: i, alertChecked: false) )
                 num += 1
-                //print(carMgr.cars[carIndex!].maintenanceItems[i].type)
             }
         }
         
@@ -156,7 +178,16 @@ class CarTableViewController: UITableViewController {
             
             // Pass the selected object to the new view controller.
             maintenanceInfo.carIndex = carIndex
-            maintenanceInfo.maintenanceIndex = row - 1
+            
+            var index = 0
+            
+            for i in 0...maintenanceItems.count-1 {
+                if maintenanceItems[i].valueForKey("type") as? String == items[row].type {
+                    index = i
+                }
+            }
+            
+            maintenanceInfo.maintenanceIndex = index - 1
         }
         else if segue.identifier == "alertsSegue" {
             let alertsInfo = segue.destinationViewController as! AlertsTableViewController
@@ -202,9 +233,9 @@ class CarTableViewController: UITableViewController {
         let maintenanceItem = NSManagedObject(entity: entity!,
             insertIntoManagedObjectContext: managedContext)
         
-        let carID = carMgr.cars[carIndex!].id!
+        let carID = cars[carIndex!].valueForKey("id") as? Int
 
-        let values: [String: AnyObject] = ["carID":carID, "type":type,"lastDate":last,"nextDate":next, "brand":description, "price":price, "locPurchased":locPurchased,"notes":notes]
+        let values: [String: AnyObject] = ["carID":carID!, "type":type,"lastDate":last,"nextDate":next, "brand":description, "price":price, "locPurchased":locPurchased,"notes":notes]
         maintenanceItem.setValuesForKeysWithDictionary(values)
         
 
@@ -212,10 +243,8 @@ class CarTableViewController: UITableViewController {
             try managedContext.save()
             
             maintenanceItems.append(maintenanceItem)
-            
-            print("carID: " + String(carID) + "   type: " + type)
 
-            carMgr.addMaintenanceItem(carID, type: type, last: last, next: next, description: description, price: price, locPurchased: locPurchased, notes: notes)
+            //carMgr.addMaintenanceItem(carID, type: type, last: last, next: next, description: description, price: price, locPurchased: locPurchased, notes: notes)
         } catch let error as NSError  {
             print("Could not save \(error), \(error.userInfo)")
         }

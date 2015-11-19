@@ -32,7 +32,7 @@ class CarInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let maintenanceItem = carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!]
+        let maintenanceItem = maintenanceItems[maintenanceIndex!]
         
         deleteButton.hidden = true
         placeData()
@@ -48,7 +48,7 @@ class CarInfoViewController: UIViewController {
         rightBarItem = navigationItem.rightBarButtonItem
         
         
-        title = maintenanceItem.type
+        title = maintenanceItem.valueForKey("type") as? String
     
     }
     
@@ -110,14 +110,14 @@ class CarInfoViewController: UIViewController {
     
     
     func placeData() {
-        let maintenanceItem = carMgr.cars[carIndex!].maintenanceItems[maintenanceIndex!]
+        let maintenanceItem = maintenanceItems[maintenanceIndex!]
         
-        lastDateButton.setTitle(maintenanceItem.last, forState: .Normal)
-        nextDateButton.setTitle(maintenanceItem.next, forState: .Normal)
-        brandField.text = maintenanceItem.description
-        priceField.text = maintenanceItem.price
-        locPurchasedField.text = maintenanceItem.locPurchased
-        notesField.text = maintenanceItem.notes
+        lastDateButton.setTitle(maintenanceItem.valueForKey("lastDate") as? String, forState: .Normal)
+        nextDateButton.setTitle(maintenanceItem.valueForKey("nextDate") as? String, forState: .Normal)
+        brandField.text = maintenanceItem.valueForKey("brand") as? String
+        priceField.text = maintenanceItem.valueForKey("price") as? String
+        locPurchasedField.text = maintenanceItem.valueForKey("locPurchased") as? String
+        notesField.text = maintenanceItem.valueForKey("notes") as? String
     }
     
     func updateData() {

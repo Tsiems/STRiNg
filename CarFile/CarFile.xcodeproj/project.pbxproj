@@ -29,7 +29,6 @@
 		16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */; };
 		431A9E631BFB9D850097E79F /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */; };
 		431A9E641BFB9D850097E79F /* SwiftHTTP.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		43EEF0231BF672F10000C593 /* SwiftHTTP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43EEF01C1BF672D00000C593 /* SwiftHTTP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,7 +183,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				431A9E631BFB9D850097E79F /* SwiftHTTP.framework in Frameworks */,
-				43EEF0231BF672F10000C593 /* SwiftHTTP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +358,7 @@
 		1623A1291BC401FC007F284E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0710;
 				ORGANIZATIONNAME = "STRiNg, int";
 				TargetAttributes = {
 					1623A1301BC401FC007F284E = {

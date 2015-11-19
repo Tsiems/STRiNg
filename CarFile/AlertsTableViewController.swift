@@ -11,6 +11,7 @@ import UIKit
 class AlertsTableViewController: UITableViewController {
 
     var carIndex : Int?
+    var thisCarID: Int?
     var items = [maintenanceItem]()
     
     let today = NSDate()
@@ -25,6 +26,7 @@ class AlertsTableViewController: UITableViewController {
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
         
+        thisCarID = cars[carIndex!].valueForKey("id") as? Int
         
         
         //set next date to 6 months in the future
@@ -52,9 +54,14 @@ class AlertsTableViewController: UITableViewController {
         //empty the array
         items = []
         
-        for( var i = 0; i < carMgr.cars[carIndex!].maintenanceItems.count; i++ ) {
-            let item = carMgr.cars[carIndex!].maintenanceItems[i]
-            items.append( maintenanceItem(type:item.type!, last:item.last!, next:item.next!, description: item.description!, price:item.price!,locPurchased:item.locPurchased!,notes:item.notes!) )
+        
+        for item in maintenanceItems
+        {
+            let itemCarID = item.valueForKey("carID") as? Int
+            if itemCarID == thisCarID
+            {
+                items.append( maintenanceItem(type:item.valueForKey("type") as! String, last:item.valueForKey("lastDate") as! String, next:item.valueForKey("nextDate") as! String, description: item.valueForKey("brand") as! String, price:item.valueForKey("price") as! String,locPurchased:item.valueForKey("locPurchased") as! String,notes:item.valueForKey("notes") as! String) )
+            }
         }
         sortItems()
     }
@@ -109,41 +116,6 @@ class AlertsTableViewController: UITableViewController {
     }
 
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if segue.identifier == "itemOnAlertsSegue" {
@@ -160,8 +132,8 @@ class AlertsTableViewController: UITableViewController {
             //get the index in maintenanceItems
             var index = 0
             
-            for i in 0...carMgr.cars[carIndex!].maintenanceItems.count-1 {
-                if carMgr.cars[carIndex!].maintenanceItems[i] == items[row] {
+            for i in 0...maintenanceItems.count-1 {
+                if maintenanceItems[i].valueForKey("type") as? String == items[row].type {
                     index = i
                 }
             }
