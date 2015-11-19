@@ -16,12 +16,16 @@ class AlertsTableViewController: UITableViewController {
     let today = NSDate()
     
     let dateFormatter = NSDateFormatter()
+
     var warningDate : NSDate?
 
     
     override func viewDidLoad() {
+        
         dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
+        
+        
         
         //set next date to 6 months in the future
         let components: NSDateComponents = NSDateComponents()

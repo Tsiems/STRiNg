@@ -26,6 +26,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var licNumTextField: UITextField!
     @IBOutlet weak var notesTextField: UITextField!
     
+    
     @IBAction func populateVin(sender: AnyObject) {
         
         //Steven's Car VIN (Not Case Sensitive): 1FADP3L9XFL256135
