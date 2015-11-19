@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="0dp"
+    tools:context="string.carfile.CarPage">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/carPageImage"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:background="@color/buttonPressed" />
+
+        <Button
+            android:id="@+id/carDetailsButton"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_below="@id/carPageImage"
+            android:background="@color/buttonUnpressed"
+            android:text="@string/carInformationButton"
+            android:textColor="@android:color/white"
+            android:textSize="20dp" />
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/carPageListView"
+            android:layout_below="@id/carDetailsButton"/>
+
+    </RelativeLayout>
+</RelativeLayout>

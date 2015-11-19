@@ -7,10 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.ContextMenu;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
+
 import com.melnykov.fab.FloatingActionButton;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +22,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnItemClick;
 
 
 public class Home extends AppCompatActivity {
@@ -27,57 +32,80 @@ public class Home extends AppCompatActivity {
     private List<CarInfo> cars = CarInfo.listAll(CarInfo.class);
     private CarAdapter carAdapter;
     private static final String TAG = "Home";
+    private int selectedPosition;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+        Log.d(TAG, "Cars in list: " + cars.size());
         //homeFab.attachToListView(carList);
         LinearLayoutManager llm = new LinearLayoutManager(this);
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         carList.setLayoutManager(llm);
-        carAdapter = new CarAdapter(cars);
+        carAdapter = new CarAdapter(cars, Home.this);
         carList.setAdapter(carAdapter);
+        registerForContextMenu(carList);
+        carAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent carPage = new Intent(getApplicationContext(), CarPage.class);
+                Bundle b = new Bundle();
+                b.putString("vin", cars.get(position).getVin());
+                carPage.putExtras(b);
+                startActivity(carPage);
+            }
+
+            @Override
+            public void onItemLongClick(View view, int position) {
+                Log.d(TAG, "ITEM WAS LONG PRESSED!");
+                openContextMenu(view);
+                selectedPosition = position;
+            }
+        });
+
     }
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.cardeletemenu, menu);
+        menu.setHeaderTitle("Delete Car?");
+    }
+    @Override
+    public boolean onContextItemSelected(MenuItem item){
+        Log.d(TAG, "Selected position = " + selectedPosition + " and title = " + item.getTitle().toString());
+
+        if(item.getTitle().equals("Delete Car")){
+            cars.get(selectedPosition).delete();
+            resetCarList();
+        }
+        else{
+            return false;
+        }
+        return true;
+    }
+
+
     @Override
     protected void onResume(){
         super.onResume();
         Log.d(TAG, "onResume Called");
+        resetCarList();
+    }
+
+    private void resetCarList() {
         cars = CarInfo.listAll(CarInfo.class);
         carAdapter.setCars(cars);
         carAdapter.notifyDataSetChanged();
     }
 
+
     @OnClick(R.id.homeFab)
     public void addCar(View view) {
-        Intent carAddPage = new Intent(getApplicationContext(), AddCar.class);
+        Intent carAddPage = new Intent(getApplicationContext(), CarSetUp.class);
         startActivityForResult(carAddPage, 0);
     }
-
-
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_home, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
 }

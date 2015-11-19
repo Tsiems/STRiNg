@@ -1,18 +1,23 @@
 package string.carfile;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,6 +25,8 @@ import butterknife.OnClick;
 
 public class AddCar extends AppCompatActivity {
     private static final String TAG = "AddCar";
+    private CarInfo car;
+    private boolean isEditing;
 
     @Bind(R.id.carNameInput) EditText name;
     @Bind(R.id.carMakeInput) EditText make;
@@ -36,8 +43,32 @@ public class AddCar extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_car);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         ButterKnife.bind(this);
+        Bundle data = getIntent().getExtras();
+        isEditing = false;
+        if (data.getString("carMake") != null){
+            Log.d(TAG, "Starting manual data entry");
+            make.setText(data.getString("carMake"));
+            model.setText(data.getString("carModel"));
+            year.setText(data.getString("carYear"));
+            vin.setText(data.getString("carVin"));
+        }
+        if(data.getString("vinForEdit") != null){
+            isEditing = true;
+            List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", data.getString("vinForEdit"));
+            car = query.get(0);
+            name.setText(car.getCarName());
+            make.setText(car.getMake());
+            model.setText(car.getModel());
+            year.setText(car.getYear());
+            color.setText(car.getColor());
+            price.setText(car.getPrice() + "");
+            license.setText(car.getLicense());
+            vin.setText(car.getVin());
+            notes.setText(car.getNotes());
+        }
+
+
     }
 
     @OnClick(R.id.carAddButton)
@@ -60,15 +91,15 @@ public class AddCar extends AppCompatActivity {
             name.requestFocus();
             return;
         }
-        if (cMake.length() == 0 || cMake.length() > 25)
+        if (cMake.length() == 0 || cMake.length() > 50)
         {
-            Snackbar.make(view, "Enter a valid make less than 25 characters", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(view, "Enter a valid make less than 50 characters", Snackbar.LENGTH_SHORT).show();
             make.requestFocus();
             return;
         }
-        if (cModel.length() == 0 || cModel.length() > 25)
+        if (cModel.length() == 0 || cModel.length() > 50)
         {
-            Snackbar.make(view, "Enter a valid car model less than 25 characters", Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(view, "Enter a valid car model less than 50 characters", Snackbar.LENGTH_SHORT).show();
             model.requestFocus();
             return;
         }
@@ -93,6 +124,7 @@ public class AddCar extends AppCompatActivity {
         cPrice = Integer.parseInt(price.getText().toString());
         if(cVin.length() < 11 || cVin.length() > 17)
         {
+
             Snackbar.make(view, "Enter a valid VIN number", Snackbar.LENGTH_SHORT).show();
             vin.requestFocus();
             return;
@@ -108,12 +140,36 @@ public class AddCar extends AppCompatActivity {
             return;
         }
 
-        CarInfo newCar = new CarInfo(cName, cMake, cModel, cYear, cColor, cPrice, cVin, cLicense, cNotes);
-        newCar.save();
-        finish();
+        if(isEditing == false){
+            List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", cVin);
+            if(!query.isEmpty()) {
+                Log.d(TAG, cVin + " is already used!");
+                Snackbar.make(view, "Vin Already Exists", Snackbar.LENGTH_SHORT).show();
+                return;
+            }
+            car = new CarInfo(cName, cMake, cModel, cYear, cColor, cPrice, cVin, cLicense, cNotes);
+            car.save();
+            finish();
+        }
+        else {
+            car.setAll(cName, cMake, cModel, cYear, cColor, cPrice, cVin, cLicense, cNotes);
+            Intent intent = new Intent();
+            intent.putExtra("VIN_NUMBER_RESULT", car.getVin());
+            setResult(1, intent); //result of 1 signals save was a success
+            car.save();
+            finish();
+        }
+
+
+
+
+
+
 
 
     }
+
+
 
 
 
