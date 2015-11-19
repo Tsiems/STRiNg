@@ -6,7 +6,8 @@
     tools:context="string.carfile.CarSetUp"
     android:paddingBottom="0dp"
     android:paddingRight="0dp"
-    android:paddingLeft="0dp">
+    android:paddingLeft="0dp"
+    android:id="@+id/carSetupLayout">
 
     <TextView
         android:layout_width="wrap_content"

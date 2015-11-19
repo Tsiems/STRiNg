@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.squareup.okhttp.Call;
@@ -52,7 +53,10 @@ public class CarSetUp extends AppCompatActivity implements AsyncResponse {
     @Override
     public void processFinish(String output){
         Log.d(TAG, "processFinished received");
-
+        Log.d(TAG, output);
+        if(output.equals("fail")){
+            showSnackbar();
+        }
     }
 
     @OnClick(R.id.setupContinue)
@@ -79,6 +83,8 @@ public class CarSetUp extends AppCompatActivity implements AsyncResponse {
         }
     }
     public void showSnackbar(){
+        RelativeLayout layout = (RelativeLayout) findViewById(R.id.carSetupLayout);
+        Snackbar.make(layout, "Could not fetch car details", Snackbar.LENGTH_SHORT).show();
 
     }
 
