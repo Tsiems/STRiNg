@@ -21,7 +21,6 @@ public class CarInfo extends SugarRecord<CarInfo> implements Parcelable {
     private String vin;
     private String license;
     private String notes;
-    private List<MaintenanceItem> maintenanceItems;
 
     public CarInfo() {
     }
@@ -138,7 +137,6 @@ public class CarInfo extends SugarRecord<CarInfo> implements Parcelable {
         dest.writeString(this.vin);
         dest.writeString(this.license);
         dest.writeString(this.notes);
-        dest.writeList(this.maintenanceItems);
     }
 
     protected CarInfo(Parcel in) {
@@ -151,8 +149,6 @@ public class CarInfo extends SugarRecord<CarInfo> implements Parcelable {
         this.vin = in.readString();
         this.license = in.readString();
         this.notes = in.readString();
-        this.maintenanceItems = new ArrayList<MaintenanceItem>();
-        in.readList(this.maintenanceItems, List.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<CarInfo> CREATOR = new Parcelable.Creator<CarInfo>() {
@@ -165,3 +161,4 @@ public class CarInfo extends SugarRecord<CarInfo> implements Parcelable {
         }
     };
 }
+

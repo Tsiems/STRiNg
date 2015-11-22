@@ -6,10 +6,13 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
+
+import com.melnykov.fab.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,10 +27,13 @@ public class CarPage extends AppCompatActivity {
     @Bind(R.id.carPageListView) ListView itemListView;
     @Bind(R.id.carPageImage) ImageView carImage;
     @Bind(R.id.carDetailsButton) Button carDetailsButton;
+    @Bind(R.id.carPageFab) FloatingActionButton fab;
     private static final String TAG = "CarPage";
     private static final int CAR_INFO_CODE= 111;
     private CarInfo myCar;
     private ArrayList<String> itemList;
+    private ArrayAdapter<String> arrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,10 +45,20 @@ public class CarPage extends AppCompatActivity {
         Log.d(TAG, carVin);
         List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", carVin);
         myCar = query.get(0);
+        itemList = new ArrayList<>();
         setTitle(myCar.getCarName());
-        itemList = new ArrayList<>(Arrays.asList("Oil", "Engine", "Repairs", "Checkup", "Tires", "Lights"));
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemList);
+
+
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemList);
         itemListView.setAdapter(arrayAdapter);
+        itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent maintenanceView = new Intent(getApplicationContext(), MaintenanceDisplay.class);
+                maintenanceView.putExtra("selection", position);
+                startActivity(maintenanceView);
+            }
+        });
     }
 
 
@@ -51,6 +67,13 @@ public class CarPage extends AppCompatActivity {
         Intent intent = new Intent(getApplicationContext(), CarInfomationActivity.class);
         intent.putExtra("vin", myCar.getVin());
         startActivityForResult(intent, CAR_INFO_CODE);
+    }
+
+    @OnClick(R.id.carPageFab)
+    public void addMaintenanceInfo(View view){
+        Intent addInfo = new Intent(getApplicationContext(), AddMaintenanceItem.class);
+        addInfo.putExtra("id", myCar.getId());
+        startActivity(addInfo);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
@@ -62,6 +85,7 @@ public class CarPage extends AppCompatActivity {
                 setTitle(myCar.getCarName());
             }
         }
+
     }
 
 

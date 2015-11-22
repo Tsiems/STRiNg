@@ -9,12 +9,12 @@ import java.util.Date;
  */
 public class MaintenanceItem extends SugarRecord<MaintenanceItem> {
     private String type; // e.g. oil, engine, other
-    private String name; // for other
-    private int lastDate;
-    private int nextDate;
+    private long lastDate;
+    private long nextDate;
     private String location;
     private double price;
     private String notes;
+    private int carID;
 
     public String getType() {
         return type;
@@ -24,27 +24,19 @@ public class MaintenanceItem extends SugarRecord<MaintenanceItem> {
         this.type = type;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getLastDate() {
+    public long getLastDate() {
         return lastDate;
     }
 
-    public void setLastDate(int lastDate) {
+   public void setLastDate(long lastDate) {
         this.lastDate = lastDate;
     }
 
-    public int getNextDate() {
+    public long getNextDate() {
         return nextDate;
     }
 
-    public void setNextDate(int nextDate) {
+    public void setNextDate(long nextDate) {
         this.nextDate = nextDate;
     }
 

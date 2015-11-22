@@ -21,5 +21,7 @@
     <string name="notes">Notes</string>
     <string name="noNotes">No notes</string>
     <string name="manualEntry">Manual Entry</string>
+    <string name="title_activity_maintenance_display">Maintenance Display</string>
+    <string name="title_activity_add_maintenance_item">Add Maintenance Item</string>
 
 </resources>
