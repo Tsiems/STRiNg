@@ -48,6 +48,7 @@ public class CarSetUp extends AppCompatActivity implements AsyncResponse {
         setContentView(R.layout.activity_car_set_up);
         ButterKnife.bind(this);
         tempCar = new CarInfo();
+        getSupportActionBar().setElevation(0);
 
     }
     @Override

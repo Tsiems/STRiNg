@@ -14,7 +14,25 @@
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:id="@+id/typeInput"
+                    android:inputType="text"
+                    android:hint="Maintenance Type"
+                    android:textColor="@android:color/black"
+                    android:textColorHint="@android:color/black"
+                    android:layout_marginBottom="10dp" />
+            </android.support.design.widget.TextInputLayout>
+
             <android.support.design.widget.TextInputLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content">
@@ -26,19 +44,22 @@
                     android:id="@+id/dateInput"
                     android:inputType="date"
                     android:hint="Date"
+                    android:focusable="false"
                     android:textColor="@android:color/black"
                     android:textColorHint="@android:color/black"
                     android:layout_marginBottom="10dp" />
             </android.support.design.widget.TextInputLayout>
             <android.support.design.widget.TextInputLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:id="@+id/dateWrapper2">
 
                 <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:id="@+id/dateDueInput"
+                    android:focusable="false"
                     android:inputType="date"
                     android:hint="Due Date"
                     android:textColor="@android:color/black"
@@ -92,6 +113,17 @@
                     android:textColorHint="@android:color/black"
                     android:layout_marginBottom="10dp" />
             </android.support.design.widget.TextInputLayout>
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/saveButton"
+                android:id="@+id/saveMaintainButton"
+                android:background="#2196F3"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:layout_marginBottom="10dp" />
+
 
         </LinearLayout>
     </ScrollView>
