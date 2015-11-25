@@ -33,6 +33,7 @@ public class CarPage extends AppCompatActivity {
     private CarInfo myCar;
     private ArrayList<String> itemList;
     private ArrayAdapter<String> arrayAdapter;
+    private List<MaintenanceItem> maintainItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,10 @@ public class CarPage extends AppCompatActivity {
         Log.d(TAG, carVin);
         List<CarInfo> query = CarInfo.find(CarInfo.class, "vin = ?", carVin);
         myCar = query.get(0);
-        itemList = new ArrayList<>();
+
+
         setTitle(myCar.getCarName());
-
-
-        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemList);
-        itemListView.setAdapter(arrayAdapter);
+        getMaintainItems();
         itemListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -62,6 +61,11 @@ public class CarPage extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        getMaintainItems();
+    }
     @OnClick(R.id.carDetailsButton)
     public void lookAtCarDetails(View view){
         Intent intent = new Intent(getApplicationContext(), CarInfomationActivity.class);
@@ -86,6 +90,17 @@ public class CarPage extends AppCompatActivity {
             }
         }
 
+    }
+
+    private void getMaintainItems(){
+        maintainItems = MaintenanceItem.find(MaintenanceItem.class, "car_id = ?", myCar.getId() + "");
+        Log.d(TAG, "MaintainItems sie is = " + maintainItems.size());
+        itemList = new ArrayList<>();
+        for(int i = 0; i < maintainItems.size(); i++){
+            itemList.add(maintainItems.get(i).getType());
+        }
+        arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemList);
+        itemListView.setAdapter(arrayAdapter);
     }
 
 
