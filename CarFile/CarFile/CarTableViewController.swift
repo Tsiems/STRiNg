@@ -16,6 +16,8 @@ class CarTableViewController: UITableViewController {
     var thisCarID: Int?
     
     var items = [maintenanceItem]()
+    
+    let NUM_STATIC_CELLS = 2
 
     
     override func viewDidLoad() {
@@ -85,21 +87,32 @@ class CarTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-
-        
-        return items.count + 1
+        return items.count + NUM_STATIC_CELLS
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("basicInfoCell", forIndexPath: indexPath) as! BasicInfoTableViewCell
+            
+            // Configure the cell...
+            cell.nameLabel.text = cars[carIndex!].valueForKey("name") as? String
+            cell.makeLabel.text = cars[carIndex!].valueForKey("make") as? String
+            cell.modelLabel.text = cars[carIndex!].valueForKey("model") as? String
+            cell.yearLabel.text = cars[carIndex!].valueForKey("year") as? String
+            cell.colorLabel.text = cars[carIndex!].valueForKey("color") as? String
+            cell.priceLabel.text = cars[carIndex!].valueForKey("price") as? String
+            cell.licNumLabel.text = cars[carIndex!].valueForKey("licNum") as? String
+            
+            //set color of cell
+            
+            return cell
+        }
+        if indexPath.row == 1 {
             let cell = tableView.dequeueReusableCellWithIdentifier("alertsCell", forIndexPath: indexPath) as! MaintenanceItemCell
             
             // Configure the cell...
@@ -114,7 +127,7 @@ class CarTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! MaintenanceItemCell
 
             // Configure the cell...
-            cell.name.text = items[indexPath.row-1].type
+            cell.name.text = items[indexPath.row-NUM_STATIC_CELLS].type
             
             //set color of cell
 
@@ -183,7 +196,7 @@ class CarTableViewController: UITableViewController {
             var index = 0
             
             for i in 0...maintenanceItems.count-1 {
-                if maintenanceItems[i].valueForKey("type") as? String == items[row-1].type {
+                if maintenanceItems[i].valueForKey("type") as? String == items[row-NUM_STATIC_CELLS].type {
                     index = i
                 }
             }

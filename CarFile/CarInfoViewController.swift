@@ -10,6 +10,9 @@ import UIKit
 import CoreData
 
 class CarInfoViewController: UIViewController {
+    
+    @IBOutlet weak var typeLabel: UILabel!
+    @IBOutlet weak var typeField: UITextField!
 
     @IBOutlet weak var lastDateButton: UIButton!
     @IBOutlet weak var nextDateButton: UIButton!
@@ -113,6 +116,7 @@ class CarInfoViewController: UIViewController {
     func placeData() {
         let maintenanceItem = maintenanceItems[maintenanceIndex!]
         
+        typeField.text = maintenanceItem.valueForKey("type") as? String
         lastDateButton.setTitle(maintenanceItem.valueForKey("lastDate") as? String, forState: .Normal)
         nextDateButton.setTitle(maintenanceItem.valueForKey("nextDate") as? String, forState: .Normal)
         brandField.text = maintenanceItem.valueForKey("brand") as? String
@@ -123,7 +127,9 @@ class CarInfoViewController: UIViewController {
     
     func updateData() {
         
-
+        maintenanceItems[maintenanceIndex!].setValue(typeField.text, forKey: "type")
+        self.title = typeField.text //update the view title
+        
         maintenanceItems[maintenanceIndex!].setValue(lastDateButton.titleLabel?.text, forKey: "lastDate")
         maintenanceItems[maintenanceIndex!].setValue(nextDateButton.titleLabel?.text, forKey: "nextDate")
         maintenanceItems[maintenanceIndex!].setValue(brandField.text, forKey: "brand" )
@@ -143,6 +149,9 @@ class CarInfoViewController: UIViewController {
     
     
     func disableTextEditting() {
+        typeLabel.hidden = true
+        typeField.hidden = true
+        
         lastDateButton.userInteractionEnabled = false
         lastDateButton.layer.borderWidth = 0
         lastDateButton.contentHorizontalAlignment = .Left
@@ -171,6 +180,11 @@ class CarInfoViewController: UIViewController {
     }
     
     func enableTextEditting() {
+        typeLabel.hidden = false
+        typeField.hidden = false
+        typeField.userInteractionEnabled = true
+        typeField.borderStyle = UITextBorderStyle.RoundedRect
+        
         lastDateButton.userInteractionEnabled = true
         lastDateButton.layer.cornerRadius = 5
         lastDateButton.layer.borderWidth = 0.1
