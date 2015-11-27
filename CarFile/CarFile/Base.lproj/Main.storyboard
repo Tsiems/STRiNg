@@ -440,7 +440,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eGc-VR-bWg" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2464" y="945"/>
+            <point key="canvasLocation" x="2448" y="933"/>
         </scene>
         <!--Car Table View Controller-->
         <scene sceneID="1qI-se-27e">
