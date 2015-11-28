@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.Calendar;
+import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -84,6 +85,15 @@ public class AddMaintenanceItem extends ActionBarActivity {
         }
         String notes = notesInput.getText().toString();
         MaintenanceItem temp = new MaintenanceItem(type, location, price, notes, carId );
+        List<MaintenanceItem> check = MaintenanceItem.find(MaintenanceItem.class, "type = ? and car_id = ?", type, carId + "");
+        if(check.size() == 1){
+            temp = check.get(0);
+        }
+        temp.setType(type);
+        temp.setLocation(location);
+        temp.setPrice(price);
+        temp.setNotes(notes);
+        temp.setCarID(carId);
         temp.setLastDate(date1);
         temp.setNextDate(date2);
         temp.save();

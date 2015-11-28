@@ -24,5 +24,7 @@
     <string name="title_activity_maintenance_display">Maintenance Display</string>
     <string name="title_activity_add_maintenance_item">Add Maintenance Item</string>
     <string name="select_type">Select Type From List</string>
+    <string name="delete">Delete</string>
+    <string name="editMaintainItem">Edit Maintainance Item</string>
 
 </resources>

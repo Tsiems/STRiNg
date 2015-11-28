@@ -15,7 +15,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Maintenance Information"
-            android:id="@+id/textView3"
+            android:id="@+id/maintainTypeDisplay"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -57,7 +57,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Default Location"
-                    android:id="@+id/textView14" />
+                    android:id="@+id/locationDisplay" />
             </LinearLayout>
 
         </TableRow>
@@ -89,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Default"
-                    android:id="@+id/textView8" />
+                    android:id="@+id/dateDisplay" />
             </LinearLayout>
 
             <LinearLayout
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Default"
-                    android:id="@+id/textView12" />
+                    android:id="@+id/dueDateDisplay" />
             </LinearLayout>
         </TableRow>
 
@@ -143,7 +143,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Default"
-                    android:id="@+id/textView19" />
+                    android:id="@+id/priceDisplay" />
             </LinearLayout>
 
         </TableRow>
@@ -176,7 +176,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:text="Default"
-                    android:id="@+id/textView23" />
+                    android:id="@+id/notesDisplay" />
             </LinearLayout>
 
         </TableRow>

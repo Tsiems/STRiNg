@@ -1,5 +1,7 @@
 package string.carfile;
 
+import android.util.Log;
+
 import com.orm.SugarRecord;
 
 import java.text.ParseException;
@@ -44,6 +46,17 @@ public class MaintenanceItem extends SugarRecord<MaintenanceItem> {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getDateString(){
+        Date date = new Date(lastDate);
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        return sdf.format(date);
+    }
+    public String getNextDateString(){
+        Date date = new Date(nextDate);
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        return sdf.format(date);
     }
 
     public long getLastDate() {

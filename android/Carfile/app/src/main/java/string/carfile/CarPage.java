@@ -54,7 +54,8 @@ public class CarPage extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent maintenanceView = new Intent(getApplicationContext(), MaintenanceDisplay.class);
-                maintenanceView.putExtra("selection", position);
+                maintenanceView.putExtra("carID", maintainItems.get(position).getCarID());
+                maintenanceView.putExtra("type", maintainItems.get(position).getType());
                 startActivity(maintenanceView);
             }
         });
@@ -94,11 +95,12 @@ public class CarPage extends AppCompatActivity {
 
     private void getMaintainItems(){
         maintainItems = MaintenanceItem.find(MaintenanceItem.class, "car_id = ?", myCar.getId() + "");
-        Log.d(TAG, "MaintainItems sie is = " + maintainItems.size());
+        Log.d(TAG, "MaintainItems size is = " + maintainItems.size());
         itemList = new ArrayList<>();
         for(int i = 0; i < maintainItems.size(); i++){
             itemList.add(maintainItems.get(i).getType());
         }
+
         arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, itemList);
         itemListView.setAdapter(arrayAdapter);
     }
