@@ -191,6 +191,11 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         
         let deleteAlert = UIAlertController(title: "Delete Car", message: "All data will be lost.", preferredStyle: UIAlertControllerStyle.Alert)
         
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            //do nothing
+        }))
+        
+        
         deleteAlert.addAction(UIAlertAction(title: "Ok", style: .Destructive, handler: { (action: UIAlertAction!) in
             self.deleteThisCar(sender)
             
@@ -198,9 +203,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
             self.performSegueWithIdentifier("cancelToMenuSegue", sender: sender)
         }))
         
-        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
-            //do nothing
-        }))
+
         
         
         presentViewController(deleteAlert, animated: true, completion: nil)
