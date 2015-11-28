@@ -1,5 +1,5 @@
 //
-//  BasicInfoTableViewCell.swift
+//  CarProfileTableViewCell.swift
 //  CarFile
 //
 //  Created by Travis Siems on 11/27/15.
@@ -8,8 +8,8 @@
 
 import UIKit
 
-class BasicInfoTableViewCell: UITableViewCell {
-    
+class CarProfileTableViewCell: UITableViewCell {
+
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var makeLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
@@ -17,7 +17,7 @@ class BasicInfoTableViewCell: UITableViewCell {
     @IBOutlet weak var yearLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var licNumLabel: UILabel!
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

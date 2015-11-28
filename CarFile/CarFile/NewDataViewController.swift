@@ -129,9 +129,9 @@ class NewDataViewController: UIViewController {
             
             dateView.initialDate = dateFormatter.dateFromString(lastDateButton.titleLabel!.text!)!
         }
-        
-        
     }
+    
+    
     
     
     @IBAction func doneChangingDate(segue: UIStoryboardSegue) {

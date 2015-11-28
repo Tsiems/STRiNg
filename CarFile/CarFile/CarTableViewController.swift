@@ -17,7 +17,7 @@ class CarTableViewController: UITableViewController {
     
     var items = [maintenanceItem]()
     
-    let NUM_STATIC_CELLS = 2
+    let NUM_STATIC_CELLS = 3
 
     
     override func viewDidLoad() {
@@ -97,7 +97,7 @@ class CarTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("basicInfoCell", forIndexPath: indexPath) as! BasicInfoTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! CarProfileTableViewCell
             
             // Configure the cell...
             cell.nameLabel.text = cars[carIndex!].valueForKey("name") as? String
@@ -112,7 +112,13 @@ class CarTableViewController: UITableViewController {
             
             return cell
         }
-        if indexPath.row == 1 {
+        else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCellWithIdentifier("basicInfoCell", forIndexPath: indexPath) as! MaintenanceItemCell
+            cell.name.text = "Basic Info"
+            
+            return cell
+        }
+        else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier("alertsCell", forIndexPath: indexPath) as! MaintenanceItemCell
             
             // Configure the cell...
@@ -124,7 +130,7 @@ class CarTableViewController: UITableViewController {
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("testCell", forIndexPath: indexPath) as! MaintenanceItemCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("maintenanceCell", forIndexPath: indexPath) as! MaintenanceItemCell
 
             // Configure the cell...
             cell.name.text = items[indexPath.row-NUM_STATIC_CELLS].type
@@ -207,6 +213,13 @@ class CarTableViewController: UITableViewController {
             let alertsInfo = segue.destinationViewController as! AlertsTableViewController
             
             alertsInfo.carIndex = carIndex
+        }
+        else if segue.identifier == "basicInfoSegue" {
+            let basicInfoView = segue.destinationViewController as! NewCarViewController
+
+            
+            basicInfoView.newCar = false
+            basicInfoView.carIndex = carIndex
         }
         
         

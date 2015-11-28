@@ -22,8 +22,7 @@
 		16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C0F1BDEEA010018A24E /* MenuTableViewController.swift */; };
 		16808C151BDEF0F30018A24E /* MaintenanceItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */; };
 		169E4F661BFC44680098899B /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 169E4F651BFC44680098899B /* SwiftyJSON.swift */; };
-		16ADBFDF1C08F71E00C28CCB /* BasicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ADBFDE1C08F71E00C28CCB /* BasicInfoViewController.swift */; };
-		16ADBFE81C08F7D200C28CCB /* BasicInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ADBFE71C08F7D200C28CCB /* BasicInfoTableViewCell.swift */; };
+		16ADBFEA1C095CA800C28CCB /* CarProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ADBFE91C095CA800C28CCB /* CarProfileTableViewCell.swift */; };
 		16B629D91BF951B500AB44A4 /* AlertsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */; };
 		16B629DB1BF9534600AB44A4 /* AlertTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */; };
 		16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */; };
@@ -171,8 +170,7 @@
 		16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MaintenanceItemCell.swift; path = ../MaintenanceItemCell.swift; sourceTree = "<group>"; };
 		169E4F651BFC44680098899B /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../../Downloads/SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
 		169E4F671BFC44920098899B /* SwiftyJSON.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftyJSON.xcodeproj; path = "../../Downloads/SwiftyJSON-master/SwiftyJSON.xcodeproj"; sourceTree = "<group>"; };
-		16ADBFDE1C08F71E00C28CCB /* BasicInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInfoViewController.swift; sourceTree = "<group>"; };
-		16ADBFE71C08F7D200C28CCB /* BasicInfoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicInfoTableViewCell.swift; sourceTree = "<group>"; };
+		16ADBFE91C095CA800C28CCB /* CarProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarProfileTableViewCell.swift; sourceTree = "<group>"; };
 		16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertsTableViewController.swift; path = ../AlertsTableViewController.swift; sourceTree = "<group>"; };
 		16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertTableViewCell.swift; sourceTree = "<group>"; };
 		16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CarTableViewController.swift; sourceTree = "<group>"; };
@@ -238,13 +236,12 @@
 				16CA72141BD0A9940019F4B1 /* MenuTableViewCell.swift */,
 				1628571B1BE6B52500D73A05 /* NewCarViewController.swift */,
 				16CA72121BD0A92B0019F4B1 /* CarTableViewController.swift */,
+				16ADBFE91C095CA800C28CCB /* CarProfileTableViewCell.swift */,
+				16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */,
 				16808C131BDEF0F30018A24E /* MaintenanceItemCell.swift */,
 				16B629D81BF951B500AB44A4 /* AlertsTableViewController.swift */,
-				16B629DA1BF9534600AB44A4 /* AlertTableViewCell.swift */,
 				1647CAF91BD46E46006DEF6E /* CarInfoViewController.swift */,
 				1623A1381BC401FC007F284E /* Main.storyboard */,
-				16ADBFE71C08F7D200C28CCB /* BasicInfoTableViewCell.swift */,
-				16ADBFDE1C08F71E00C28CCB /* BasicInfoViewController.swift */,
 				16DFAB9D1BE6CA1A00258927 /* NewDataViewController.swift */,
 				164410961BF6552A00448215 /* DateViewController.swift */,
 				1647CAF51BD46A24006DEF6E /* CarManager.swift */,
@@ -522,14 +519,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				16ADBFE81C08F7D200C28CCB /* BasicInfoTableViewCell.swift in Sources */,
 				16CA72131BD0A92B0019F4B1 /* CarTableViewController.swift in Sources */,
 				16DFAB9E1BE6CA1A00258927 /* NewDataViewController.swift in Sources */,
 				16808C101BDEEA010018A24E /* MenuTableViewController.swift in Sources */,
 				169E4F661BFC44680098899B /* SwiftyJSON.swift in Sources */,
 				164410A91BF667FC00448215 /* HTTP_helper.swift in Sources */,
-				16ADBFDF1C08F71E00C28CCB /* BasicInfoViewController.swift in Sources */,
 				16B629D91BF951B500AB44A4 /* AlertsTableViewController.swift in Sources */,
+				16ADBFEA1C095CA800C28CCB /* CarProfileTableViewCell.swift in Sources */,
 				1647CAF61BD46A24006DEF6E /* CarManager.swift in Sources */,
 				1628571C1BE6B52500D73A05 /* NewCarViewController.swift in Sources */,
 				1623A13D1BC401FC007F284E /* CarFile.xcdatamodeld in Sources */,

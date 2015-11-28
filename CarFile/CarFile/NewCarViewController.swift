@@ -9,11 +9,14 @@
 import UIKit
 import Foundation
 import SwiftHTTP
+import CoreData
 
 class NewCarViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var cancelButton: UIBarButtonItem!
-    @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var populateVinButton: UIButton!
+    
+    @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var populateVinTextField: UITextField!
     @IBOutlet weak var nameTextField: UITextField!
@@ -27,6 +30,13 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var notesTextField: UITextField!
     
     var styleID: String?
+    
+    var newCar: Bool?
+    var carIndex: Int?
+    
+    
+    var leftBarItem: UIBarButtonItem?
+    var rightBarItem: UIBarButtonItem?
     
     
 
@@ -48,7 +58,15 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         //        let backItem = UIBarButtonItem(title: "cancel", style: .Plain, target: nil, action: nil)
         //        navigationItem.backBarButtonItem = backItem
         
-        title = "New Car"
+        if newCar == true
+        {
+            prepareNewCar()
+        }
+        else
+        {
+            prepareExistingCar()
+        }
+        
         navigationController!.navigationBar.barTintColor = UIColor(red:0.09,green:0.55,blue:1.00,alpha: 1.00)
         
         let attributes = [
@@ -61,6 +79,217 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         
         
         // Do any additional setup after loading the view.
+    }
+    
+    func prepareNewCar() {
+        title = "New Car"
+        
+        enableTextEditting()
+        
+        //set the bar items
+        let leftButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelToCarMenu:")
+        let rightButton = UIBarButtonItem(title: "Save", style: .Done, target: self, action: "saveToCarMenu:")
+        leftButton.tintColor = UIColor.whiteColor()
+        rightButton.tintColor = UIColor.whiteColor()
+        
+        self.navigationItem.leftBarButtonItem = leftButton
+        self.navigationItem.rightBarButtonItem = rightButton
+        
+        //save these in case they change
+        leftBarItem = self.navigationItem.leftBarButtonItem
+        rightBarItem = self.navigationItem.rightBarButtonItem
+    }
+    
+    func prepareExistingCar() {
+        
+        
+        populateFields()
+        
+        disableTextEditting()
+        
+        //set the right button time
+        let rightButton = UIBarButtonItem(title: "Edit", style: .Done, target: self, action: "editButtonPressed:")
+        rightButton.tintColor = UIColor.whiteColor()
+
+        self.navigationItem.rightBarButtonItem = rightButton
+        
+        //save these in case they change
+        leftBarItem = self.navigationItem.leftBarButtonItem
+        rightBarItem = self.navigationItem.rightBarButtonItem
+    }
+    
+    func populateFields() {
+        title = cars[carIndex!].valueForKey("name") as? String
+        nameTextField.text = title
+        makeTextField.text = cars[carIndex!].valueForKey("make") as? String
+        modelTextField.text = cars[carIndex!].valueForKey("model") as? String
+        yearTextField.text = cars[carIndex!].valueForKey("year") as? String
+        colorTextField.text = cars[carIndex!].valueForKey("color") as? String
+        priceTextField.text = cars[carIndex!].valueForKey("price") as? String
+        vinNumTextField.text = cars[carIndex!].valueForKey("vinNum") as? String
+        licNumTextField.text = cars[carIndex!].valueForKey("licNum") as? String
+        notesTextField.text = cars[carIndex!].valueForKey("notes") as? String
+    }
+    
+    func updateData() {
+        cars[carIndex!].setValue(nameTextField.text, forKey: "name")
+        cars[carIndex!].setValue(makeTextField.text, forKey: "make")
+        cars[carIndex!].setValue(modelTextField.text, forKey: "model")
+        cars[carIndex!].setValue(yearTextField.text, forKey: "year")
+        cars[carIndex!].setValue(colorTextField.text, forKey: "color")
+        cars[carIndex!].setValue(priceTextField.text, forKey: "price")
+        cars[carIndex!].setValue(vinNumTextField.text, forKey: "vinNum")
+        cars[carIndex!].setValue(licNumTextField.text, forKey: "licNum")
+        cars[carIndex!].setValue(notesTextField.text, forKey: "notes")
+        
+        //save in persistent store
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        appDelegate.saveContext()
+        
+        
+        
+        //populateFields() //not really needed, just the title
+        
+        title = nameTextField.text
+    }
+    
+    func cancelToCarMenu(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("cancelToMenuSegue", sender: sender)
+    }
+    
+    func saveToCarMenu(sender: UIBarButtonItem) {
+        self.performSegueWithIdentifier("saveToMenuSegue", sender: sender)
+    }
+    
+    func editButtonPressed(sender: UIBarButtonItem) {
+        enableTextEditting()
+        
+        //set the bar items
+        let leftButton = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: "cancelButtonPressed")
+        let rightButton = UIBarButtonItem(title: "Save", style: .Done, target: self, action: "saveButtonPressedForUpdate")
+        leftButton.tintColor = UIColor.whiteColor()
+        rightButton.tintColor = UIColor.whiteColor()
+        
+        self.navigationItem.leftBarButtonItem = leftButton
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    func cancelButtonPressed() {
+        disableTextEditting()
+        resetBarItems()
+    }
+    
+    func saveButtonPressedForUpdate() {
+        updateData()
+        disableTextEditting()
+        resetBarItems()
+    }
+    
+    @IBAction func deleteButtonPressed(sender: AnyObject) {
+        let appDelegate =
+        UIApplication.sharedApplication().delegate as! AppDelegate
+        
+        let managedContext = appDelegate.managedObjectContext
+        
+        let thisCarID = cars[carIndex!].valueForKey("id") as? Int
+        
+        
+        
+        for i in 0...maintenanceItems.count-1
+        {
+            if maintenanceItems[i].valueForKey("carID") as? Int == thisCarID
+            {
+                managedContext.deleteObject(maintenanceItems[i] as NSManagedObject)
+            }
+        }
+        
+        //delete the car
+        managedContext.deleteObject(cars[carIndex!] as NSManagedObject)
+        cars.removeAtIndex(carIndex!)
+        
+        appDelegate.saveContext()
+        
+        self.performSegueWithIdentifier("cancelToMenuSegue", sender: sender)
+    }
+    
+    
+    func resetBarItems() {
+        self.navigationItem.leftBarButtonItem = self.leftBarItem
+        self.navigationItem.rightBarButtonItem = self.rightBarItem
+    }
+    
+    func disableTextEditting() {
+        populateVinTextField.hidden = true
+        populateVinButton.hidden = true
+        nameTextField.hidden = true
+        nameLabel.hidden = true
+        
+        makeTextField.userInteractionEnabled = false
+        makeTextField.borderStyle = UITextBorderStyle.None
+        
+        modelTextField.userInteractionEnabled = false
+        modelTextField.borderStyle = UITextBorderStyle.None
+        
+        yearTextField.userInteractionEnabled = false
+        yearTextField.borderStyle = UITextBorderStyle.None
+        
+        colorTextField.userInteractionEnabled = false
+        colorTextField.borderStyle = UITextBorderStyle.None
+        
+        priceTextField.userInteractionEnabled = false
+        priceTextField.borderStyle = UITextBorderStyle.None
+        
+        vinNumTextField.userInteractionEnabled = false
+        vinNumTextField.borderStyle = UITextBorderStyle.None
+        
+        licNumTextField.userInteractionEnabled = false
+        licNumTextField.borderStyle = UITextBorderStyle.None
+        
+        notesTextField.userInteractionEnabled = false
+        notesTextField.borderStyle = UITextBorderStyle.None
+        
+        
+        deleteButton.hidden = true
+    }
+    
+    func enableTextEditting() {
+        populateVinTextField.hidden = false
+        populateVinButton.hidden = false
+        nameTextField.hidden = false
+        nameLabel.hidden = false
+        
+        makeTextField.userInteractionEnabled = true
+        makeTextField.borderStyle = UITextBorderStyle.RoundedRect
+        
+        modelTextField.userInteractionEnabled = true
+        modelTextField.borderStyle = UITextBorderStyle.RoundedRect
+        
+        yearTextField.userInteractionEnabled = true
+        yearTextField.borderStyle = UITextBorderStyle.RoundedRect
+        
+        colorTextField.userInteractionEnabled = true
+        colorTextField.borderStyle = UITextBorderStyle.RoundedRect
+        
+        priceTextField.userInteractionEnabled = true
+        priceTextField.borderStyle = UITextBorderStyle.RoundedRect
+        
+        vinNumTextField.userInteractionEnabled = true
+        vinNumTextField.borderStyle = UITextBorderStyle.RoundedRect
+        
+        licNumTextField.userInteractionEnabled = true
+        licNumTextField.borderStyle = UITextBorderStyle.RoundedRect
+        
+        notesTextField.userInteractionEnabled = true
+        notesTextField.borderStyle = UITextBorderStyle.RoundedRect
+        
+        if newCar == false {
+            deleteButton.hidden = false
+        }
+        else {
+            deleteButton.hidden = true
+        }
     }
     
     @IBAction func populateVin(sender: AnyObject) {
@@ -118,7 +347,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         self.styleID = obj["styleID"]
     }
     
-    func textFieldShouldReturn(userTextField: UITextField!) -> Bool {
+    func textFieldShouldReturn(userTextField: UITextField) -> Bool {
         userTextField.resignFirstResponder()
         return true
     }

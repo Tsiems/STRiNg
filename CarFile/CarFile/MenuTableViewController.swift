@@ -257,6 +257,14 @@ class MenuTableViewController: UITableViewController {
             carTable.carIndex = row
             
             print(carTable.carIndex)
+        }
+        else if segue.identifier == "newCarSegue" {
+            // Get the new view controller using segue.destinationViewController.
+            let navController = segue.destinationViewController as! UINavigationController
+            
+            let newCarView = navController.viewControllers[0] as! NewCarViewController
+            
+            newCarView.newCar = true
             
         }
     }

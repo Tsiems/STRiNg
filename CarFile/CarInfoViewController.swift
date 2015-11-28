@@ -223,8 +223,6 @@ class CarInfoViewController: UIViewController {
         maintenanceItems.removeAtIndex(maintenanceIndex!)
         
         appDelegate.saveContext()
-        
-        
     }
     
     
