@@ -188,6 +188,25 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
+        
+        let deleteAlert = UIAlertController(title: "Delete Car", message: "All data will be lost.", preferredStyle: UIAlertControllerStyle.Alert)
+        
+        deleteAlert.addAction(UIAlertAction(title: "Ok", style: .Destructive, handler: { (action: UIAlertAction!) in
+            self.deleteThisCar(sender)
+            
+            //exit this view (the car is gone)
+            self.performSegueWithIdentifier("cancelToMenuSegue", sender: sender)
+        }))
+        
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: .Default, handler: { (action: UIAlertAction!) in
+            //do nothing
+        }))
+        
+        
+        presentViewController(deleteAlert, animated: true, completion: nil)
+    }
+    
+    func deleteThisCar(sender: AnyObject) {
         let appDelegate =
         UIApplication.sharedApplication().delegate as! AppDelegate
         
@@ -210,8 +229,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         cars.removeAtIndex(carIndex!)
         
         appDelegate.saveContext()
-        
-        self.performSegueWithIdentifier("cancelToMenuSegue", sender: sender)
+
     }
     
     

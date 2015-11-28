@@ -1058,7 +1058,6 @@
                                 </state>
                                 <connections>
                                     <action selector="deleteButtonPressed:" destination="Mn2-Bc-80u" eventType="touchUpInside" id="YFA-nv-0jg"/>
-                                    <segue destination="Uzg-Iv-eB6" kind="unwind" unwindAction="cancelNewData:" id="Mcc-WT-wkF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1121,6 +1120,7 @@
                         <outlet property="priceField" destination="n4P-8h-1SF" id="qBT-Ie-NlJ"/>
                         <outlet property="typeField" destination="0g6-nF-Hdb" id="yNo-4r-QdD"/>
                         <outlet property="typeLabel" destination="UIj-aa-Cvd" id="Y1A-eb-36O"/>
+                        <segue destination="Uzg-Iv-eB6" kind="unwind" identifier="cancelNewDataSegue" unwindAction="cancelNewData:" id="MaO-qY-rjb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lel-VU-Xr1" userLabel="First Responder" sceneMemberID="firstResponder"/>
