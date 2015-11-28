@@ -24,10 +24,6 @@ class CarTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
-        
-        
-        
-        
         //get title of car
         title = cars[carIndex!].valueForKey("name") as? String
         
@@ -42,9 +38,6 @@ class CarTableViewController: UITableViewController {
 //            print("setting alerts")
 //            setAlerts()
 //        }
-        
-
-        
     }
     
     func addMaintenanceItems()
