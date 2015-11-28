@@ -48,6 +48,7 @@ public class CarSetUp extends AppCompatActivity implements AsyncResponse {
         setContentView(R.layout.activity_car_set_up);
         ButterKnife.bind(this);
         tempCar = new CarInfo();
+        getSupportActionBar().setElevation(0);
 
     }
     @Override
@@ -74,6 +75,13 @@ public class CarSetUp extends AppCompatActivity implements AsyncResponse {
             carGet.delegate = this;
             lookUpCar();
         }
+    }
+
+    @OnClick(R.id.manualEntryButton)
+    public void startManualEntry(){
+        Intent intent = new Intent(getApplicationContext(), AddCar.class);
+        startActivity(intent);
+        finish();
     }
 
     private void lookUpCar() {

@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:padding="0dp"
     tools:context="string.carfile.CarPage">
 
@@ -32,6 +33,20 @@
             android:layout_height="wrap_content"
             android:id="@+id/carPageListView"
             android:layout_below="@id/carDetailsButton"/>
+        <com.melnykov.fab.FloatingActionButton
+            android:id="@+id/carPageFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:src="@drawable/ic_add_white_24dp"
+            fab:fab_colorNormal="@color/buttonUnpressed"
+            fab:fab_colorPressed="@color/buttonPressed"
+            fab:fab_colorRipple="@color/buttonAnim"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginBottom="32dp"
+            android:layout_marginRight="20dp" />
 
     </RelativeLayout>
 </RelativeLayout>

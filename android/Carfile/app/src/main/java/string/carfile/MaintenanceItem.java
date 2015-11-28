@@ -1,7 +1,11 @@
 package string.carfile;
 
+import android.util.Log;
+
 import com.orm.SugarRecord;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -9,12 +13,32 @@ import java.util.Date;
  */
 public class MaintenanceItem extends SugarRecord<MaintenanceItem> {
     private String type; // e.g. oil, engine, other
-    private String name; // for other
-    private int lastDate;
-    private int nextDate;
+    private long lastDate;
+    private long nextDate;
     private String location;
-    private double price;
+    private String price;
     private String notes;
+    private long carID;
+
+    public MaintenanceItem(){
+
+    }
+
+    public long getCarID() {
+        return carID;
+    }
+
+    public void setCarID(long carID) {
+        this.carID = carID;
+    }
+
+    public MaintenanceItem(String type, String location, String price, String notes, long carID) {
+        this.type = type;
+        this.location = location;
+        this.price = price;
+        this.notes = notes;
+        this.carID = carID;
+    }
 
     public String getType() {
         return type;
@@ -24,28 +48,45 @@ public class MaintenanceItem extends SugarRecord<MaintenanceItem> {
         this.type = type;
     }
 
-    public String getName() {
-        return name;
+    public String getDateString(){
+        Date date = new Date(lastDate);
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        return sdf.format(date);
+    }
+    public String getNextDateString(){
+        Date date = new Date(nextDate);
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        return sdf.format(date);
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getLastDate() {
+    public long getLastDate() {
         return lastDate;
     }
 
-    public void setLastDate(int lastDate) {
-        this.lastDate = lastDate;
+    public void setLastDate(String lastDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        Date date = null;
+        try {
+            date = sdf.parse(lastDate);
+        } catch (ParseException e) {
+            this.lastDate = 0;
+        }
+        this.lastDate = date.getTime();
     }
 
-    public int getNextDate() {
+    public long getNextDate() {
         return nextDate;
     }
 
-    public void setNextDate(int nextDate) {
-        this.nextDate = nextDate;
+    public void setNextDate(String nextDate) {
+        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
+        Date date = null;
+        try {
+            date = sdf.parse(nextDate);
+        } catch (ParseException e) {
+            this.nextDate = 0;
+        }
+        this.nextDate = date.getTime();
     }
 
     public String getLocation() {
@@ -56,11 +97,11 @@ public class MaintenanceItem extends SugarRecord<MaintenanceItem> {
         this.location = location;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(String price) {
         this.price = price;
     }
 

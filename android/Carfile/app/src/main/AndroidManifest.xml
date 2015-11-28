@@ -57,9 +57,21 @@
         </activity>
         <activity
             android:name=".CarSetUp"
-            android:label="@string/title_activity_add_car">
+            android:label="@string/title_activity_add_car" >
         </activity>
         <activity android:name=".CarInfomationActivity" >
+        </activity>
+        <activity
+            android:name=".MaintenanceDisplay"
+            android:label="@string/title_activity_maintenance_display"
+            android:parentActivityName=".CarPage" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="string.carfile.CarPage" />
+        </activity>
+        <activity
+            android:name=".AddMaintenanceItem"
+            android:label="@string/title_activity_add_maintenance_item" >
         </activity>
     </application>
 

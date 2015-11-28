@@ -7,7 +7,8 @@
     android:paddingBottom="0dp"
     android:paddingRight="0dp"
     android:paddingLeft="0dp"
-    android:id="@+id/carSetupLayout">
+    android:id="@+id/carSetupLayout"
+    android:background="@color/carfileNavbarColor">
 
     <TextView
         android:layout_width="wrap_content"
@@ -17,7 +18,8 @@
         android:id="@+id/welcomeToCarfile"
         android:layout_alignParentRight="false"
         android:layout_centerHorizontal="true"
-        android:textSize="30sp" />
+        android:textSize="30sp"
+        android:textColor="@android:color/white" />
 
     <EditText
         android:layout_width="fill_parent"
@@ -29,7 +31,9 @@
         android:hint="@string/vinNumEntryHint"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:singleLine="true"/>
+        android:singleLine="true"
+        android:textColorHint="@android:color/white"
+        android:textColor="@android:color/white" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -39,7 +43,8 @@
         android:id="@+id/vinNumberInstruction"
         android:layout_below="@+id/vinNumberEnter"
         android:layout_centerHorizontal="true"
-        android:textSize="18sp" />
+        android:textSize="18sp"
+        android:textColor="@android:color/white" />
 
     <Button
         android:layout_width="fill_parent"
@@ -51,5 +56,17 @@
         android:background="@color/carfileNavbarColor"
         android:textColor="@android:color/white"
         android:textSize="20sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/manualEntry"
+        android:id="@+id/manualEntryButton"
+        android:layout_below="@+id/vinNumberInstruction"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="65dp"
+        android:textStyle="italic"
+        android:textColor="@color/buttonPressed" />
 
 </RelativeLayout>
