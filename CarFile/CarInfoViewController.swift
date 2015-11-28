@@ -44,16 +44,11 @@ class CarInfoViewController: UIViewController {
         disableTextEditting()
         
 
-        
-        
-        
-        
         leftBarItem = navigationItem.leftBarButtonItem
         rightBarItem = navigationItem.rightBarButtonItem
         
-        
+        //set title
         title = maintenanceItem.valueForKey("type") as? String
-    
     }
     
     override func viewDidLayoutSubviews() {
@@ -67,8 +62,6 @@ class CarInfoViewController: UIViewController {
         
         notesField.frame.size.width = CGFloat(notesWidth)
         notesField.frame.size.height = CGFloat(notesMaxHeight)
-        
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -112,7 +105,6 @@ class CarInfoViewController: UIViewController {
     }
     
     
-    
     func placeData() {
         let maintenanceItem = maintenanceItems[maintenanceIndex!]
         
@@ -144,8 +136,6 @@ class CarInfoViewController: UIViewController {
         
         appDelegate.saveContext()
     }
-    
-
     
     
     func disableTextEditting() {
@@ -227,8 +217,6 @@ class CarInfoViewController: UIViewController {
             self.performSegueWithIdentifier("cancelNewDataSegue", sender: sender)
         }))
         
-
-        
         
         presentViewController(deleteAlert, animated: true, completion: nil)
     }
@@ -288,8 +276,6 @@ class CarInfoViewController: UIViewController {
             
             dateView.initialDate = dateFormatter.dateFromString(lastDateButton.titleLabel!.text!)!
         }
-        
-        
     }
     
     

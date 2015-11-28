@@ -12,7 +12,6 @@ import CoreData
 class MenuTableViewController: UITableViewController {
     
     var titleText: String?
-
     
     
     override func viewDidLoad() {
@@ -20,6 +19,8 @@ class MenuTableViewController: UITableViewController {
         
         
         navigationItem.leftBarButtonItem = editButtonItem()
+        
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
@@ -27,9 +28,7 @@ class MenuTableViewController: UITableViewController {
             titleText = "Cars"
         }
         
-        
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+
         title = titleText
         
         //set color of background, title bar, and text
@@ -49,10 +48,6 @@ class MenuTableViewController: UITableViewController {
         
         //set all navigation buttons to the white color (including back buttons)
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-
-        
-        
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -144,12 +139,10 @@ class MenuTableViewController: UITableViewController {
     // MARK: - Table view data source
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return cars.count
     }
     
@@ -171,8 +164,7 @@ class MenuTableViewController: UITableViewController {
         let styleID = cars[indexPath.row].valueForKey("styleID") as? String
         
         print(styleID)
-        
-
+    
         
         return cell
     }
@@ -180,7 +172,6 @@ class MenuTableViewController: UITableViewController {
     
     @IBAction func cancelToMenu(segue:UIStoryboardSegue) {
         print("Cancel to menu")
-        
     }
     
     @IBAction func saveToMenu(segue:UIStoryboardSegue) {
@@ -192,7 +183,6 @@ class MenuTableViewController: UITableViewController {
                 saveCar(source.nameTextField.text!, make:source.makeTextField.text!, model:source.modelTextField.text!, year:source.yearTextField.text!, color:source.colorTextField.text!, price:source.priceTextField.text!, vinNum:source.vinNumTextField.text!, licNum:source.licNumTextField.text!, notes:source.notesTextField.text!, styleID: source.styleID!)
             }
         }
-        
     }
     
     

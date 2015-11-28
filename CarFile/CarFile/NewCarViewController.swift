@@ -195,15 +195,12 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
             //do nothing
         }))
         
-        
         deleteAlert.addAction(UIAlertAction(title: "Ok", style: .Destructive, handler: { (action: UIAlertAction!) in
             self.deleteThisCar(sender)
             
             //exit this view (the car is gone)
             self.performSegueWithIdentifier("cancelToMenuSegue", sender: sender)
         }))
-        
-
         
         
         presentViewController(deleteAlert, animated: true, completion: nil)

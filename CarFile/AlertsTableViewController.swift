@@ -39,11 +39,6 @@ class AlertsTableViewController: UITableViewController {
         makeInitialItemsList()
         
         super.viewDidLoad()
-        
-        
-        
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,9 +87,7 @@ class AlertsTableViewController: UITableViewController {
         // Configure the cell...
         cell.nameLabel.text = items[indexPath.row].type
         cell.nextLabel.text = items[indexPath.row].next
-        
 
-        
         
         let thisDate = dateFormatter.dateFromString(items[indexPath.row].next!)
             
@@ -141,8 +134,5 @@ class AlertsTableViewController: UITableViewController {
             
             maintenanceInfo.maintenanceIndex = index
         }
-        
-        
     }
-
 }

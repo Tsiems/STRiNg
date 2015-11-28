@@ -221,8 +221,6 @@ class CarTableViewController: UITableViewController {
             basicInfoView.newCar = false
             basicInfoView.carIndex = carIndex
         }
-        
-        
     }
     
     
@@ -277,10 +275,4 @@ class CarTableViewController: UITableViewController {
         }
     }
     
-    
-
-    
-    
-    
-
 }
