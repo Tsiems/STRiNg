@@ -23,6 +23,7 @@ import butterknife.OnClick;
 import butterknife.OnFocusChange;
 
 public class AddMaintenanceItem extends ActionBarActivity {
+    public static final String TAG = "ADDMAIT";
 
     @Bind(R.id.typeInput) EditText typeInput;
     @Bind(R.id.dateInput) EditText dateInput;
@@ -32,15 +33,42 @@ public class AddMaintenanceItem extends ActionBarActivity {
     @Bind(R.id.maintainNotesInput) EditText notesInput;
     @Bind(R.id.saveMaintainButton) Button saveButton;
     private long carId;
+    private boolean isEdit; //used to select how data is saved, type might change when editing.
+    private long itemId; //used for editing
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_maintenance_item);
         ButterKnife.bind(this);
+        isEdit = false;
         Bundle b = getIntent().getExtras();
         carId = b.getLong("id");
-        Log.d("ADDITEM", carId + "");
+        Log.d(TAG, carId + "");
+        //////Code for Editing Item//////
+        if (b.getInt("edit") == 1){
+            isEdit = true;
+            typeInput.setText(b.getString("type"));
+            String type = typeInput.getText().toString();
+            Log.d(TAG, "Type = " + type);
+            itemId = b.getLong("id");
+            MaintenanceItem temp = MaintenanceItem.findById(MaintenanceItem.class, itemId);
+            typeInput.setText(temp.getType());
+            dateInput.setText(temp.getDateString());
+            dateDueInput.setText(temp.getNextDateString());
+            locationInput.setText(temp.getLocation());
+            priceInput.setText(temp.getPrice());
+            notesInput.setText(temp.getNotes());
+            typeInput.setEnabled(false);
+            typeInput.setFocusable(false);
+
+        }
+
+
+
+
+        /////////////////////////////////
+
     }
 
     @OnClick(R.id.dateInput)
@@ -84,6 +112,18 @@ public class AddMaintenanceItem extends ActionBarActivity {
             price = "No price";
         }
         String notes = notesInput.getText().toString();
+        if(isEdit == true){
+            MaintenanceItem temp = MaintenanceItem.findById(MaintenanceItem.class, itemId);
+            temp.setLocation(location);
+            temp.setPrice(price);
+            temp.setNotes(notes);
+            temp.setLastDate(date1);
+            temp.setNextDate(date2);
+            temp.save();
+            finish();
+        }
+
+
         MaintenanceItem temp = new MaintenanceItem(type, location, price, notes, carId );
         List<MaintenanceItem> check = MaintenanceItem.find(MaintenanceItem.class, "type = ? and car_id = ?", type, carId + "");
         if(check.size() == 1){
