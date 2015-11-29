@@ -79,8 +79,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
             endingLineNumber = "182"
-            landmarkName = "countAlerts()"
-            landmarkType = "5">
+            landmarkName = "CarTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarFile/NewCarViewController.swift"
-            timestampString = "470378264.448877"
+            timestampString = "470528504.747746"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "199"
-            endingLineNumber = "199"
+            startingLineNumber = "226"
+            endingLineNumber = "226"
             landmarkName = "deleteButtonPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>

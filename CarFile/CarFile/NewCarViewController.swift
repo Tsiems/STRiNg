@@ -160,7 +160,20 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveToCarMenu(sender: UIBarButtonItem) {
-        self.performSegueWithIdentifier("saveToMenuSegue", sender: sender)
+        if self.nameTextField.text != "" {
+            self.performSegueWithIdentifier("saveToMenuSegue", sender: sender)
+        }
+        else {
+            let invalidFieldsAlert = UIAlertController(title: "Save Car", message: "The car must have a name.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            
+            invalidFieldsAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                //do nothing
+            }))
+            
+            
+            presentViewController(invalidFieldsAlert, animated: true, completion: nil)
+        }
     }
     
     func editButtonPressed(sender: UIBarButtonItem) {
@@ -182,9 +195,23 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveButtonPressedForUpdate() {
-        updateData()
-        disableTextEditting()
-        resetBarItems()
+        if self.nameTextField.text != "" {
+            updateData()
+            disableTextEditting()
+            resetBarItems()
+        }
+        else {
+            let invalidFieldsAlert = UIAlertController(title: "Save Car", message: "The car must have a name.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            
+            invalidFieldsAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                //do nothing
+            }))
+            
+            
+            presentViewController(invalidFieldsAlert, animated: true, completion: nil)
+        }
+
     }
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
