@@ -78,6 +78,7 @@ public class CarPage extends AppCompatActivity {
     public void addMaintenanceInfo(View view){
         Intent addInfo = new Intent(getApplicationContext(), AddMaintenanceItem.class);
         addInfo.putExtra("id", myCar.getId());
+        addInfo.putExtra("edit", 0);
         startActivity(addInfo);
     }
 
