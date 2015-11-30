@@ -5,6 +5,10 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name="com.orm.SugarApp"
@@ -50,7 +54,8 @@
         <activity
             android:name=".CarPage"
             android:label="@string/carPageTitle"
-            android:parentActivityName=".Home" >
+            android:parentActivityName=".Home"
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="string.carfile.Home" />
@@ -59,7 +64,8 @@
             android:name=".CarSetUp"
             android:label="@string/title_activity_add_car" >
         </activity>
-        <activity android:name=".CarInfomationActivity" >
+        <activity android:name=".CarInfomationActivity"
+                  android:label="Car Information">
         </activity>
         <activity
             android:name=".MaintenanceDisplay"

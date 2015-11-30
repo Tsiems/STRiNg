@@ -33,7 +33,7 @@ public class DatePickerFrag extends DialogFragment implements DatePickerDialog.O
 
     public void onDateSet(DatePicker view, int year, int month, int day){
         String temp = (month + 1) + "-" + day + "-" + year;
-        if (month < 10){
+        if (month < 9){
             temp = "0" + (month + 1) + "-" + day + "-" + year;
         }
         txt.setText(temp);

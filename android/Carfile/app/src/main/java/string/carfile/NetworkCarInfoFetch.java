@@ -2,6 +2,7 @@ package string.carfile;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.squareup.okhttp.OkHttpClient;
@@ -34,10 +36,20 @@ public class NetworkCarInfoFetch extends AsyncTask<String, Double, CarInfo>{
     private View view;
     public final String TAG = "Network";
     public AsyncResponse delegate = null;
+    private RelativeLayout layout;
+    private ProgressDialog dialog;
 
 
     @Override
     protected void onPreExecute(){
+        //layout = (RelativeLayout) activity.findViewById(R.id.carSetupLayout);
+        dialog = new ProgressDialog(activity);
+        dialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        dialog.setMessage("Looking up Car");
+        dialog.setIndeterminate(true);
+        dialog.setCanceledOnTouchOutside(false);
+        dialog.show();
+
     }
 
     @Override
@@ -97,6 +109,7 @@ public class NetworkCarInfoFetch extends AsyncTask<String, Double, CarInfo>{
     }
     @Override
     protected void onPostExecute(CarInfo tempCar){
+        dialog.hide();
         if(isSuccess == false){
             Log.d(TAG, "Couldn't get car info");
             delegate.processFinish("fail");
