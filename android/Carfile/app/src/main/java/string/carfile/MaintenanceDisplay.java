@@ -29,7 +29,6 @@ public class MaintenanceDisplay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maintenance_display);
         ButterKnife.bind(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setElevation(0);
         Bundle b = getIntent().getExtras();
         type = b.getString("type");

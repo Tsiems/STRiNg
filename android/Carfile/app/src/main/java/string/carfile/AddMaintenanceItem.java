@@ -8,6 +8,8 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -25,7 +27,7 @@ import butterknife.OnFocusChange;
 public class AddMaintenanceItem extends ActionBarActivity {
     public static final String TAG = "ADDMAIT";
 
-    @Bind(R.id.typeInput) EditText typeInput;
+    @Bind(R.id.typeInput) AutoCompleteTextView typeInput;
     @Bind(R.id.dateInput) EditText dateInput;
     @Bind(R.id.dateDueInput) EditText dateDueInput;
     @Bind(R.id.locationInput) EditText locationInput;
@@ -35,12 +37,16 @@ public class AddMaintenanceItem extends ActionBarActivity {
     private long carId;
     private boolean isEdit; //used to select how data is saved, type might change when editing.
     private long itemId; //used for editing
+    private String[] maintenanceTypes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_maintenance_item);
         ButterKnife.bind(this);
+        maintenanceTypes = getResources().getStringArray(R.array.maintenanceTypes);
+        ArrayAdapter<String> dropDownAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, maintenanceTypes);
+        typeInput.setAdapter(dropDownAdapter);
         isEdit = false;
         Bundle b = getIntent().getExtras();
         carId = b.getLong("id");

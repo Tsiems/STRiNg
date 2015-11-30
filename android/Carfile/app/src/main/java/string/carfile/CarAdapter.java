@@ -1,9 +1,11 @@
 package string.carfile;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.support.v7.widget.RecyclerView;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -29,6 +32,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         this.cars = cars;
         this.context = context;
     }
+
 
     @Override
     public CarViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -52,6 +56,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
         carViewHolder.carName.setText(ci.getCarName());
         carViewHolder.carInformation.setText(ci.getYear() + " " + ci.getMake() + " " + ci.getModel());
         carViewHolder.itemView.setLongClickable(true);
+        Picasso.with(context).load("file://" + context.getExternalFilesDir(null) + "/" + ci.getId() + "picture.jpg").fit().centerCrop().into(carViewHolder.carPicture);
 
         //Glide.with(context).load("").into(carViewHolder.carPicture); cant use edmunds API, will need to take picture
     }
@@ -100,6 +105,7 @@ public class CarAdapter extends RecyclerView.Adapter<CarAdapter.CarViewHolder> {
     public void setOnLongItemClickListener(final OnItemClickListener itemClickListener){
         this.itemClickListener = itemClickListener;
     }
+
 
 
 
