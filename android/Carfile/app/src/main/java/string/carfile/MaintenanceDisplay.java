@@ -1,9 +1,11 @@
 package string.carfile;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.util.List;
@@ -40,6 +42,43 @@ public class MaintenanceDisplay extends AppCompatActivity {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.edit_maintain_item, menu);
         return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+
+            case R.id.editMaintainButton:
+                Intent editDetails = new Intent(this, AddMaintenanceItem.class);
+                ////Put extra value
+                editDetails.putExtra("type", type);
+                editDetails.putExtra("carID", carId);
+                editDetails.putExtra("edit", 1);
+                List<MaintenanceItem> check1 = MaintenanceItem.find(MaintenanceItem.class, "type = ? and car_id = ?", type, carId + "");
+                editDetails.putExtra("id", check1.get(0).getId());
+                startActivity(editDetails);
+                return true;
+
+            case R.id.deleteMaintainButton:
+                //Delete item
+                List<MaintenanceItem> check = MaintenanceItem.find(MaintenanceItem.class, "type = ? and car_id = ?", type, carId + "");
+                check.get(0).delete();
+                finish();
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
+    }
+
+
+
+
+    protected void onResume(){
+        super.onResume();
+        populateWindow();
     }
 
 
