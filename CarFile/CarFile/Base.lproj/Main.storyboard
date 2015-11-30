@@ -1218,8 +1218,8 @@
         <image name="trash-128.png" width="128" height="128"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1OJ-xw-poz"/>
         <segue reference="XWq-Ds-NnH"/>
-        <segue reference="fRp-jB-6ik"/>
+        <segue reference="1OJ-xw-poz"/>
+        <segue reference="Byw-ul-zLk"/>
     </inferredMetricsTieBreakers>
 </document>
