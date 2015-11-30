@@ -21,10 +21,33 @@
     <string name="notes">Notes</string>
     <string name="noNotes">No notes</string>
     <string name="manualEntry">Manual Entry</string>
-    <string name="title_activity_maintenance_display">Maintenance Display</string>
+    <string name="title_activity_maintenance_display">Maintenance Information</string>
     <string name="title_activity_add_maintenance_item">Add Maintenance Item</string>
     <string name="select_type">Select Type From List</string>
     <string name="delete">Delete</string>
     <string name="editMaintainItem">Edit Maintainance Item</string>
+    <string-array name="maintenanceTypes">
+        <item>Oil Change</item>
+        <item>Fuel Filter</item>
+        <item>Car Wash</item>
+        <item>Windshield Wipers</item>
+        <item>Washer Fluid</item>
+        <item>Tire Pressure</item>
+        <item>Tire Rotation</item>
+        <item>Wheel Alignment</item>
+        <item>Service</item>
+        <item>Routine Inspection</item>
+        <item>Battery Replacement</item>
+        <item>Brake Pads</item>
+        <item>Brake Fluid</item>
+        <item>Brake Lights</item>
+        <item>Transmission Fluid</item>
+        <item>Power Steering Fluid</item>
+        <item>Engine Coolant</item>
+        <item>Spark Plugs</item>
+        <item>Air Filter</item>
+        <item>Headlights</item>
+        <item>ABS</item>
+    </string-array>
 
 </resources>

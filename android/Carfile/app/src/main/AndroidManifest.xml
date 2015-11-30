@@ -50,7 +50,8 @@
         <activity
             android:name=".CarPage"
             android:label="@string/carPageTitle"
-            android:parentActivityName=".Home" >
+            android:parentActivityName=".Home"
+            android:launchMode="singleTop">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="string.carfile.Home" />
@@ -59,7 +60,8 @@
             android:name=".CarSetUp"
             android:label="@string/title_activity_add_car" >
         </activity>
-        <activity android:name=".CarInfomationActivity" >
+        <activity android:name=".CarInfomationActivity"
+                  android:label="Car Information">
         </activity>
         <activity
             android:name=".MaintenanceDisplay"

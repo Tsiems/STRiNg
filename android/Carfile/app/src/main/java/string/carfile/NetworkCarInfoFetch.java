@@ -38,6 +38,8 @@ public class NetworkCarInfoFetch extends AsyncTask<String, Double, CarInfo>{
 
     @Override
     protected void onPreExecute(){
+
+
     }
 
     @Override
