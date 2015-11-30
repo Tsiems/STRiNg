@@ -115,17 +115,16 @@ public class AddCar extends AppCompatActivity {
         }
         if (cColor.length() == 0 || cColor.length() > 25)
         {
-            Snackbar.make(view, "Enter a valid color less than 25 characters", Snackbar.LENGTH_SHORT).show();
-            color.requestFocus();
-            return;
+            cColor = "";
         }
         if (price.getText().toString().length() == 0)
         {
-            Snackbar.make(view, "Enter a price for the car", Snackbar.LENGTH_SHORT).show();
-            price.requestFocus();
-            return;
+            cPrice = 0;
         }
-        cPrice = Integer.parseInt(price.getText().toString());
+        else{
+            cPrice = Integer.parseInt(price.getText().toString());
+        }
+
         if(cVin.length() < 11 || cVin.length() > 17)
         {
 
