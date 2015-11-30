@@ -11,6 +11,8 @@ import CoreData
 
 class CarInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var typeField: UITextField!
 
@@ -37,6 +39,10 @@ class CarInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         super.viewDidLoad()
         setTextFieldDelegates()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
+        
+        
         let maintenanceItem = maintenanceItems[maintenanceIndex!]
         
         deleteButton.hidden = true
@@ -50,6 +56,18 @@ class CarInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         
         //set title
         title = maintenanceItem.valueForKey("type") as? String
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        let width = UIScreen.mainScreen().bounds.size.width
+        let height = UIScreen.mainScreen().bounds.size.height
+        scrollView.contentSize = CGSizeMake(width, height)
+        
+        scrollView.scrollEnabled = true
+        
+        //scroll to top
+        self.scrollView.setContentOffset(CGPoint(x:0,y:0), animated: false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -286,6 +304,34 @@ class CarInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDe
         self.locPurchasedField.delegate = self
         self.notesField.delegate = self
     }
+    
+    
+    
+    func keyboardWillShow(notification:NSNotification){
+        
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+        keyboardFrame = self.view.convertRect(keyboardFrame, fromView: nil)
+        
+        
+        scrollView.scrollEnabled = true
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        self.scrollView.contentInset = contentInset
+        
+        //scrollView.scrollEnabled = false
+    }
+    
+    func keyboardWillHide(notification:NSNotification){
+        
+        scrollView.scrollEnabled = true
+        
+        self.scrollView.setContentOffset(CGPoint(x:0,y:0), animated: true)
+        
+        scrollView.scrollEnabled = false
+    }
+
     
     
     
