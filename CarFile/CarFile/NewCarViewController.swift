@@ -42,16 +42,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.populateVinTextField.delegate = self
-        self.nameTextField.delegate = self
-        self.makeTextField.delegate = self
-        self.modelTextField.delegate = self
-        self.yearTextField.delegate = self
-        self.colorTextField.delegate = self
-        self.priceTextField.delegate = self
-        self.vinNumTextField.delegate = self
-        self.licNumTextField.delegate = self
-        self.notesTextField.delegate = self
+        setTextFieldDelegates()
         
         self.styleID = ""
         
@@ -394,10 +385,38 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         self.styleID = obj["styleID"]
     }
     
-    func textFieldShouldReturn(userTextField: UITextField) -> Bool {
-        userTextField.resignFirstResponder()
-        return true
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        let nextTage=textField.tag+1;
+        // Try to find next responder
+        let nextResponder=textField.superview?.viewWithTag(nextTage) as UIResponder!
+        
+        if (nextResponder != nil){
+            // Found next responder, so set it.
+            nextResponder?.becomeFirstResponder()
+        }
+        else
+        {
+            // Not found, so remove keyboard
+            textField.resignFirstResponder()
+        }
+        return false // We do not want UITextField to insert line-breaks.
     }
+    
+    func setTextFieldDelegates() {
+        self.populateVinTextField.delegate = self
+        self.nameTextField.delegate = self
+        self.makeTextField.delegate = self
+        self.modelTextField.delegate = self
+        self.yearTextField.delegate = self
+        self.colorTextField.delegate = self
+        self.priceTextField.delegate = self
+        self.vinNumTextField.delegate = self
+        self.licNumTextField.delegate = self
+        self.notesTextField.delegate = self
+    }
+
+    
     
     
     override func didReceiveMemoryWarning() {

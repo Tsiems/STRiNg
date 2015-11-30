@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewDataViewController: UIViewController {
+class NewDataViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var typeTextField: UITextField!
     
@@ -22,6 +22,7 @@ class NewDataViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTextFieldDelegates()
         
         title = "New Data"
 
@@ -153,6 +154,37 @@ class NewDataViewController: UIViewController {
             presentViewController(invalidFieldsAlert, animated: true, completion: nil)
         }
     }
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        let nextTage=textField.tag+1;
+        // Try to find next responder
+        let nextResponder=textField.superview?.viewWithTag(nextTage) as UIResponder!
+        
+        if (nextResponder != nil){
+            // Found next responder, so set it.
+            nextResponder?.becomeFirstResponder()
+        }
+        else
+        {
+            // Not found, so remove keyboard
+            textField.resignFirstResponder()
+        }
+        return false // We do not want UITextField to insert line-breaks.
+    }
+    
+    func setTextFieldDelegates() {
+        self.typeTextField.delegate = self
+        self.descriptionTextField.delegate = self
+        self.priceTextField.delegate = self
+        self.whereTextField.delegate = self
+        self.notesTextField.delegate = self
+    }
+    
+    
+    
+    
     
     
     

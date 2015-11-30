@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class CarInfoViewController: UIViewController {
+class CarInfoViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
     
     @IBOutlet weak var typeLabel: UILabel!
     @IBOutlet weak var typeField: UITextField!
@@ -35,6 +35,7 @@ class CarInfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setTextFieldDelegates()
         
         let maintenanceItem = maintenanceItems[maintenanceIndex!]
         
@@ -157,6 +158,7 @@ class CarInfoViewController: UIViewController {
     func disableTextEditting() {
         typeLabel.hidden = true
         typeField.hidden = true
+        typeField.userInteractionEnabled = false
         
         lastDateButton.userInteractionEnabled = false
         lastDateButton.layer.borderWidth = 0
@@ -248,6 +250,49 @@ class CarInfoViewController: UIViewController {
         
         appDelegate.saveContext()
     }
+    
+    
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        
+        let nextTage=textField.tag+1;
+        // Try to find next responder
+        let nextResponder=textField.superview?.viewWithTag(nextTage) as UIResponder!
+        
+        if (nextResponder != nil){
+            // Found next responder, so set it.
+            nextResponder?.becomeFirstResponder()
+        }
+        else
+        {
+            // Not found, so remove keyboard
+            textField.resignFirstResponder()
+        }
+        return false // We do not want UITextField to insert line-breaks.
+    }
+    
+    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+        if text == "\n" {
+            textView.resignFirstResponder()
+            return false
+        }
+        return true
+    }
+    
+    func setTextFieldDelegates() {
+        self.typeField.delegate = self
+        self.brandField.delegate = self
+        self.priceField.delegate = self
+        self.locPurchasedField.delegate = self
+        self.notesField.delegate = self
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
