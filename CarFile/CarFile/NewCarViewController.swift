@@ -160,6 +160,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveToCarMenu(sender: UIBarButtonItem) {
+        self.nameTextField.text = self.nameTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if self.nameTextField.text != "" {
             self.performSegueWithIdentifier("saveToMenuSegue", sender: sender)
         }
@@ -195,6 +196,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     }
     
     func saveButtonPressedForUpdate() {
+        self.nameTextField.text = self.nameTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
         if self.nameTextField.text != "" {
             updateData()
             disableTextEditting()

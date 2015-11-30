@@ -131,6 +131,29 @@ class NewDataViewController: UIViewController {
         }
     }
     
+    @IBAction func cancelButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("cancelNewDataSegue", sender: sender)
+    }
+    
+    
+    @IBAction func saveButtonPressed(sender: AnyObject) {
+        self.typeTextField.text = self.typeTextField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        if self.typeTextField.text != "" {
+            self.performSegueWithIdentifier("saveNewDataSegue", sender: sender)
+        }
+        else {
+            let invalidFieldsAlert = UIAlertController(title: "Save Data", message: "The data must have a type.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            
+            invalidFieldsAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                //do nothing
+            }))
+            
+            
+            presentViewController(invalidFieldsAlert, animated: true, completion: nil)
+        }
+    }
+    
     
     
     

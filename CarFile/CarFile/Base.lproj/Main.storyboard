@@ -634,7 +634,6 @@
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9pt-DN-OeG" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Ixc-Cg-8ky" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="268" y="1736"/>
         </scene>
@@ -816,13 +815,13 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="oev-6C-60W">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Ixc-Cg-8ky" kind="unwind" unwindAction="cancelNewData:" id="ZZr-eN-Ie1"/>
+                                <action selector="cancelButtonPressed:" destination="Tft-On-lqf" id="ZPw-Eq-z9r"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="e2N-Es-jPd">
                             <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
-                                <segue destination="Ixc-Cg-8ky" kind="unwind" unwindAction="saveNewData:" id="YF0-Ix-0vl"/>
+                                <action selector="saveButtonPressed:" destination="Tft-On-lqf" id="ucd-zy-isz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -834,9 +833,12 @@
                         <outlet property="priceTextField" destination="IRa-cB-HBY" id="lry-i1-eFr"/>
                         <outlet property="typeTextField" destination="KUl-YF-P3q" id="leZ-0A-YQr"/>
                         <outlet property="whereTextField" destination="5xs-Kl-0Hw" id="Smq-i5-Bez"/>
+                        <segue destination="ctW-8V-Q9d" kind="unwind" identifier="saveNewDataSegue" unwindAction="saveNewData:" id="qVg-En-llE"/>
+                        <segue destination="ctW-8V-Q9d" kind="unwind" identifier="cancelNewDataSegue" unwindAction="cancelNewData:" id="5YT-Db-Ihr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uqd-my-8uT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="ctW-8V-Q9d" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1024" y="3044"/>
         </scene>
@@ -1212,6 +1214,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="1OJ-xw-poz"/>
         <segue reference="XWq-Ds-NnH"/>
-        <segue reference="fRp-jB-6ik"/>
+        <segue reference="HSF-rv-MVe"/>
     </inferredMetricsTieBreakers>
 </document>

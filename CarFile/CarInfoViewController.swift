@@ -78,11 +78,13 @@ class CarInfoViewController: UIViewController {
         let cancelBtn = UIBarButtonItem(barButtonSystemItem: .Cancel, target: self, action: "cancelButtonPressed:")
         navigationItem.leftBarButtonItem = cancelBtn
         
-        
         deleteButton.hidden = false
+        
+        
     }
     
     @IBAction func cancelButtonPressed(sender: AnyObject) {
+        //reset bar items
         navigationItem.rightBarButtonItem = rightBarItem
         navigationItem.leftBarButtonItem = leftBarItem
         
@@ -94,14 +96,28 @@ class CarInfoViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(sender: AnyObject) {
-        navigationItem.rightBarButtonItem = rightBarItem
-        navigationItem.leftBarButtonItem = leftBarItem
-        
-        updateData()
-        disableTextEditting()
-        
-        deleteButton.hidden = true
-        
+        self.typeField.text = self.typeField.text!.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        if self.typeField.text != "" {
+            //reset bar items
+            navigationItem.rightBarButtonItem = rightBarItem
+            navigationItem.leftBarButtonItem = leftBarItem
+            
+            updateData()
+            disableTextEditting()
+            
+            deleteButton.hidden = true
+        }
+        else {
+            let invalidFieldsAlert = UIAlertController(title: "Done Editing Data", message: "The data must have a type.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            
+            invalidFieldsAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                //do nothing
+            }))
+            
+            
+            presentViewController(invalidFieldsAlert, animated: true, completion: nil)
+        }
     }
     
     
