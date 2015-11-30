@@ -16,6 +16,8 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var populateVinButton: UIButton!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var nameLabel: UILabel!
     
     @IBOutlet weak var populateVinTextField: UITextField!
@@ -44,6 +46,11 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         setTextFieldDelegates()
         
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShow:", name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHide:", name:UIKeyboardWillHideNotification, object: nil)
+        
+        
         self.styleID = ""
         
         //        let backItem = UIBarButtonItem(title: "cancel", style: .Plain, target: nil, action: nil)
@@ -68,8 +75,19 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         navigationController!.navigationBar.titleTextAttributes = attributes
         
         
-        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
+        let width = UIScreen.mainScreen().bounds.size.width
+        let height = UIScreen.mainScreen().bounds.size.height
+        scrollView.contentSize = CGSizeMake(width, height)
+        
+        scrollView.scrollEnabled = true
+        
+        //scroll to top
+        self.scrollView.setContentOffset(CGPoint(x:0,y:0), animated: false)
     }
     
     func prepareNewCar() {
@@ -93,6 +111,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     
     func prepareExistingCar() {
         
+        enableTextEditting()
         
         populateFields()
         
@@ -140,7 +159,6 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         appDelegate.saveContext()
         
         
-        
         //populateFields() //not really needed, just the title
         
         title = nameTextField.text
@@ -169,6 +187,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
     }
     
     func editButtonPressed(sender: UIBarButtonItem) {
+        
         enableTextEditting()
         
         //set the bar items
@@ -264,6 +283,9 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         nameTextField.hidden = true
         nameLabel.hidden = true
         
+        populateVinTextField.userInteractionEnabled = false
+        nameTextField.userInteractionEnabled = false
+        
         makeTextField.userInteractionEnabled = false
         makeTextField.borderStyle = UITextBorderStyle.None
         
@@ -297,6 +319,10 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         populateVinButton.hidden = false
         nameTextField.hidden = false
         nameLabel.hidden = false
+        
+        populateVinTextField.userInteractionEnabled = true
+        nameTextField.userInteractionEnabled = true
+        
         
         makeTextField.userInteractionEnabled = true
         makeTextField.borderStyle = UITextBorderStyle.RoundedRect
@@ -416,7 +442,30 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         self.notesTextField.delegate = self
     }
 
+    func keyboardWillShow(notification:NSNotification){
+        
+        var userInfo = notification.userInfo!
+        var keyboardFrame:CGRect = (userInfo[UIKeyboardFrameBeginUserInfoKey] as! NSValue).CGRectValue()
+        keyboardFrame = self.view.convertRect(keyboardFrame, fromView: nil)
+        
+        
+        scrollView.scrollEnabled = true
+        
+        var contentInset:UIEdgeInsets = self.scrollView.contentInset
+        contentInset.bottom = keyboardFrame.size.height
+        self.scrollView.contentInset = contentInset
+        
+        //scrollView.scrollEnabled = false
+    }
     
+    func keyboardWillHide(notification:NSNotification){
+        
+        scrollView.scrollEnabled = true
+        
+        self.scrollView.setContentOffset(CGPoint(x:0,y:0), animated: true)
+        
+        scrollView.scrollEnabled = false
+    }
     
     
     override func didReceiveMemoryWarning() {

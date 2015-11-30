@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "CarFile/NewCarViewController.swift"
-            timestampString = "470546476.85101"
+            timestampString = "470602087.628245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "219"
-            endingLineNumber = "219"
+            startingLineNumber = "238"
+            endingLineNumber = "238"
             landmarkName = "deleteButtonPressed(_:)"
             landmarkType = "5">
          </BreakpointContent>
