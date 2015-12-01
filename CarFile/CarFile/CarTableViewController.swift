@@ -14,30 +14,24 @@ class CarTableViewController: UITableViewController {
     
     var carIndex: Int?
     var thisCarID: Int?
+    var yellowAlerts: Int?
+    var redAlerts: Int?
     
     var items = [maintenanceItem]()
     
-    let NUM_STATIC_CELLS = 3
+    let NUM_STATIC_CELLS = 2
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
+        
         //get title of car
         title = cars[carIndex!].valueForKey("name") as? String
         
         thisCarID = cars[carIndex!].valueForKey("id") as? Int
-        
-        //set colors of background, title bar, and text
-        
-        
-        populateTestData()
-        
-//        if alertMgr.count == 0 {
-//            print("setting alerts")
-//            setAlerts()
-//        }
+
     }
     
     func addMaintenanceItems()
@@ -55,21 +49,16 @@ class CarTableViewController: UITableViewController {
     
     override func viewWillAppear(animated: Bool) {
         addMaintenanceItems()
+        
+        var values = countAlerts()
+        yellowAlerts = values.0
+        redAlerts = values.1
+        
         tableView.reloadData()
     }
     
     override func viewDidAppear(animated: Bool) {
         tableView.reloadData()
-    }
-    
-    func populateTestData() {
-//        if carMgr.cars[0].maintenanceItems.count < 1 {
-//            carMgr.addMaintenanceItem(0,type:"Oil Change", last:"05/27/15", next:"08/27/15", description: "Full Synthetic", price: "$50", locPurchased: "Speedee Oil Change", notes: "It was pretty expensive but fast")
-//            carMgr.addMaintenanceItem(0,type:"Battery", last:"05/27/11", next:"12/10/21")
-//            carMgr.addMaintenanceItem(0,type:"Tires", last:"12/04/00", next:"12/04/19")
-//            carMgr.addMaintenanceItem(0,type:"Transmission Fluid", last: "02/10/14", next:"11/21/15")
-//        }
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -86,6 +75,19 @@ class CarTableViewController: UITableViewController {
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count + NUM_STATIC_CELLS
     }
+    
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.row == 0 {
+            return 150.0
+        }
+        else if indexPath.row == 1 { //alert info
+            return 40
+        }
+        else {
+            return 65
+        }
+    }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -93,32 +95,39 @@ class CarTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("profileCell", forIndexPath: indexPath) as! CarProfileTableViewCell
             
             // Configure the cell...
-            cell.nameLabel.text = cars[carIndex!].valueForKey("name") as? String
             cell.makeLabel.text = cars[carIndex!].valueForKey("make") as? String
             cell.modelLabel.text = cars[carIndex!].valueForKey("model") as? String
             cell.yearLabel.text = cars[carIndex!].valueForKey("year") as? String
-            cell.colorLabel.text = cars[carIndex!].valueForKey("color") as? String
-            cell.priceLabel.text = cars[carIndex!].valueForKey("price") as? String
-            cell.licNumLabel.text = cars[carIndex!].valueForKey("licNum") as? String
             
             //set color of cell
             
             return cell
         }
         else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("basicInfoCell", forIndexPath: indexPath) as! MaintenanceItemCell
-            cell.name.text = "Basic Info"
-            
-            return cell
-        }
-        else if indexPath.row == 2 {
             let cell = tableView.dequeueReusableCellWithIdentifier("alertsCell", forIndexPath: indexPath) as! MaintenanceItemCell
             
             // Configure the cell...
             cell.name.text = "Alerts"
-            cell.number.text = String(countAlerts())
+            
+            cell.number.text = String(redAlerts! + yellowAlerts!)
             
             //set color of cell
+            if redAlerts == 0 {
+                if yellowAlerts == 0 {
+                    //set cell color to green
+                    cell.backgroundColor = UIColor(red:0.54, green:0.76, blue:0.56, alpha:1)
+                }
+                else {
+                    //set the cell color to yellow
+                    cell.backgroundColor = UIColor(red:1, green:0.83, blue:0.35, alpha:1)
+                }
+            }
+
+            else {
+                //set the cell color to red
+                cell.backgroundColor = UIColor(red:0.91, green:0.34, blue:0.32, alpha:1)
+            }
+            
             
             return cell
         }
@@ -154,7 +163,7 @@ class CarTableViewController: UITableViewController {
 //    }
     
     
-    func countAlerts() -> Int {
+    func countAlerts() -> (Int,Int) {
         let dateFormatter = NSDateFormatter()
 //        dateFormatter.dateStyle = .ShortStyle
         dateFormatter.timeStyle = .NoStyle
@@ -162,7 +171,14 @@ class CarTableViewController: UITableViewController {
         
         let today = NSDate()
         
-        var num = 0
+        //check 7 days in the future
+        let components: NSDateComponents = NSDateComponents()
+        components.setValue(7, forComponent: NSCalendarUnit.Day)
+        
+        let warningDate = NSCalendar.currentCalendar().dateByAddingComponents(components, toDate: today, options: NSCalendarOptions(rawValue: 0))!
+        
+        var numReds = 0
+        var numYellows = 0
         
         for( var i = 0; i < items.count; i++ )
         {
@@ -170,12 +186,19 @@ class CarTableViewController: UITableViewController {
             
             //check if the date has passed by!
             if today.compare(thisDate!) == NSComparisonResult.OrderedDescending {
-                num += 1
+                numReds += 1
+            }
+            else if warningDate.compare(thisDate!) == NSComparisonResult.OrderedDescending {
+                numYellows += 1
             }
         }
         
-        return num
+        return (numYellows , numReds)
     }
+    
+    
+    
+    
     
 
 

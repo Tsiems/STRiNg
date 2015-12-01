@@ -30,7 +30,7 @@ class AlertsTableViewController: UITableViewController {
         thisCarID = cars[carIndex!].valueForKey("id") as? Int
         
         
-        //set next date to 6 months in the future
+        //check 7 days in the future
         let components: NSDateComponents = NSDateComponents()
         components.setValue(7, forComponent: NSCalendarUnit.Day)
         

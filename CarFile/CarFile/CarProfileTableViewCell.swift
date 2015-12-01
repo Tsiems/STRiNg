@@ -10,13 +10,12 @@ import UIKit
 
 class CarProfileTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var profilePicture: UIImageView!
+
     @IBOutlet weak var makeLabel: UILabel!
     @IBOutlet weak var modelLabel: UILabel!
-    @IBOutlet weak var colorLabel: UILabel!
     @IBOutlet weak var yearLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var licNumLabel: UILabel!
+
     
     override func awakeFromNib() {
         super.awakeFromNib()

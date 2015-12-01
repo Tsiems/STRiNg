@@ -464,59 +464,35 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="profileCell" rowHeight="130" id="6dO-zr-dhG" customClass="CarProfileTableViewCell" customModule="CarFile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="92" width="600" height="130"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="profileCell" rowHeight="150" id="6dO-zr-dhG" customClass="CarProfileTableViewCell" customModule="CarFile" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="150"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6dO-zr-dhG" id="iHL-UF-XQJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="129.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="149.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZhN-RB-11l">
-                                            <rect key="frame" x="8" y="0.0" width="271" height="35"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana-Bold" family="Verdana" pointSize="20"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Model" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HS-kr-kA8">
-                                            <rect key="frame" x="172" y="43" width="106" height="21"/>
+                                            <rect key="frame" x="268" y="91" width="324" height="21"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUD-mR-kb5">
-                                            <rect key="frame" x="8" y="72" width="270" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E69-Zv-94r">
-                                            <rect key="frame" x="8" y="43" width="65" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LicNum" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Nj-VZ-Crf">
-                                            <rect key="frame" x="8" y="101" width="97" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana-Italic" family="Verdana" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="23"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Make" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pn0-8k-KbQ">
-                                            <rect key="frame" x="76" y="43" width="88" height="21"/>
+                                            <rect key="frame" x="268" y="54" width="324" height="21"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="23"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpK-hz-sQA">
-                                            <rect key="frame" x="134" y="101" width="87" height="21"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W26-dv-Et6">
+                                            <rect key="frame" x="8" y="1" width="240" height="128"/>
                                             <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="17"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Year" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E69-Zv-94r">
+                                            <rect key="frame" x="268" y="19" width="324" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Verdana" family="Verdana" pointSize="23"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -525,54 +501,22 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="colorLabel" destination="BUD-mR-kb5" id="3LV-36-TXW"/>
-                                    <outlet property="licNumLabel" destination="4Nj-VZ-Crf" id="nYh-pP-CEL"/>
                                     <outlet property="makeLabel" destination="Pn0-8k-KbQ" id="TRQ-Du-jjW"/>
                                     <outlet property="modelLabel" destination="5HS-kr-kA8" id="gjv-0N-Kjl"/>
-                                    <outlet property="nameLabel" destination="ZhN-RB-11l" id="AOz-PE-YAq"/>
-                                    <outlet property="priceLabel" destination="JpK-hz-sQA" id="aDB-Kr-lq2"/>
+                                    <outlet property="profilePicture" destination="W26-dv-Et6" id="W8w-8g-Kka"/>
                                     <outlet property="yearLabel" destination="E69-Zv-94r" id="wTT-GJ-XSM"/>
+                                    <segue destination="yem-3w-PSV" kind="show" identifier="basicInfoSegue" id="4RQ-Mt-BNU"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="basicInfoCell" rowHeight="65" id="qVU-Fv-gQp" customClass="MaintenanceItemCell" customModule="CarFile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="222" width="600" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qVU-Fv-gQp" id="tCc-1O-jHJ">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="64.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Basic Info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HSo-oq-NhV">
-                                            <rect key="frame" x="25" y="22" width="292" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                    <animations/>
-                                </tableViewCellContentView>
-                                <animations/>
-                                <connections>
-                                    <outlet property="name" destination="HSo-oq-NhV" id="gFW-hU-Vbu"/>
-                                    <segue destination="yem-3w-PSV" kind="show" identifier="basicInfoSegue" id="XWq-Ds-NnH"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="alertsCell" rowHeight="65" id="lVY-jN-Dpp" customClass="MaintenanceItemCell" customModule="CarFile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="287" width="600" height="65"/>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="alertsCell" rowHeight="40" id="lVY-jN-Dpp" customClass="MaintenanceItemCell" customModule="CarFile" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="242" width="600" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lVY-jN-Dpp" id="Y0V-vB-GYK">
-                                    <rect key="frame" x="0.0" y="0.0" width="567" height="64.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="567" height="39.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Alerts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-Es-3vg">
-                                            <rect key="frame" x="25" y="22" width="292" height="21"/>
-                                            <animations/>
-                                            <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Num" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bh2-5z-1WS">
-                                            <rect key="frame" x="492" y="22" width="67" height="21"/>
+                                            <rect key="frame" x="492" y="10" width="67" height="21"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="67" id="3Op-Jp-jfO"/>
@@ -581,10 +525,19 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Alerts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sF6-Es-3vg">
+                                            <rect key="frame" x="253" y="10" width="61" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Verdana-BoldItalic" family="Verdana" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="bh2-5z-1WS" firstAttribute="top" secondItem="Y0V-vB-GYK" secondAttribute="topMargin" constant="14" id="VdP-GO-SkV"/>
+                                        <constraint firstItem="bh2-5z-1WS" firstAttribute="top" secondItem="Y0V-vB-GYK" secondAttribute="topMargin" constant="2" id="VdP-GO-SkV"/>
+                                        <constraint firstItem="sF6-Es-3vg" firstAttribute="centerX" secondItem="Y0V-vB-GYK" secondAttribute="centerX" id="icp-Ix-cpb"/>
+                                        <constraint firstItem="sF6-Es-3vg" firstAttribute="centerY" secondItem="Y0V-vB-GYK" secondAttribute="centerY" id="pYx-jR-uif"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
@@ -598,7 +551,7 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="maintenanceCell" rowHeight="65" id="qZT-aS-Vq1" customClass="MaintenanceItemCell" customModule="CarFile" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="352" width="600" height="65"/>
+                                <rect key="frame" x="0.0" y="282" width="600" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qZT-aS-Vq1" id="v2C-w4-kRl">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="64.5"/>
@@ -1237,7 +1190,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="HSF-rv-MVe"/>
-        <segue reference="ewc-UI-EfC"/>
-        <segue reference="XWq-Ds-NnH"/>
+        <segue reference="1OJ-xw-poz"/>
+        <segue reference="4RQ-Mt-BNU"/>
     </inferredMetricsTieBreakers>
 </document>
