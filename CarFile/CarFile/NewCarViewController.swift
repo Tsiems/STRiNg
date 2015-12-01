@@ -363,7 +363,7 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
         var vin = ""
         vin = populateVinTextField.text!
         self.view.window?.endEditing(true)
-        populateVinTextField.text="";
+        
         if vin.characters.count == 17
         {
             let urlString = "https://api.edmunds.com/api/vehicle/v2/vins/" + vin + "?fmt=json&api_key=5zyd8sa5k3yxgpcg7t49agav"
@@ -385,17 +385,35 @@ class NewCarViewController: UIViewController, UITextFieldDelegate {
                         let styleID = json["years"][0]["styles"][0]["id"].stringValue
                         let obj = ["makeName": makeName, "modelName": modelName, "yearName": yearName, "colorName": colorName, "priceName": priceName, "vinName": vinName, "styleID": styleID]
                         setObject(obj)
+                        
+                        populateVinTextField.text="";
                     }
                     else
                     {
-                        print("You got an error")
+                        let invalidFieldsAlert = UIAlertController(title: "Populate Failed", message: "Invalid Vin Number.", preferredStyle: UIAlertControllerStyle.Alert)
+                        
+                        
+                        invalidFieldsAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                            //do nothing
+                        }))
+                        
+                        
+                        presentViewController(invalidFieldsAlert, animated: true, completion: nil)
                     }
                 }
             }
         }
         else
         {
-            print("Please enter a valid VIN")
+            let invalidFieldsAlert = UIAlertController(title: "Populate Information", message: "Invalid Vin Number.", preferredStyle: UIAlertControllerStyle.Alert)
+            
+            
+            invalidFieldsAlert.addAction(UIAlertAction(title: "Ok", style: .Default, handler: { (action: UIAlertAction!) in
+                //do nothing
+            }))
+            
+            
+            presentViewController(invalidFieldsAlert, animated: true, completion: nil)
         }
     } // END of Populate Button Function
     

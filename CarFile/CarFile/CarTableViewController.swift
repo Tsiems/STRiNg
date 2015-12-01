@@ -221,10 +221,10 @@ class CarTableViewController: UITableViewController {
                     let subType = json[0]["subType"].stringValue
                     
                     print(subType)
-                    if subType == "exterior"
-                    {
-                        let photoSrcs = json[0]["photoSrcs"][0].stringValue
-                        picLink = "https://media.ed.edmunds-media.com" + photoSrcs
+//                    if subType == "exterior"
+//                    {
+                    let photoSrcs = json[0]["photoSrcs"][0].stringValue
+                    picLink = "https://media.ed.edmunds-media.com" + photoSrcs
                         
 //                        if let url = NSURL(string: picLink) {
 //                            if let data = NSData(contentsOfURL: url) {
@@ -232,7 +232,7 @@ class CarTableViewController: UITableViewController {
 //                            }        
 //                        }
                         
-                    }
+                    //}
                 }
             }
         }
