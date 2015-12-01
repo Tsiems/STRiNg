@@ -11,6 +11,7 @@ import CoreData
 
 class CarTableViewController: UITableViewController {
     
+    @IBOutlet weak var profPic: UIImageView!
     
     var carIndex: Int?
     var thisCarID: Int?
@@ -24,6 +25,7 @@ class CarTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         
@@ -50,7 +52,7 @@ class CarTableViewController: UITableViewController {
     override func viewWillAppear(animated: Bool) {
         addMaintenanceItems()
         
-        var values = countAlerts()
+        let values = countAlerts()
         yellowAlerts = values.0
         redAlerts = values.1
         
@@ -98,6 +100,10 @@ class CarTableViewController: UITableViewController {
             cell.makeLabel.text = cars[carIndex!].valueForKey("make") as? String
             cell.modelLabel.text = cars[carIndex!].valueForKey("model") as? String
             cell.yearLabel.text = cars[carIndex!].valueForKey("year") as? String
+            
+            let picURL = getPictureURL()
+            print( picURL )
+            cell.loadImage( picURL )
             
             //set color of cell
             
@@ -195,6 +201,49 @@ class CarTableViewController: UITableViewController {
         
         return (numYellows , numReds)
     }
+    
+    
+    func getPictureURL() -> String
+    {
+        let styleID = cars[carIndex!].valueForKey("styleID")as? String
+        
+        var picLink = ""
+        
+        
+        if styleID!.characters.count == 9
+        {
+            let pictureCall = "https://api.edmunds.com/v1/api/vehiclephoto/service/findphotosbystyleid?styleId=" + styleID! + "&fmt=json&api_key=5zyd8sa5k3yxgpcg7t49agav"
+            if let url = NSURL(string: pictureCall)
+            {
+                if let data = try? NSData(contentsOfURL: url, options: [])
+                {
+                    let json = JSON(data: data)
+                    let subType = json[0]["subType"].stringValue
+                    
+                    print(subType)
+                    if subType == "exterior"
+                    {
+                        let photoSrcs = json[0]["photoSrcs"][0].stringValue
+                        picLink = "https://media.ed.edmunds-media.com" + photoSrcs
+                        
+//                        if let url = NSURL(string: picLink) {
+//                            if let data = NSData(contentsOfURL: url) {
+//                                   //.image = UIImage(data: data)
+//                            }        
+//                        }
+                        
+                    }
+                }
+            }
+        }
+        else
+        {
+            print("Please enter a valid VIN")
+        }
+        
+        return picLink
+    }
+
     
     
     
